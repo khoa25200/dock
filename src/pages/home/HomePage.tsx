@@ -5,6 +5,7 @@ function HomePage() {
   return (
     <LayoutLandingPage>
       home page
+      <button className='btn'>khoa</button>
     </LayoutLandingPage>
   );
 }

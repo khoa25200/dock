@@ -14,6 +14,18 @@ export default defineConfig({
       configs: `${path.resolve(__dirname, "./src/configs")}`,
       constants: `${path.resolve(__dirname, "./src/configs/constants")}`,
       libs: `${path.resolve(__dirname, "./src/libs")}`,
-    },
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: `
+          @import "${__dirname}/src/styles/_global.style.less";
+          @import "${__dirname}/src/styles/_variables.style.less";
+          @import "${__dirname}/src/styles/fonts.less";
+          `
+      }
+    }
   }
 })
