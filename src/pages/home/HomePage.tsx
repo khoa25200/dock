@@ -4,6 +4,7 @@ import './HomePage.less';
 import { Content, Header } from 'antd/es/layout/layout';
 import { useNavigate } from 'react-router-dom';
 import FooterLayout from '../../layouts/Footer/Foooter';
+import IntroduceLayout from '../../layouts/Introduce/Intruduce';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ function HomePage() {
           </div>
         </section>
       </Content>
+      <IntroduceLayout />
       <FooterLayout />
     </LayoutLandingPage>
   );
