@@ -2,9 +2,7 @@ import { PropsWithChildren } from 'react';
 import './LayoutLandingPage.less';
 
 function LayoutLandingPage({ children }: PropsWithChildren) {
-  return (
-    <>{children}</>
-  );
+  return <div className="layout-landing-page">{children}</div>;
 }
 
 export default LayoutLandingPage;
