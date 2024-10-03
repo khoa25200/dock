@@ -15,7 +15,10 @@ function HomePage() {
       <Layout style={{ backgroundColor: 'transparent' }}>
         <Header className="header">
           <div className="logo" />
-          <Menu mode="horizontal" onClick={handleClick} style={{ backgroundColor: 'transparent' }}>
+          <Menu
+            mode="horizontal"
+            onClick={handleClick}
+            style={{ backgroundColor: 'transparent', gap: '20px' }}>
             <Menu.Item className="menu-item" key="/" style={{ color: 'white' }}>
               Home
             </Menu.Item>
