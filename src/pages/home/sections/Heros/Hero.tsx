@@ -8,8 +8,8 @@ type HeroProps = {
 
 function Hero({ title, description, image }: HeroProps) {
   return (
-    <section className="hero-section">
-      <div className="hero-section-title">
+    <section className="hero-section ">
+      <div className="hero-section-title ">
         <p className="hero-section-title-left" dangerouslySetInnerHTML={{ __html: title }} />
         <p className="hero-section-title-right" dangerouslySetInnerHTML={{ __html: description }} />
       </div>
