@@ -31,7 +31,7 @@ const introduceProps = {
   title:
     'With DockChat, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.',
   description:
-    '“People now recognise that having a good performance conversation means that something happens as a <br />result.”',
+    '“People now recognise that having a good performance conversation means that something happens as a result.”',
   img: IMAGES.BACKGRUND_CONTENT,
   imgDescription: 'Picture',
   iconQuote: ICONS.DOUBLE_QUOTE,
