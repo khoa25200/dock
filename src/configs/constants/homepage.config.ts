@@ -32,7 +32,7 @@ const introduceProps = {
   description:
     '“With DockChat, the design team can now build a design that identifies employees’ career aspirations and goals, from which we can approach managers and check progress.”',
   img: IMAGES.BACKGRUND_CONTENT,
-  imgDescription: 'Picture',
+  alt_picture: 'Picture',
 };
 
 export const PROPS = {
