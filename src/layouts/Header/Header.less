@@ -2,51 +2,59 @@
 @margin-top-header: 80px;
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: transparent;
-  gap: 20px;
   position: fixed;
   top: 0;
-  left: 0px;
+  left: 0;
   right: 0;
   z-index: #z-index[z-index-lg];
-  width: 100%;
-  margin-top: @margin-top-header;
-  padding: 0 80px;
-  margin: 40px 40px;
-  background-color: #color[blue-color];
+  margin-top: 40px;
+  padding: 6px 10px;
 
-  .menu {
-    .menu-item {
-      font-size: #font[font-size-normal];
-      font-weight: #font-weight[font-weight-bold];
+  .header-content {
+    background-color: #color[white-color];
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    border-radius: #border-radius[border-radius-lg];
+    width: 89.5%;
+    margin: 0 auto;
+
+    .menu {
+      .ant-menu-title-content {
+        color: #color[black-color];
+        font-size: #font[font-size-small];
+      }
+      .menu-item {
+        font-size: #font[font-size-small];
+        font-weight: #font-weight[font-weight-bold];
+      }
+
+      .btn {
+        background-color: #color[white-color];
+        padding: 19px 17px;
+        border-radius: #border-radius[border-radius-md];
+        outline: none;
+        border: none;
+        font-weight: #font-weight[font-weight-bold];
+        color: #color[white-color];
+        font-size: #font[font-size-small];
+        box-shadow: #box-shadow[box-shadow-1];
+        background-color: #color[blue-color];
+
+        .hover();
+      }
     }
 
-    .btn {
-      background-color: #color[white-color];
-      padding: 11.25px 15.53px;
+    img.logo {
+      width: 54px;
+      height: 50px;
       border-radius: #border-radius[border-radius-sm];
-      outline: none;
-      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      // padding-left: 20px;
+      margin-left: 8px;
+      float: left;
     }
-
-    .btn_login {
-      color: #color[black-color];
-    }
-
-    .btn_try {
-      color: #color[black-color];
-    }
-  }
-
-  img.logo {
-    width: 70px;
-    height: 100%;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px 28px 16px 0;
-    float: left;
   }
 }
