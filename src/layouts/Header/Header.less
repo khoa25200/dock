@@ -1,0 +1,52 @@
+@button-padding: 11.25px 15.53px;
+@margin-top-header: 80px;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  right: 0;
+  z-index: #z-index[z-index-lg];
+  width: 100%;
+  margin-top: @margin-top-header;
+  padding: 0 80px;
+  margin: 40px 40px;
+  background-color: #color[blue-color];
+
+  .menu {
+    .menu-item {
+      font-size: #font[font-size-normal];
+      font-weight: #font-weight[font-weight-bold];
+    }
+
+    .btn {
+      background-color: #color[white-color];
+      padding: 11.25px 15.53px;
+      border-radius: #border-radius[border-radius-sm];
+      outline: none;
+      border: none;
+    }
+
+    .btn_login {
+      color: #color[black-color];
+    }
+
+    .btn_try {
+      color: #color[black-color];
+    }
+  }
+
+  img.logo {
+    width: 70px;
+    height: 100%;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 28px 16px 0;
+    float: left;
+  }
+}
