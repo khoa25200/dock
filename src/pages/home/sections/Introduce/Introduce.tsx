@@ -5,14 +5,14 @@ type IntroduceLayoutProps = {
   title: string;
   description: string;
   img: string;
-  imgDesctions: string,
+  alt_picture: string;
 };
 
 const IntroduceLayout: React.FC<IntroduceLayoutProps> = ({
   title,
   description,
   img,
-  imgDesctions,
+  alt_picture,
 }: IntroduceLayoutProps) => {
   return (
     <section className="introduce">
@@ -25,7 +25,7 @@ const IntroduceLayout: React.FC<IntroduceLayoutProps> = ({
           dangerouslySetInnerHTML={{ __html: description }}></span>
       </div>
       <div className="introduce-img">
-        <img src={img} alt={imgDesctions} />
+        <img src={img} alt={alt_picture} />
       </div>
     </section>
   );
