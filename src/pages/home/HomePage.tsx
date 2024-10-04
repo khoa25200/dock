@@ -1,7 +1,7 @@
 import LayoutLandingPage from '../../layouts/LayoutLandingPage/LayoutLandingPage';
 import './HomePage.less';
 import { Content } from 'antd/es/layout/layout';
-import IntroduceLayout from './sections/Introduce/Intruduce';
+import IntroduceLayout from './sections/Introduce/Introduce';
 import Features from './sections/Features/Features';
 import HeroSection from './sections/Heros/Hero';
 import ShowCase from './sections/ShowCase/ShowCase';
