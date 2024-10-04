@@ -1,5 +1,4 @@
 import { IMAGES } from '../../assets/images/index';
-import { ICONS } from '../../assets/icons/index';
 
 const heroProps = {
   title: 'Get the best <br/> <b> experience </b>when sending messages.',
@@ -29,12 +28,11 @@ const aboutUsProps = {
 
 const introduceProps = {
   title:
-    'With DockChat, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.',
+    '“People now recognize that having a good performance conversation leads to tangible outcomes.”',
   description:
-    '“People now recognise that having a good performance conversation means that something happens as a result.”',
+    '“With DockChat, the design team can now build a design that identifies employees’ career aspirations and goals, from which we can approach managers and check progress.”',
   img: IMAGES.BACKGRUND_CONTENT,
-  imgDescription: 'Picture',
-  iconQuote: ICONS.DOUBLE_QUOTE,
+  alt_picture: 'Picture',
 };
 
 export const PROPS = {
