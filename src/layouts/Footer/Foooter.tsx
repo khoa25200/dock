@@ -6,7 +6,7 @@ import facebook from '../../assets/icon/facebook.svg'
 import figma from '../../assets/icon/figma.svg'
 import linkedin from '../../assets/icon/linkedin.svg'
 import twitter from '../../assets/icon/twitter.svg'
-import Button from '../../components/buttons/ButtonFooter/ButtonFooter';
+import ButtonFooter from '../../components/buttons/ButtonFooter/ButtonFooter';
 const { Footer } = Layout;
 
 const FooterLayout: React.FC = () => {
@@ -32,13 +32,13 @@ const FooterLayout: React.FC = () => {
                 </ul>
               </div>
               <div className='footer-content-buttons'>
-                <Button className='button-contact' name='Contact-Us' />
-                <Button className='button-started' name='Get started' />
+                <ButtonFooter className='button-contact' title='Contact-Us' />
+                <ButtonFooter className='button-started' title='Get started' />
               </div>
               <div className='footer-content-socials'>
                 <img src={facebook} alt="FaceBook" />
                 <img src={linkedin} alt="Linkedin" />
-                <img src={twitter} alt="Tiwtter" />
+                <img src={twitter} alt="Twitter" />
                 <img src={figma} alt="Figma" />
               </div>
             </div>
