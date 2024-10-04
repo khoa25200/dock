@@ -3,20 +3,17 @@ import './ButtonFooter.less'
 import { Button } from 'antd';
 
 interface ButtonProps {
-  name: string;
+  title: string;
   className?: string;
-  color?: string;
-  action?: () => void;
+  type?: string
 }
 
-const ButtonFooter: React.FC<ButtonProps> = ({className, name, color, action }) => {
+const ButtonFooter: React.FC<ButtonProps> = ({className, title, type = 'primary' }) => {
   return (
     <Button 
-      className={`custom-button ${className}`} 
-      onClick={action} 
-      style={{ backgroundColor: color }}
+      className={`custom-button ${className} ${type}`} 
     >
-      {name}
+      {title}
     </Button>
   );
 };
