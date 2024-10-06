@@ -1,6 +1,6 @@
 import FooterLayout from '../../layouts/Footer/Foooter';
 import HeaderComponent from '../Header/Header';
-import { PropsWithChildren, useRef, useState, useEffect } from 'react';
+import { PropsWithChildren, useState, useEffect } from 'react';
 import './LayoutLandingPage.less';
 
 function LayoutLandingPage({ children }: PropsWithChildren) {
