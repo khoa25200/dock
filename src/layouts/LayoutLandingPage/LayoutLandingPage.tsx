@@ -1,4 +1,4 @@
-import FooterLayout from '../../layouts/Footer/Foooter';
+import FooterLayout from '../Footer/Footer';
 import HeaderComponent from '../Header/Header';
 import { PropsWithChildren } from 'react';
 import './LayoutLandingPage.less';
