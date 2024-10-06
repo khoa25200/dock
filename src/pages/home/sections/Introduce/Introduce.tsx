@@ -1,5 +1,6 @@
 import React from 'react';
 import './Introduce.less';
+import './Introduce.media.less';
 
 type IntroduceLayoutProps = {
   title: string;
