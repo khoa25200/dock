@@ -2,103 +2,107 @@
 @copyright-height: 60px;
 
 .footer {
-    background-color: black;
-    opacity: 90%;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    padding: 68px 120px 0;
+  background-color: black;
+  opacity: 90%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  padding: 68px 8% 0;
 
-    .footer-content {
-        display: flex;
-        height: calc(@footer-height - @copyright-height);
+  .footer-content {
+    display: flex;
+    height: calc(@footer-height - @copyright-height);
 
-        .footer-content-info {
-            flex: 2.5;
-            border: 1px solid;
+    .footer-content-info {
+      flex: 2;
+      border: 1px solid;
 
-            .content-info-lofo {
-                width: 100px;
-                height: 82px;
-                border-radius: 8px;
+      .content-info-lofo {
+        width: 100px;
+        height: 82px;
+        border-radius: 8px;
 
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-
-            .content-info-disc {
-                margin-top: 24px;
-                line-height: 30px;
-                font-size: #font[font-size-small];
-                width: 292px;
-                font-weight: #font-weight[font-weight-medium];
-                color: #color[white-color];
-            }
+        &:hover {
+          cursor: pointer;
         }
+      }
 
-        .footer-content-teams {
-            flex: 1;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            color: #color[white-color];
-            font-size: #font[font-size-small];
-            font-weight: #font-weight[font-weight-extra-bold];
-
-            ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-
-                li {
-                    margin-top: 28px;
-                    font-weight: #font-weight[font-weight-light];
-
-                    &:hover {
-                        cursor: pointer;
-                        text-decoration: underline;
-                    }
-                }
-            }
-        }
-
-        .footer-content-buttons {
-            flex: 2;
-
-            .button-contact,
-            .button-started {
-                width: 204px;
-                height: 40px;
-            }
-
-            .button-started {
-                margin-top: 32px;
-            }
-        }
-        
-        .footer-content-socials {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-
-            img {
-                width: 24px;
-                height: 24px;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-    
-    .footer-copyright {
-        display: flex;
-        padding-top: 12px;
-        height: @copyright-height;
-        justify-content: center;
+      .content-info-disc {
+        margin-top: 24px;
+        line-height: 30px;
+        font-size: #font[font-size-small];
+        width: 292px;
+        font-weight: #font-weight[font-weight-medium];
         color: #color[white-color];
-        font-size: #font[font-size-light];
+      }
     }
+
+    .footer-content-teams {
+      flex: 1;
+      align-items: center;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      color: #color[white-color];
+      font-size: #font[font-size-small];
+      font-weight: #font-weight[font-weight-extra-bold];
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          margin-top: 28px;
+          font-weight: #font-weight[font-weight-light];
+
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .footer-content-buttons {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .button-contact,
+      .button-started {
+        width: 204px;
+        height: 40px;
+      }
+
+      .button-started {
+        margin-top: 32px;
+      }
+    }
+
+    .footer-content-socials {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .footer-copyright {
+    display: flex;
+    padding-top: 12px;
+    height: @copyright-height;
+    justify-content: center;
+    color: #color[white-color];
+    font-size: #font[font-size-light];
+  }
 }

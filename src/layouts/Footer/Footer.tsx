@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.less';
+import './Footer.media.less';
 import { Layout } from 'antd';
 import Logo from '../../assets/images/footer-logo.png';
 import facebook from '../../assets/icons/facebook.svg';
