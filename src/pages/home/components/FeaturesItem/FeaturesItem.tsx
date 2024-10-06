@@ -1,4 +1,5 @@
 import './FeaturesItem.less';
+import './FeaturesItem.media.less';
 import { Card } from 'antd';
 import Meta from 'antd/es/card/Meta';
 

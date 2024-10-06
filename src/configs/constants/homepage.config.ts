@@ -23,14 +23,16 @@ const aboutUsProps = {
   description:
     'Make work life simpler, more enjoyable, and more productive. DockChat is an AI-powered platform for work that brings all your chats, apps, and customers together in one place DockChat was created by us in 2024',
   img: IMAGES.ABOUT_US,
-  imgDescription: 'Development Teams',
+  team: 'Development Teams',
 };
 
 const introduceProps = {
   title:
-    'With DockChat, the design team can now build design which identifies employees’ career aspirations and goals and from which we approach managers and check to see what is happening.',
+    '“People now recognize that having a good performance conversation leads to tangible outcomes.”',
   description:
-    '“People now recognise that having a good performance conversation means that something happens as a <br />result.”',
+    '“With DockChat, the design team can now build a design that identifies employees’ career aspirations and goals, from which we can approach managers and check progress.”',
+  img: IMAGES.BACKGRUND_CONTENT,
+  alt_picture: 'Picture',
 };
 
 export const PROPS = {

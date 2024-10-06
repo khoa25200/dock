@@ -1,4 +1,5 @@
 import './Features.less';
+import './Features.media.less';
 import FeaturesItem from '../../components/FeaturesItem/FeaturesItem';
 import { ICONS } from '../../../../assets/icons';
 
