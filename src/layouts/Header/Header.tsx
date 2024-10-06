@@ -3,7 +3,7 @@ import './Header.less';
 import { Layout, Menu, Button } from 'antd';
 import logo from 'images/logo-dock.png';
 
-function HeaderComponent() {
+function HeaderComponent({ isScroll }: { isScroll: boolean }) {
   const navigate = useNavigate();
 
   const handleClick = (e: any) => {
@@ -11,7 +11,7 @@ function HeaderComponent() {
   };
 
   return (
-    <Layout.Header className="header">
+    <Layout.Header className={`header ${isScroll ? 'header-scroll' : ''}`}>
       <div className="header-content">
         <img className="logo" src={logo} alt="Logo" />
 

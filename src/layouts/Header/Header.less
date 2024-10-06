@@ -12,7 +12,8 @@
   padding: 6px 10px;
 
   .header-content {
-    background-color: #color[white-color];
+    // background-color: #color[white-color];
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +24,7 @@
 
     .menu {
       .ant-menu-title-content {
-        color: #color[black-color];
+        color: #color[white-color];
         font-size: #font[font-size-small];
       }
       .menu-item {
@@ -38,10 +39,12 @@
         outline: none;
         border: none;
         font-weight: #font-weight[font-weight-bold];
-        color: #color[white-color];
+        color: #color[blue-color];
         font-size: #font[font-size-small];
         box-shadow: #box-shadow[box-shadow-1];
-        background-color: #color[blue-color];
+        background-color: #color[white-color];
+        padding-left: 16px;
+        margin-left: 0px;
 
         .hover();
       }
@@ -55,6 +58,24 @@
       // padding-left: 20px;
       margin-left: 8px;
       float: left;
+    }
+  }
+}
+
+.header-scroll {
+  .header-content {
+    background-color: #color[white-color];
+    box-shadow: #box-shadow[box-shadow-4];
+
+    .menu {
+      .ant-menu-title-content {
+        color: #color[black-color];
+      }
+
+      .btn {
+        background-color: #color[blue-color];
+        color: #color[white-color];
+      }
     }
   }
 }
