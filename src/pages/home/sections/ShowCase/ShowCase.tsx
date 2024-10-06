@@ -1,4 +1,5 @@
 import './ShowCase.less';
+import './ShowCase.media.less';
 import { IMAGES } from '../../../../assets/images/index';
 type ShowCaseProps = {
   title: string;
