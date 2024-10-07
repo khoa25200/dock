@@ -19,9 +19,9 @@ const showCaseProps = {
 };
 
 const aboutUsProps = {
-  title: 'Make work life simpler, more enjoyable, and more productive.',
+  title: 'Make work life simpler, more <br/> enjoyable, and more <br/> productive.',
   description:
-    'Make work life simpler, more enjoyable, and more productive. DockChat is an AI-powered platform for work that brings all your chats, apps, and customers together in one place DockChat was created by us in 2024',
+    'DockChat is an AI-powered platform for work that brings all your chats, apps, and customers together in one place <br/> DockChat was created by us in 2024',
   img: IMAGES.ABOUT_US,
   team: 'Development Teams',
 };
