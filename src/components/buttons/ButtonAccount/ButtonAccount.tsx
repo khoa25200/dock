@@ -6,7 +6,7 @@ interface ButtonProps {
   className?: string;
 }
 
-const ButtonAccout: React.FC<ButtonProps> = ({className, title}) => {
+const ButtonAccount: React.FC<ButtonProps> = ({className, title}) => {
   return (
     <Button 
       className={`custom-button ${className}`} 
@@ -16,4 +16,4 @@ const ButtonAccout: React.FC<ButtonProps> = ({className, title}) => {
   );
 };
 
-export default ButtonAccout;
+export default ButtonAccount;
