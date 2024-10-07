@@ -1,0 +1,84 @@
+.auth {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: transparent;
+    justify-content: center;
+    margin-left: 60px;
+    gap: 22px;
+
+    .auth-title {
+        font-size: #font[font-size-xxxl];
+        color: #color[white-color];
+        font-weight: #font-weight[font-weight-bold];
+        margin: 0;
+    }
+
+    .auth-email {
+        color: #color[white-color];
+        font-size: #font[font-size-normal];
+        font-weight: #font-weight[font-weight-bold];
+        margin: -22px 0 0;
+    }
+
+    .auth-from {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        .auth-from-email {
+            border: 1px solid #color[white-color];
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+
+            input {
+                padding: 16px;
+                margin-left: 2px;
+                width: 100%;
+                background-color: transparent;
+                color: #color[white-color];
+                border: none;
+                font-size: #font[font-size-small];
+                font-weight: #font-weight[font-weight-bold];
+
+                &:focus-visible {
+                    outline: none;
+                }
+            }
+        }
+
+        .auth-from-password {
+            position: relative;
+
+            img {
+                width: 20px;
+                position: absolute;
+                right: 12px;
+                top: 10px;
+            }
+        }
+    }
+
+    .auth-button {
+        width: 360px;
+        height: 40px;
+
+        span {
+            color: #color[blue-color];
+        }
+    }
+
+    .auth-content {
+        text-align: center;
+        font-size: #font[font-size-14];
+        color: #color[white-color];
+
+        strong:hover {
+            cursor: pointer;
+        }
+
+    }
+}
