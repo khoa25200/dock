@@ -10,13 +10,13 @@ import { PROPS } from '../../configs/constants/homepage.config';
 function HomePage() {
   return (
     <LayoutLandingPage>
-      {/* <Content> */}
       <HeroSection {...PROPS.HERO} />
-      <Features {...PROPS.FEATURES} />
-      <ShowCase {...PROPS.SHOWCASE} />
-      <AboutUs {...PROPS.ABOUT_US} />
-      <IntroduceLayout {...PROPS.INTRODUCE} />
-      {/* </Content> */}
+      <div className="content-wrapper">
+        <Features {...PROPS.FEATURES} />
+        <ShowCase {...PROPS.SHOWCASE} />
+        <AboutUs {...PROPS.ABOUT_US} />
+        <IntroduceLayout {...PROPS.INTRODUCE} />
+      </div>
     </LayoutLandingPage>
   );
 }
