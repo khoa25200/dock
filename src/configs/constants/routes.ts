@@ -4,6 +4,9 @@ interface IRoute {
   HOMEPAGE: string;
   PROFILE: string;
   ABOUT: string;
+  SIGNUP: string;
+  SIGNIN: string;
+  AUTH: string;
 }
 
 export const ROUTES: IRoute = {
@@ -11,4 +14,7 @@ export const ROUTES: IRoute = {
   HOMEPAGE: '',
   PROFILE: 'profile',
   ABOUT: 'about',
+  SIGNUP: 'signup',
+  SIGNIN: 'signin',
+  AUTH: 'auth',
 };
