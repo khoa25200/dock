@@ -1,23 +1,34 @@
-import { Checkbox, Layout } from 'antd';
 import './FormSignIn.less'
 import React from 'react';
-import EyeIcon from '../../../assets/icons/eye.svg'
+import { Checkbox, Form, Input, Layout } from 'antd';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount'
 import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
+
+type FieldType = {
+    username?: string;
+    password?: string;
+};  
 
 const FormSignInPage: React.FC = () => {
     return ( 
         <Layout className="signin">
             <h1 className='signin-title'>Sign In</h1>
-            <form className='signin-from'>
-                <label className='signin-from-email'>
-                    <input type="email" placeholder='Email' />
-                </label>
-                <label className='signin-from-password'>
-                    <input type="password" placeholder='Password' />
-                    <img src={EyeIcon} alt="Eye" />
-                </label>
-            </form>
+            <Form className='signin-from'>
+                <Form.Item<FieldType>
+                    className='signin-from-email'
+                    name="username"
+                    rules={[{ required: true, message: 'Please input your username!' }]}
+                >
+                    <Input placeholder='Enter Email'/>
+                </Form.Item>
+                <Form.Item<FieldType>
+                    className='signin-from-password'
+                    name="password"
+                    rules={[{ required: true, message: 'Please input your password!' }]}
+                >
+                    <Input.Password placeholder='Enter Password'/>
+                </Form.Item>
+            </Form>
             <Checkbox className='signin-checkbox'>I accept the Terms and Conditions.</Checkbox>
             <div className='signin-button'>
                 <SignUpButton className='signin-button-account' title='Sign In'/>

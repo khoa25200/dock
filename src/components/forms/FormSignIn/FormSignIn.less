@@ -23,10 +23,72 @@
 
         .signin-from-email,
         .signin-from-password {
-            border: 1px solid #color[white-color];
             min-width: 240px;
             width: 360px;
             border-radius: 20px;
+            margin-bottom: 0;   
+        }
+
+        .signin-from-email {
+            input {
+                padding: 12px 16px;
+                width: 100%;
+                background-color: transparent;
+                color: #color[white-color];
+                border: none;
+                font-size: #font[font-size-small];
+                border: 1px solid #color[white-color];
+                background-color: transparent;
+                border-radius: 20px;
+
+                &:focus-visible {
+                    outline: none;
+                }
+
+                &::placeholder {
+                    color: #color[white-color];
+                }
+
+                &:focus-within,
+                &:hover {
+                    background-color: transparent;
+                    border-color: #color[white-color];
+                }
+            }
+        }
+
+        .signin-from-password {
+            span{
+                background-color: transparent;
+                padding: 0;
+                border: none;
+                border: 1px solid #color[white-color];
+                border-radius: 20px;
+
+                &:hover {
+                    background-color: transparent;
+                    border-color: #color[white-color];
+                }
+
+                &:focus-within {
+                    border-color: #color[white-color];
+                    background-color: transparent;
+                }
+
+                .ant-input-suffix {
+                    width: 28px;
+                    border: none;
+
+                    span {
+                        font-size: #font[font-size-normal];
+                        border: none;
+
+                        svg {
+                            fill: #color[white-color]
+                        }
+                    }
+                }
+            }
 
             input {
                 padding: 12px 16px;
@@ -39,17 +101,10 @@
                 &:focus-visible {
                     outline: none;
                 }
-            }
-        }
 
-        .signin-from-password {
-            position: relative;
-
-            img {
-                width: 20px;
-                position: absolute;
-                right: 12px;
-                top: 10px;
+                &::placeholder {
+                    color: #color[white-color];
+                }   
             }
         }
     }
@@ -96,11 +151,11 @@
             }
             
             &::before {
-                left: 0;
+                left: 4px;
             }
             
             &::after {
-                right: 0;
+                right: 4px;
             }
         }
 

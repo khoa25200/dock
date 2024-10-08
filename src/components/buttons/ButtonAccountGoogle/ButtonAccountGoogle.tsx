@@ -1,6 +1,6 @@
 import './ButtonAccountGoogle.less'
 import { Button } from 'antd';
-import GoogleIcon from '../../../assets/icons/google.svg'
+import { ICONS } from '../../../assets/icons/index';
 
 interface ButtonProps {
   title: string;
@@ -12,7 +12,7 @@ const ButtonAccountGoogle: React.FC<ButtonProps> = ({className, title}) => {
     <Button 
       className={`custom-button ${className}`} 
     >
-        <img className='icon-google' src={GoogleIcon} alt="Google" />
+        <img className='icon-google' src={ICONS.GOOGLE} alt="Google" />
         {title}
     </Button>
   );
