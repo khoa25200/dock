@@ -1,4 +1,4 @@
-import { HolderOutlined, MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import useViewport from '../../libs/hooks/useViewport';
