@@ -1,15 +1,18 @@
 import './Header.less';
 import './Header.media.less';
 import { Layout, Menu } from 'antd';
-import { getMenuItems } from './Header.item';
 import { IMAGES } from '../../assets/images';
+import { Link } from 'react-router-dom';
+import getMenuItems from './Header.item';
+
 const { Header } = Layout;
 function HeaderComponent({ isScroll }: { isScroll: boolean }) {
-
   return (
     <Header className={`header ${isScroll ? 'header-scroll' : ''}`}>
       <div className="header-content">
-        <img className="logo" src={IMAGES.LOGO_WHITE} alt="Logo" />
+        <Link to="/" className="logo-container">
+          <img className="logo" src={IMAGES.LOGO_WHITE} alt="Logo" />
+        </Link>
         <Menu
           mode="horizontal"
           className="menu"
