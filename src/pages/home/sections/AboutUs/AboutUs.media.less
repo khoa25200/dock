@@ -1,7 +1,8 @@
-/* 768px to 991px */
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .about-us {
     .about-us-content {
+      flex: 0;
+
       .about-us-title {
         font-size: #font[font-size-xl];
       }
@@ -15,53 +16,48 @@
       font-size: #font[font-size-xxl];
       margin: 20px 0 40px;
     }
+
+    .about-us-image {
+      margin: 0 10px;
+      height: fit-content;
+      flex: 0;
+    }
   }
 }
 
-/* 500px to 768px */
-@media screen and (min-width: 500px) and (max-width: 767px) {
+@media (max-width: 768px) {
   .about-us {
+    min-height: fit-content;
+
+    padding: 0;
+
     .about-us-content {
+      flex: 0;
       .about-us-title {
-        font-size: #font[font-size-small];
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: #font-weight[font-weight-bold];
       }
 
       .about-us-description {
-        font-size: #font[font-size-light];
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        width: 80dvw;
+        font-size: 1rem;
+        line-height: 24px;
+        font-weight: #font-weight[font-weight-light];
       }
     }
 
     .about-us-image {
-      margin-top: -52px;
+      margin: 0 10px;
+      height: fit-content;
+      flex: 0;
     }
 
     .about-us-team {
       font-size: #font[font-size-large];
       margin: 12px 0 0;
-    }
-  }
-}
-
-/* 300px to 499px */
-@media screen and (min-width: 300px) and (max-width: 499px) {
-  .about-us {
-    .about-us-content {
-      .about-us-title {
-        font-size: #font[font-size-small];
-      }
-
-      .about-us-description {
-        font-size: #font[font-size-light];
-      }
-    }
-
-    .about-us-image {
-      margin-top: -54px;
-    }
-
-    .about-us-team {
-      font-size: #font[font-size-small];
-      margin: 4px 0px 0px 0px;
     }
   }
 }
