@@ -1,12 +1,12 @@
-import { CaretDownOutlined } from '@ant-design/icons';
+import { HolderOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import useViewport from '../../libs/hooks/useViewport';
 import './Header.less';
 import './Header.media.less';
-export function getMenuItems(isScroll: boolean) {
+export default function getMenuItems(isScroll: boolean) {
   const { vw } = useViewport();
-  const isTablet = vw < 1024;
+  const isTablet = vw <= 1024 && vw > 768;
   const isMobile = vw < 768;
 
   // Common menu items
@@ -36,8 +36,7 @@ export function getMenuItems(isScroll: boolean) {
       ...baseItems,
       {
         key: 'sub1',
-        label: 'More',
-        icon: <CaretDownOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
+        icon: <MenuOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
         children: [
           {
             label: <Link to="/login">Login</Link>,
@@ -55,12 +54,11 @@ export function getMenuItems(isScroll: boolean) {
   // Items for mobile
   if (isMobile) {
     return [
-      ...baseItems,
       {
         key: 'sub1',
-        label: 'More',
-        icon: <CaretDownOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
+        icon: <MenuOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
         children: [
+          ...baseItems,
           {
             label: <Link to="/login">Login</Link>,
             key: 'login',
