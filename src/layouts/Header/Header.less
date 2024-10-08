@@ -1,7 +1,12 @@
 @button-padding: 11.25px 15.53px;
 @margin-top-header: 80px;
+.header-content {
+  transition: all 0.2s ease-in-out;
+}
 
 .header {
+  transition: all 0.2s ease-in-out;
+
   top: 10px;
   left: 40px;
   right: 40px;
@@ -10,6 +15,45 @@
   position: fixed;
   z-index: #z-index[z-index-lg];
   background-color: transparent;
+
+  .ant-menu {
+    margin-right: 20px;
+
+    :hover {
+      color: #color[black-color];
+    }
+  }
+
+  .ant-menu-item-active::after {
+    :hover {
+      border-bottom-color: black;
+      color: #color[black-color];
+    }
+  }
+
+  .ant-menu-title-content {
+    color: #color[white-color];
+    font-weight: #font-weight[font-weight-bold];
+    font-size: #font[font-size-small];
+    width: 100%;
+    transition: all 0.05s ease-in-out;
+
+    button {
+      color: #color[blue-color];
+      font-weight: #font-weight[font-weight-bold];
+      font-size: 14px;
+      border-radius: 30px;
+      color: #color[black-color];
+      border: 1px solid #615ef0;
+      width: 100% + 20px;
+      padding: 20px 14px;
+
+      :hover {
+        color: #color[blue-color];
+      }
+    }
+  }
+
   .header-content {
     display: flex;
     width: 100%;
@@ -18,68 +62,6 @@
     background-color: transparent;
     justify-content: space-between;
     border-radius: #border-radius[border-radius-lg];
-    .navbar-list {
-      gap: 20px;
-      padding: 10px;
-      height: 100%;
-      display: flex;
-      padding: 10px;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-      li {
-        display: flex;
-        width: 102px;
-        height: 100%;
-        border-radius: 8px;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        a {
-          color: #color[white-color];
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-        }
-        &:hover {
-          opacity: 0.9;
-          background-color: #color[white-color];
-        }
-        &:hover a {
-          color: #color[black-color];
-        }
-        &:active {
-          scale: 0.9;
-        }
-      }
-      li:nth-last-child(-n + 2) {
-        display: flex;
-        width: 102px;
-        height: 100%;
-        border-radius: 8px;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        background-color: #color[white-color];
-        border-radius: #border-radius[border-radius-xxl];
-        a {
-          color: #color[black-color];
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-        }
-        &:hover {
-          opacity: 0.9;
-          background-color: #color[white-color];
-        }
-        &:hover a {
-          color: #color[blue-color];
-        }
-        &:active {
-          scale: 0.9;
-        }
-      }
-    }
 
     img.logo {
       width: 77px;
@@ -92,6 +74,32 @@
 }
 
 .header-scroll {
+  .ant-menu {
+    margin-right: 20px;
+  }
+
+  .ant-menu-title-content {
+    color: #color[blue-color];
+    font-weight: #font-weight[font-weight-bold];
+    font-size: #font[font-size-small];
+    width: 100%;
+
+    button {
+      color: #color[blue-color];
+      font-weight: #font-weight[font-weight-bold];
+      font-size: 14px;
+      border-radius: 30px;
+      color: #color[black-color];
+      border: 1px solid #615ef0;
+      width: 100% + 20px;
+      padding: 20px 14px;
+
+      :hover {
+        color: #color[blue-color];
+      }
+    }
+  }
+
   .header-content {
     display: flex;
     width: 100%;
@@ -101,76 +109,21 @@
     box-shadow: #box-shadow[box-shadow-4];
     justify-content: space-between;
     border-radius: #border-radius[border-radius-lg];
-    .navbar-list {
-      gap: 20px;
-      padding: 10px;
-      height: 100%;
-      display: flex;
-      padding: 10px;
-      justify-content: space-between;
-      align-items: center;
-      flex-shrink: 0;
-      li {
-        display: flex;
-        width: 102px;
-        height: 100%;
-        border-radius: 8px;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        a {
-          color: #color[blue-color];
-          font-size: 16px;
-          font-style: normal;
-          font-weight: 600;
-        }
-        &:hover {
-          opacity: 0.9;
-          background-color: #color[white-color];
-          border: 1px solid #color[blue-color];
-        }
-        &:hover a {
-          color: #color[black-color];
-        }
-        &:active {
-          scale: 0.9;
-        }
-      }
-      li:nth-last-child(-n + 2) {
-        display: flex;
-        width: 102px;
-        height: 100%;
-        border-radius: 8px;
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        background-color: #color[white-color];
-        border: 1px solid #color[blue-color];
-        border-radius: #border-radius[border-radius-xxl];
-        a {
-          color: #color[black-color];
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-        }
-        &:hover {
-          opacity: 0.9;
-          background-color: #color[white-color];
-        }
-        &:hover a {
-          color: #color[blue-color];
-        }
-        &:active {
-          scale: 0.9;
-        }
-      }
-    }
-    img.logo {
-      width: 77px;
-      height: 100%;
-      border-radius: #border-radius[border-radius-sm];
-      margin-left: 8px;
-      float: left;
-    }
   }
+}
+
+.ant-menu-light.ant-menu-horizontal > .ant-menu-item:hover::after {
+  border-bottom-width: 1px;
+  border-bottom-color: transparent;
+  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.ant-menu {
+  border-bottom: none;
+}
+
+.ant-btn-variant-outlined:not(:disabled):not(.ant-btn-disabled):hover {
+  color: #color[blue-color];
+  border-color: #color[blue-color];
 }
