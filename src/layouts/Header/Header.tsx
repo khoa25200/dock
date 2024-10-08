@@ -1,18 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.less';
 import './Header.media.less';
-import { Button, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 import logo from 'images/logo-white.png';
 import useViewport from '../../libs/hooks/useViewport';
 import { CaretDownOutlined } from '@ant-design/icons';
 
 const { Header } = Layout;
 function HeaderComponent({ isScroll }: { isScroll: boolean }) {
-  const navigate = useNavigate();
-
-  const handleClick = (e: any) => {
-    navigate(e.key);
-  };
 
   const { vw } = useViewport();
   const isTablet = vw < 1024;
