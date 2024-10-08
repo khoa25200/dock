@@ -1,5 +1,6 @@
 import LayoutLandingPage from '../../layouts/LayoutLandingPage/LayoutLandingPage';
 import './HomePage.less';
+import './HomePage.media.less';
 import IntroduceLayout from './sections/Introduce/Introduce';
 import Features from './sections/Features/Features';
 import HeroSection from './sections/Heros/Hero';
