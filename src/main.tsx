@@ -14,7 +14,7 @@ import AboutPage from './pages/about/about.tsx';
 import SignUpPage from './pages/account/SignUpPage/SignUpPage.tsx';
 import SignInPage from './pages/account/SignInPage/SignInPage.tsx';
 import AuthPage from './pages/account/AuthPage/AuthPage.tsx';
-
+import ChatPage from './pages/chat/chat.tsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -22,9 +22,11 @@ const router = createBrowserRouter(
       <Route path={ROUTES.HOMEPAGE} element={<HomePage />} />
       <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+
       <Route path={ROUTES.SIGNUP} element={<SignUpPage />} />
       <Route path={ROUTES.SIGNIN} element={<SignInPage />} />
       <Route path={ROUTES.AUTH} element={<AuthPage />} />
+      <Route path={ROUTES.CHAT} element={<ChatPage />} />
     </>
   )
 );
