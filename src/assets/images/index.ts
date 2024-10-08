@@ -4,4 +4,5 @@ export const IMAGES = {
   WORKSPACE: new URL('./workspace-img.png', import.meta.url).href,
   ABOUT_US: new URL('./about-us.png', import.meta.url).href,
   BACKGRUND_CONTENT: new URL('./intro-picture.png', import.meta.url).href,
+  LOGO_ACCOUNT: new URL('./logo-account.png', import.meta.url).href,
 };
