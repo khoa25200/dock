@@ -9,7 +9,8 @@ function LayoutLandingPage({ children }: PropsWithChildren) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const scrollFraction = scrollTop / docHeight;
 
       if (scrollFraction >= 0.1) {
@@ -27,11 +28,13 @@ function LayoutLandingPage({ children }: PropsWithChildren) {
   }, []);
 
   return (
-    <div className="layout-landing-page">
-      <HeaderComponent isScroll={isScroll} />
-      {children}
-      <FooterLayout />
-    </div>
+    <>
+      <div className="wrapper-landing-page">
+        <HeaderComponent isScroll={isScroll} />
+        <main className="content-landing-page">{children}</main>
+        <FooterLayout />
+      </div>
+    </>
   );
 }
 

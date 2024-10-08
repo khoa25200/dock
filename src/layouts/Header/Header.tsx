@@ -1,18 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.less';
 import './Header.media.less';
-import { Button, Layout, Menu } from 'antd';
-import logo from 'images/logo-dock.png';
+import { Layout, Menu } from 'antd';
+import logo from 'images/logo-white.png';
 import useViewport from '../../libs/hooks/useViewport';
 import { CaretDownOutlined } from '@ant-design/icons';
 
 const { Header } = Layout;
 function HeaderComponent({ isScroll }: { isScroll: boolean }) {
-  const navigate = useNavigate();
-
-  const handleClick = (e: any) => {
-    navigate(e.key);
-  };
 
   const { vw } = useViewport();
   const isTablet = vw < 1024;
@@ -21,42 +16,54 @@ function HeaderComponent({ isScroll }: { isScroll: boolean }) {
   const itemForDesktop = [
     {
       label: (
-        <Link to="/login">
-          <Button className="btn">Login</Button>
+        <Link to="/login" className="btn-sign--in">
+          Login
         </Link>
       ),
       key: 'login',
     },
     {
       label: (
-        <Link to="/signup">
-          <Button className="btn">Try it Free</Button>
+        <Link to="/signup" className="btn-sign--up">
+          Try it Free
         </Link>
       ),
       key: 'try',
     },
   ];
-
   const itemForTablet = [
     {
       key: 'sub1',
       label: 'More',
-      icon: <CaretDownOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
+      icon: (
+        <CaretDownOutlined
+          style={{ color: `${isScroll ? 'black' : 'white'}` }}
+        />
+      ),
       children: [
         {
-          label: <Link to="/login">Login</Link>,
+          label: (
+            <Link to="/login" className="btn-sign--in">
+              Login
+            </Link>
+          ),
           key: 'login',
         },
         {
-          label: <Link to="/signup">Try it Free</Link>,
+          label: (
+            <Link to="/signup" className="btn-sign--up">
+              Try it Free
+            </Link>
+          ),
           key: 'try',
         },
       ],
     },
   ];
+
   const items = [
     {
-      label: <Link to="/home">Home</Link>,
+      label: <Link to="/">Home</Link>,
       key: 'home',
     },
     {
@@ -73,12 +80,15 @@ function HeaderComponent({ isScroll }: { isScroll: boolean }) {
     },
     ...(isTablet ? itemForTablet : itemForDesktop),
   ];
-
   const allMenuItems = [
     {
       key: 'sub1',
       label: 'More',
-      icon: <CaretDownOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
+      icon: (
+        <CaretDownOutlined
+          style={{ color: `${isScroll ? 'black' : 'white'}` }}
+        />
+      ),
       children: [
         {
           label: <Link to="/">Home</Link>,
@@ -114,12 +124,21 @@ function HeaderComponent({ isScroll }: { isScroll: boolean }) {
         {isMobile ? (
           <Menu className="header-menu" items={allMenuItems}></Menu>
         ) : (
-          <Menu
-            mode="horizontal"
-            className="menu"
-            onClick={handleClick}
-            style={{ backgroundColor: 'transparent', gap: '20px' }}
-            items={items}></Menu>
+          <ul className="navbar-list">
+            {items.map((item, index) => (
+              <li key={index}>{item.label}</li>
+            ))}
+          </ul>
+          // <Menu
+          //   mode="horizontal"
+          //   className="menu"
+          //   onClick={handleClick}
+          //   style={{
+          //     backgroundColor: 'transparent',
+          //     borderBottom: 'none',
+          //   }}
+          //   items={items}
+          // ></Menu>
         )}
       </div>
     </Header>
