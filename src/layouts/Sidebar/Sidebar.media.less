@@ -1,0 +1,44 @@
+/* 768px to 991px */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .footer {
+      .footer-content {
+          flex-wrap: wrap;
+  
+        .footer-content-buttons {
+          align-items: flex-end;
+        }
+  
+        .footer-content-socials {
+          order: 1;
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+  
+  /* max 768px */
+  @media screen and (max-width: 767px) {
+    .footer {
+      .footer-content {
+        height: auto;
+        flex-wrap: wrap;
+  
+        .footer-content-teams {
+          flex: 2;
+        }
+  
+        .footer-content-buttons {
+          padding-top: 12px;
+          align-items: flex-start;
+        }
+  
+        .footer-content-socials {
+          padding-top: 12px;
+        }
+      }
+  
+      .footer-copyright {
+          padding-top: 20px;
+      }
+    }
+  }

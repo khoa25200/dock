@@ -14,7 +14,9 @@ type FieldType = {
 const FormSignUpPage: React.FC = () => {
     return ( 
         <Layout className="signup">
-            <h1 className='signup-title'>Sign Up</h1>
+            <div className='signup-title'>
+                <h1 className='signup-title-name'>Sign Up</h1>
+            </div>
             <Form className='signup-from'>
             <Form.Item<FieldType>
                     className='signup-from-name'

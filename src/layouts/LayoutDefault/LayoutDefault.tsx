@@ -1,34 +1,18 @@
 import { PropsWithChildren } from 'react';
 import './LayoutDefault.less';
-import { Layout, Menu } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import Sider from 'antd/es/layout/Sider';
-import { Content } from 'antd/es/layout/layout';
+import SidebarLayout from '../Sidebar/Sidebar';
 
 function LayoutDefault({ children }: PropsWithChildren) {
   return (
-    <Layout>
-      <Sider trigger={null} collapsible collapsed={true}>
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            }
-          ]}
-        />
-      </Sider>
-      <Layout>
-        <Content>
-          {children}
-        </Content>
-      </Layout>
-    </Layout>
+    <div className="layout-default">
+      <div className="sidebar-small">
+        <SidebarLayout />
+      </div>
+      <div className="channels-list">
+        <h1>đây là sidebar_small</h1>
+      </div>
+      <div className="main-content">{children}</div>
+    </div>
   );
 }
 

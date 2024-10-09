@@ -9,10 +9,15 @@
     margin-left: 60px;
 
     .signin-title {
-        font-size: #font[font-size-xxxl];
-        color: #color[white-color];
-        font-weight: #font-weight[font-weight-bold];
+        min-width: 240px;
+        width: 360px;
         margin: 0 0 20px;
+
+        .signin-title-name {
+            font-size: #font[font-size-xxxl];
+            color: #color[white-color];
+            font-weight: #font-weight[font-weight-bold];
+        }
     }
 
     .signin-from {
@@ -176,6 +181,7 @@
             text-decoration: underline;
 
             &:hover {
+                color: #color[black-color];
                 cursor: pointer;
             }
         }
