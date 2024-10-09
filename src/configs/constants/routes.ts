@@ -7,6 +7,7 @@ interface IRoute {
   SIGNUP: string;
   SIGNIN: string;
   AUTH: string;
+  CHAT: string;
 }
 
 export const ROUTES: IRoute = {
@@ -17,4 +18,5 @@ export const ROUTES: IRoute = {
   SIGNUP: 'signup',
   SIGNIN: 'signin',
   AUTH: 'auth',
+  CHAT: 'chat',
 };
