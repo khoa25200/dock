@@ -1,5 +1,5 @@
 import './Hero.less';
-
+import './Hero.media.less';
 type HeroProps = {
   title: string;
   description: string;
@@ -11,10 +11,7 @@ function Hero({ title, description, image }: HeroProps) {
     <section className="hero-section ">
       <div className="hero-section--inner">
         <div className="hero-section-title ">
-          <p
-            className="hero-section-title-left"
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
+          <p className="hero-section-title-left" dangerouslySetInnerHTML={{ __html: title }} />
           <p
             className="hero-section-title-right"
             dangerouslySetInnerHTML={{ __html: description }}

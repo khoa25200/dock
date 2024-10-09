@@ -1,9 +1,9 @@
 import { IMAGES } from '../../assets/images/index';
 
 const heroProps = {
-  title: 'Get the best <br/> <b> experience </b>when sending messages.',
+  title: 'Get the best <b> experience </b>when sending messages.',
   description:
-    'Platform used to send message with a myriad of features. by prioritizing the user <br/> experience.',
+    'Platform used to send message with a myriad of features. by prioritizing the user experience.',
   image: IMAGES.WORKSPACE,
 };
 

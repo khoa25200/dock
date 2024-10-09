@@ -1,16 +1,32 @@
-@media (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   section.showcase {
-    padding: 84px 124px;
+    flex-direction: column-reverse;
+
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
 
     .showcase-content {
+      margin: 0 auto;
+      text-align: center;
+      padding-right: 0;
+
       .showcase-title {
-        font-size: 40px;
-        line-height: 50px;
+        font-size: 2.2rem;
+        line-height: 2.8rem;
+        max-width: 70dvw;
+        margin: 0 auto;
       }
 
       .showcase-description {
-        font-size: 16px;
+        font-size: 1rem;
         line-height: 24px;
+        max-width: 80dvw;
+        margin: 0 auto;
+        line-height: 1.8rem;
+        margin-top: 1.8rem;
+        font-weight: #font-weight[font-weight-light];
       }
     }
   }
@@ -18,9 +34,35 @@
 
 @media (max-width: 768px) {
   section.showcase {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 0 20px;
+
+    .showcase-content {
+      padding-right: 0;
+
+      .showcase-title {
+        font-size: 2.2rem;
+      }
+
+      .showcase-description {
+        margin-top: 1.8rem;
+        font-size: 1rem;
+        max-width: 80dvw;
+        margin: 0 auto;
+        line-height: 1.5rem;
+        margin-top: 1.8rem;
+        font-weight: #font-weight[font-weight-light];
+      }
+    }
     .showcase-image {
       width: 100%;
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  section.showcase {
+    margin-top: 40px;
   }
 }
