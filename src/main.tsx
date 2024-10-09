@@ -14,7 +14,7 @@ import AboutPage from './pages/about/about.tsx';
 import SignUpPage from './pages/account/SignUpPage/SignUpPage.tsx';
 import SignInPage from './pages/account/SignInPage/SignInPage.tsx';
 import AuthPage from './pages/account/AuthPage/AuthPage.tsx';
-import ChatPage from './pages/chat/chat.tsx';
+import ChatPage from './pages/chat/ChatPage.tsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>

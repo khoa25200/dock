@@ -1,5 +1,5 @@
 import React from 'react';
-import './chat.less';
+import './ChatPage.less';
 import LayoutDefault from '../../layouts/LayoutDefault/LayoutDefault';
 const ChatPage: React.FC = () => {
   return (
