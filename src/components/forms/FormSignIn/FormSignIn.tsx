@@ -13,7 +13,9 @@ type FieldType = {
 const FormSignInPage: React.FC = () => {
     return ( 
         <Layout className="signin">
-            <h1 className='signin-title'>Sign In</h1>
+            <div className='signin-title'>
+                <h1 className='signin-title-name'>Sign In</h1>
+            </div>
             <Form className='signin-from'>
                 <Form.Item<FieldType>
                     className='signin-from-email'
