@@ -1,79 +1,59 @@
 import { MenuOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
-import useViewport from '../../libs/hooks/useViewport';
 import './Header.less';
 import './Header.media.less';
-export default function getMenuItems(isScroll: boolean) {
-  const { vw } = useViewport();
-  const isTablet = vw <= 1024 && vw > 768;
-  const isMobile = vw < 768;
+import { useEffect, useState } from 'react';
 
+const useMenuItems = (isScroll: boolean) => {
+  const [vw, setVW] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVW(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const isTablet = vw <= 1024 && vw > 768;
+  const isMobile = vw <= 768;
   // Common menu items
   const baseItems = [
+    { label: <Link to="/home">Home</Link>, key: '/home' },
+    { label: <Link to="/features">Features</Link>, key: '/features' },
+    { label: <Link to="/about">About Us</Link>, key: '/about' },
+    { label: <Link to="/download">Download</Link>, key: '/download' },
+  ];
+
+  // Login and Signup items
+  const authItems = [
+    { label: <Link to="/login">Login</Link>, key: '/login' },
+    { label: <Link to="/signup">Try it Free</Link>, key: '/try' },
+  ];
+
+  const getMobileMenuItems = () => [
     {
-      label: <Link to="/home">Home</Link>,
-      key: 'home',
-    },
-    {
-      label: <Link to="/features">Features</Link>,
-      key: 'features',
-    },
-    {
-      label: <Link to="/about">About Us</Link>,
-      key: 'about',
-    },
-    {
-      label: <Link to="/download">Download</Link>,
-      key: 'download',
+      key: 'mobile-menu',
+      icon: <MenuOutlined style={{ color: isScroll ? 'black' : 'white' }} />,
+      children: [...baseItems, ...authItems],
     },
   ];
 
-  // Items for tablet
-  if (isTablet) {
-    console.log(true);
-    return [
-      ...baseItems,
-      {
-        key: 'sub1',
-        icon: <MenuOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
-        children: [
-          {
-            label: <Link to="/login">Login</Link>,
-            key: 'login',
-          },
-          {
-            label: <Link to="/signup">Try it Free</Link>,
-            key: 'try',
-          },
-        ],
-      },
-    ];
-  }
+  const getTabletMenuItems = () => [
+    ...baseItems,
+    {
+      key: 'tablet-menu',
+      icon: <MenuOutlined style={{ color: isScroll ? 'black' : 'white' }} />,
+      children: authItems,
+    },
+  ];
 
-  // Items for mobile
-  if (isMobile) {
-    return [
-      {
-        key: 'sub1',
-        icon: <MenuOutlined style={{ color: `${isScroll ? 'black' : 'white'}` }} />,
-        children: [
-          ...baseItems,
-          {
-            label: <Link to="/login">Login</Link>,
-            key: 'login',
-          },
-          {
-            label: <Link to="/signup">Try it Free</Link>,
-            key: 'try',
-          },
-        ],
-      },
-    ];
-  }
-
-  // Items for desktop
-  return [
+  const getDesktopMenuItems = () => [
     ...baseItems,
     {
       label: (
@@ -81,7 +61,7 @@ export default function getMenuItems(isScroll: boolean) {
           <Button className="btn">Login</Button>
         </Link>
       ),
-      key: 'login',
+      key: '/login',
     },
     {
       label: (
@@ -89,7 +69,14 @@ export default function getMenuItems(isScroll: boolean) {
           <Button className="btn">Try it Free</Button>
         </Link>
       ),
-      key: 'try',
+      key: '/try',
     },
   ];
-}
+
+  // Return the appropriate menu items based on the viewport size
+  if (isMobile) return getMobileMenuItems();
+  if (isTablet) return getTabletMenuItems();
+  return getDesktopMenuItems();
+};
+
+export default useMenuItems;
