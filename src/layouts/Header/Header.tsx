@@ -3,10 +3,12 @@ import './Header.media.less';
 import { Layout, Menu } from 'antd';
 import { IMAGES } from '../../assets/images';
 import { Link } from 'react-router-dom';
-import getMenuItems from './Header.item';
+import useMenuItems from './Header.item';
 
 const { Header } = Layout;
 function HeaderComponent({ isScroll }: { isScroll: boolean }) {
+  const menuItems = useMenuItems(isScroll);
+
   return (
     <Header className={`header ${isScroll ? 'header-scroll' : ''}`}>
       <div className="header-content">
@@ -22,7 +24,7 @@ function HeaderComponent({ isScroll }: { isScroll: boolean }) {
             height: '100%',
             alignItems: 'center',
           }}
-          items={getMenuItems(isScroll)}></Menu>
+          items={menuItems}></Menu>
       </div>
     </Header>
   );
