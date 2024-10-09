@@ -1,6 +1,7 @@
-import { Layout } from 'antd';
 import './FormAuth.less'
+import './FormAuth.media.less'
 import React from 'react';
+import { Layout } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
 
 const FormAuthPage: React.FC = () => {
@@ -9,22 +10,22 @@ const FormAuthPage: React.FC = () => {
             <h1 className='auth-title'>Please check your email</h1>
             <p className='auth-email'>we’re send a code to <strong>namework@gmail.com</strong></p>
             <form className='auth-from'>
-                <label className='auth-from-email'>
+                <label className='auth-from-auth'>
                     <input type="text" maxLength={1} pattern="[0-9]" placeholder='7' />
                 </label>
-                <label className='auth-from-email'>
+                <label className='auth-from-auth'>
                     <input type="text" maxLength={1} pattern="[0-9]" placeholder='1' />
                 </label>
-                <label className='auth-from-email'>
+                <label className='auth-from-auth'>
                     <input type="text" maxLength={1} pattern="[0-9]" placeholder='2' />
                 </label>
-                <label className='auth-from-email'>
+                <label className='auth-from-auth'>
                     <input type="text" maxLength={1} pattern="[0-9]" placeholder='4' />
                 </label>
-                <label className='auth-from-email'>
+                <label className='auth-from-auth'>
                     <input type="text" maxLength={1} pattern="[0-9]" placeholder='5' />
                 </label>
-                <label className='auth-from-email'>
+                <label className='auth-from-auth'>
                     <input type="text" maxLength={1} pattern="[0-9]" placeholder='8' />
                 </label>
             </form>

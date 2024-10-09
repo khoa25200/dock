@@ -1,0 +1,32 @@
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .hero-section-title {
+    height: max-content;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    font-size: #font[font-size-light];
+    height: max-content;
+
+    .hero-section--inner {
+      .hero-section-title {
+        .flex-col-center(10px);
+        text-align: center;
+
+        .hero-section-title-left {
+          font-size: 2.2rem;
+        }
+      }
+
+      .hero-section-image {
+        position: static;
+        margin-top: 10px;
+        overflow: hidden;
+        border-radius: 20px;
+        padding: 0 10px;
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import HomePage from './pages/home/HomePage.tsx';
-import ContextProvider from './libs/context/index.tsx';
+// import ContextProvider from './libs/context/index.tsx';
 import { ROUTES } from './configs/constants/routes.ts';
 import ProfilePage from './pages/profile/ProfilePage.tsx';
 import AboutPage from './pages/about/about.tsx';
@@ -30,8 +30,8 @@ const router = createBrowserRouter(
 );
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ContextProvider>
-      <RouterProvider router={router} />
-    </ContextProvider>
+    {/* <ContextProvider> */}
+    <RouterProvider router={router} />
+    {/* </ContextProvider> */}
   </StrictMode>
 );
