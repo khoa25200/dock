@@ -12,4 +12,8 @@ export const ICONS = {
   ARROW_DOWN_BOLD: new URL('./arrow-down-bold.svg', import.meta.url).href,
   HASH: new URL('./hash.svg', import.meta.url).href,
   PLUS: new URL('./plus.svg', import.meta.url).href,
+  FACEBOOK: new URL('./facebook.svg', import.meta.url).href,
+  FIGMA: new URL('./figma.svg', import.meta.url).href,
+  LINKEDIN: new URL('./linkedin.svg', import.meta.url).href,
+  TWITER: new URL('./twitter.svg', import.meta.url).href,
 };

@@ -3,7 +3,7 @@ import './ProfilePage.less';
 function ProfilePage() {
   return (
     <>
-      profile page
+      <span>Profile page</span>
     </>
   );
 }

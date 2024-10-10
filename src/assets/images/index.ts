@@ -7,4 +7,6 @@ export const IMAGES = {
   BACKGRUND_CONTENT: new URL('./intro-picture.png', import.meta.url).href,
   LOGO_ACCOUNT: new URL('./logo-account.png', import.meta.url).href,
   AVT_TEXT: new URL('./avt.jpg', import.meta.url).href,
+  LOGOFOOTER: new URL('./footer-logo.png', import.meta.url).href,
+  LOGOMODALEMAIL: new URL('./logo-dock.png', import.meta.url).href,
 };
