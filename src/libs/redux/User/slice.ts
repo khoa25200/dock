@@ -14,10 +14,10 @@ const usersSlice = createSlice({
   initialState: usersInitialState,
   reducers: {
     // This action will set the loader to true and reset error message.
-    getUserAction: (state: UsersStateType, { payload: id }: PayloadAction<string>) => {
-      state.user.isLoading = true;
-      state.user.errors = '';
-    },
+    // getUserAction: (state: UsersStateType, { payload: user }: PayloadAction<UserType>) => {
+    //   state.user.isLoading = true;
+    //   state.user.errors = '';
+    // },
 
     getUserSuccessAction: (state: UsersStateType, { payload: user }: PayloadAction<UserType>) => {
       state.user.isLoading = false;
@@ -31,5 +31,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { getUserAction, getUserSuccessAction, getUserErrorAction } = usersSlice.actions;
+export const { getUserSuccessAction, getUserErrorAction } = usersSlice.actions;
 export default usersSlice.reducer;

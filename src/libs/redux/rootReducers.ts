@@ -1,4 +1,3 @@
-import userReducer from './User/slice';
 import { UsersStateType } from './User/types';
 import usersReducer from './User/slice';
 
