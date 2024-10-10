@@ -2,12 +2,9 @@ import React from 'react';
 import './Footer.less';
 import './Footer.media.less';
 import { Layout } from 'antd';
-import Logo from '../../assets/images/footer-logo.png';
-import facebook from '../../assets/icons/facebook.svg';
-import figma from '../../assets/icons/figma.svg';
-import linkedin from '../../assets/icons/linkedin.svg';
-import twitter from '../../assets/icons/twitter.svg';
 import ButtonFooter from '../../components/buttons/ButtonFooter/ButtonFooter';
+import { IMAGES } from '../../assets/images';
+import { ICONS } from '../../assets/icons';
 const { Footer } = Layout;
 
 const FooterLayout: React.FC = () => {
@@ -17,7 +14,7 @@ const FooterLayout: React.FC = () => {
         <div className="footer-content">
           <div className="footer-content-info">
             <div className="content-info-lofo">
-              <img src={Logo} alt="Logo" />
+              <img src={IMAGES.LOGOFOOTER} alt="Logo" />
             </div>
             <div className="content-info-disc">
               <span>
@@ -40,10 +37,10 @@ const FooterLayout: React.FC = () => {
             <ButtonFooter className="button-started" title="Get started" />
           </div>
           <div className="footer-content-socials">
-            <img src={facebook} alt="FaceBook" />
-            <img src={linkedin} alt="Linkedin" />
-            <img src={twitter} alt="Twitter" />
-            <img src={figma} alt="Figma" />
+            <img src={ICONS.FACEBOOK} alt="FaceBook" />
+            <img src={ICONS.LINKEDIN} alt="Linkedin" />
+            <img src={ICONS.TWITER} alt="Twitter" />
+            <img src={ICONS.FIGMA} alt="Figma" />
           </div>
         </div>
         <div className="footer-copyright">

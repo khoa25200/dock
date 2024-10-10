@@ -1,0 +1,191 @@
+.sidebar-message {
+  height: 100%;
+  cursor: pointer;
+  .sidebar--message-inner {
+    padding: 10px;
+    height: 100%;
+  }
+  .sidebar--message-header {
+    gap: 6px;
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #ebebeb;
+    & > h1 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    & > img {
+      width: 20px;
+    }
+  }
+  .sidebar--message-channels,
+  .sidebar--message-direct {
+    margin: 15px 0;
+    border-bottom: 2px solid #ebebeb;
+    .sidebar--message-heading {
+      gap: 6px;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      height: 30px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      & > h1 {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 4px;
+        border-radius: 4px;
+      }
+      h1:hover {
+        background: #ededed;
+      }
+      & > img {
+        width: 16px;
+        border-radius: 4px;
+      }
+      img:hover {
+        background: #ededed;
+      }
+    }
+
+    .sidebar--channel-list {
+      & > ul {
+        display: flex;
+        flex-direction: column;
+        li {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 3px;
+          height: 30px;
+          border-radius: 4px;
+          img {
+            margin-left: 4px;
+          }
+          span {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+          }
+        }
+        :hover {
+          background: #ededed;
+        }
+      }
+      .sidebar--btn-addChannel {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 30px;
+        padding: 3px;
+        border-radius: 4px;
+        img {
+          margin-left: 3px;
+          width: 16px;
+          height: 16px;
+          border: 2px solid black;
+          border-radius: 4px;
+        }
+        & > span {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 600;
+        }
+      }
+      .sidebar--btn-addChannel:hover {
+        background: #ededed;
+      }
+      .sidebar--btn-addChannel:active {
+        scale: 0.9;
+      }
+    }
+    .sidebar--direct-list {
+      & > ul {
+        display: flex;
+        gap: 6px;
+        flex-direction: column;
+        li {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 3px;
+          height: 30px;
+          border-radius: 4px;
+          .user--message {
+            height: 100%;
+            position: relative;
+            .online-indicator {
+              display: inline-block;
+              border-radius: 50%;
+              position: absolute;
+              background-color: white;
+              bottom: -3px;
+              right: -4px;
+              .blink.online {
+                display: block;
+                width: 12px;
+                height: 12px;
+                background-color: #0fcc45;
+                opacity: 0.7;
+                border-radius: 50%;
+                border: 3px solid black;
+              }
+              .blink.offline {
+                display: block;
+                width: 12px;
+                height: 12px;
+                background-color: black;
+                opacity: 0.7;
+                border-radius: 50%;
+                border: 3px solid #ededed;
+              }
+            }
+            img {
+              width: 24px;
+              margin-left: 4px;
+              border-radius: 4px;
+            }
+          }
+          span {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+          }
+        }
+        li:hover {
+          background: #ededed;
+        }
+      }
+      .sidebar--btn-addMessages {
+        margin: 10px 0;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px;
+        border-radius: 4px;
+        img {
+          margin-left: 3px;
+          width: 16px;
+          height: 16px;
+          border: 2px solid black;
+          border-radius: 4px;
+        }
+        & > span {
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 600;
+        }
+      }
+      .sidebar--btn-addMessages:hover {
+        background: #ededed;
+      }
+      .sidebar--btn-addMessages:active {
+        scale: 0.9;
+      }
+    }
+  }
+}
