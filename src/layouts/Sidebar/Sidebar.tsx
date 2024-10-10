@@ -30,7 +30,7 @@ const SidebarLayout: React.FC = () => {
         <div className="user-current">
           <img src={IMAGES.LOGO} className="logo-dockchat" />
           <div className="online-indicator">
-            <span className="blink"></span>
+            <span className="blink offline"></span>
           </div>
         </div>
       </div>
