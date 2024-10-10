@@ -15,6 +15,8 @@ import SignUpPage from './pages/account/SignUpPage/SignUpPage.tsx';
 import SignInPage from './pages/account/SignInPage/SignInPage.tsx';
 import AuthPage from './pages/account/AuthPage/AuthPage.tsx';
 import ChatPage from './pages/chat/ChatPage.tsx';
+import { Provider } from 'react-redux';
+import store from './libs/redux/index.ts';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -32,8 +34,8 @@ const router = createBrowserRouter(
 );
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {/* <ContextProvider> */}
-    <RouterProvider router={router} />
-    {/* </ContextProvider> */}
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );
