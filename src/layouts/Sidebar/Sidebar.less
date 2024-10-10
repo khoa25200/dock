@@ -2,6 +2,7 @@
   padding: 10px;
   height: 100%;
   position: relative;
+  display: flex;
   .sidebar-inner {
     display: flex;
     flex-direction: column;
@@ -41,7 +42,7 @@
           border-radius: 8px;
           cursor: pointer;
           span {
-            font-size: 13px;
+            font-size: 15px;
             color: #000;
             font-weight: 600;
           }
@@ -61,40 +62,39 @@
         display: inline-block;
         width: 12px;
         height: 12px;
-        margin-right: 10px;
-        background-color: #0fcc45;
+        background-color: white;
         border-radius: 50%;
         position: absolute;
-        bottom: 0;
+        bottom: 4px;
         right: 0;
-        .blink {
+        .blink.online {
           display: block;
           width: 12px;
           height: 12px;
           background-color: #0fcc45;
           opacity: 0.7;
           border-radius: 50%;
-
-          animation: blink 1s linear infinite;
+          border: 3px solid black;
+        }
+        .blink.offline {
+          display: block;
+          width: 12px;
+          height: 12px;
+          background-color: black;
+          opacity: 0.7;
+          border-radius: 50%;
+          border: 3px solid #ededed;
         }
       }
       .logo-dockchat {
-        width: 68px;
-        height: 57px;
-        border-radius: 8px;
+        width: 50px;
+        height: 50px;
+        margin-left: 8px;
+        border-radius: 50%;
       }
       :active {
         scale: 0.9;
       }
     }
-  }
-}
-
-/*Animations*/
-
-@keyframes blink {
-  100% {
-    transform: scale(2, 2);
-    opacity: 0;
   }
 }
