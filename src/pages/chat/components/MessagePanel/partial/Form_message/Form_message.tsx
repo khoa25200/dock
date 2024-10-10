@@ -1,28 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import './Form_message.less';
 import { IMAGES } from '../../../../../../assets/images';
-// import EmojiPicker from 'emoji-picker-react';
-// import {
-//   arrayUnion,
-//   doc,
-//   getDoc,
-//   onSnapshot,
-//   updateDoc,
-// } from 'firebase/firestore';
-// import { db } from '../../lib/firebase';
-// import { useChatStore } from '../../lib/chatStore';
-// import { useUserStore } from '../../lib/userStore';
-// import upload from '../../lib/upload';
-// import { format } from 'timeago.js';
 
 const FormMessage = () => {
-  const [chat, setChat] = useState();
+  // const [chat, setChat] = useState();
   const [open, setOpen] = useState(false);
   const [text, setText] = useState('');
-  const [img, setImg] = useState({
-    file: null,
-    url: '',
-  });
+  // const [img, setImg] = useState({
+  //   file: null,
+  //   url: '',
+  // });
+  console.log(open);
 
   return (
     <div className="chat">
