@@ -1,0 +1,95 @@
+.modal-email {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 60px;
+
+    .modal-email-logo {
+        width: 16%;
+        
+        img{
+            width: 100%;
+            border-radius: #border-radius[border-radius-18];        
+        }
+    }
+
+    .modal-email-title {
+        font-size: #font[font-size-xxxl];
+        font-weight: #font-weight[font-weight-medium];
+    }
+
+    .modal-email-note {
+        font-size: #font[font-size-18];
+        font-weight: #font-weight[font-weight-normal];
+    }
+
+    .modal-email-input {
+        width: 60%;
+        min-width: 240px;
+
+        input {
+            padding: 12px 16px;
+        }
+    }
+
+    .modal-email-continue{
+        color: #color[white-color];
+        background-color: #color[blue-color];
+    }
+
+    .modal-email-continue,
+    .modal-email-google {
+        width: 60%;
+        height: 44px;
+        min-width: 240px;
+    }
+
+    .modal-email-or {
+        width: 60%;
+        min-width: 240px;
+        text-align: center;
+        font-size: #font[font-size-small];
+        position: relative;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background-color: rgba(9, 8, 8, 0.08) ;
+        }
+        
+        &::before {
+            left: 4px;
+        }
+        
+        &::after {
+            right: 4px;
+        }
+    }
+
+    .modal-email-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+
+        span {
+            color: #A09A9A;
+            font-size: #font[font-size-14];
+            font-weight: #font-weight[font-weight-normal];
+        }
+
+        span:nth-child(2) {
+            color: #color[blue-color];
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+}
