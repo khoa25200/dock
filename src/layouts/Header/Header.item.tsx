@@ -43,7 +43,7 @@ const useMenuItems = (isScroll: boolean) => {
   const authItems = [
     {
       label: (
-        <Link to="">
+        <Link to="/signin">
           <Button>Login</Button>
         </Link>
       ),
