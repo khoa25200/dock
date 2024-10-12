@@ -10,7 +10,7 @@ interface ButtonProps {
 const ButtonAccountGoogle: React.FC<ButtonProps> = ({className, title}) => {
   return (
     <Button 
-      className={`custom-button ${className}`} 
+      className={`button-google ${className}`} 
     >
         <img className='icon-google' src={ICONS.GOOGLE} alt="Google" />
         {title}
