@@ -16,4 +16,5 @@ export const ICONS = {
   FIGMA: new URL('./figma.svg', import.meta.url).href,
   LINKEDIN: new URL('./linkedin.svg', import.meta.url).href,
   TWITER: new URL('./twitter.svg', import.meta.url).href,
+  ARROW_LEFT: new URL('./arrow-left.svg', import.meta.url).href,
 };
