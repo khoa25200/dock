@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './FormMessage.less';
 import MessageBox from '../../../MessageBox/MessageBox';
 import InputMessage from '../../../InputMessage/InputMessage';
-import { ICONS } from '../../../../../../assets/icons/index';
+import { IMAGES } from '../../../../../../assets/images';
 
 const FormMessage = () => {
   const [message, setMessage] = useState<string[]>([]);
@@ -29,7 +29,7 @@ const FormMessage = () => {
     name: name,
     text: message,
     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    reacts: [ICONS.LIKE, ICONS.HEART, ICONS.LIKE, ICONS.HEART, ICONS.LIKE, ICONS.HEART],
+    reacts: [IMAGES.CLAP, IMAGES.DOWN, IMAGES.LIKE, IMAGES.ANGRY, IMAGES.CRY],
   };
 
   return (
