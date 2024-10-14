@@ -8,8 +8,44 @@ button {
   display: flex;
   gap: 20px;
 
-  &.own {
-    align-self: flex-end;
+  &.owner {
+    @owner-bg-color: #615ef0;
+    flex-direction: row-reverse;
+
+    .texts {
+      text-align: right;
+      span {
+        display: none;
+      }
+
+      .message-container {
+        flex-direction: row-reverse;
+
+        .message-content {
+          flex-direction: row-reverse;
+
+          .divider {
+            .arrow-left {
+              border-bottom: 10px solid transparent;
+              border-left: 10px solid @owner-bg-color;
+              border-right: none;
+            }
+          }
+
+          .message-box {
+            border-radius: 10px 0px 10px 10px;
+            background-color: @owner-bg-color;
+            color: #fff;
+          }
+
+          .reaction-hover {
+            .reaction-hover-container {
+              flex-direction: row-reverse;
+            }
+          }
+        }
+      }
+    }
   }
 
   .avt {
@@ -31,13 +67,14 @@ button {
       font-size: 13px;
     }
   }
+
   .message-container {
     display: flex;
     gap: 10px;
 
     .message-content {
       display: flex;
-      max-width: 70%;
+      max-width: 100%;
 
       .message-box {
         min-width: 150px;
@@ -107,10 +144,6 @@ button {
               }
             }
           }
-
-          //   :hover {
-          //     .hover();
-          //   }
         }
 
         &:hover {
