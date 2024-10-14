@@ -24,7 +24,7 @@ const FormMessage = () => {
   };
 
   const props = {
-    sender: SENDER.FRIEND,
+    sender: SENDER.OWNER, //TODO (NHA): Handle for owner
     avtUrl: '',
     name: name,
     text: message,
