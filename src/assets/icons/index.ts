@@ -17,4 +17,9 @@ export const ICONS = {
   LINKEDIN: new URL('./linkedin.svg', import.meta.url).href,
   TWITER: new URL('./twitter.svg', import.meta.url).href,
   ARROW_LEFT: new URL('./arrow-left.svg', import.meta.url).href,
+  PAPER_CLIP: new URL('./paper-clip.svg', import.meta.url).href,
+  REACTION: new URL('./reaction.svg', import.meta.url).href,
+  PLANE: new URL('./plane.svg', import.meta.url).href,
+  REPLY: new URL('./reply.svg', import.meta.url).href,
+  TRASH: new URL('./trash.svg', import.meta.url).href,
 };

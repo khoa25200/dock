@@ -1,0 +1,132 @@
+@message-bg-color: #f2f2f7;
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.message {
+  display: flex;
+  gap: 20px;
+
+  &.own {
+    align-self: flex-end;
+  }
+
+  .avt {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .texts {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+    gap: 5px;
+    max-width: 70%;
+
+    span {
+      font-size: 13px;
+    }
+  }
+  .message-container {
+    display: flex;
+    gap: 10px;
+
+    .message-content {
+      display: flex;
+      max-width: 70%;
+
+      .message-box {
+        min-width: 150px;
+        background-color: @message-bg-color;
+        width: max-content;
+        border-radius: 0 10px 10px 10px;
+        color: #2c2c2e;
+        padding: 6px 10px;
+        display: flex;
+        flex-direction: column;
+
+        .bottom-content {
+          .flex-col-space-between(10px, row);
+          margin-top: 10px;
+        }
+
+        &:hover {
+          .reaction-hover {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:hover {
+        .reaction-hover {
+          display: flex;
+        }
+      }
+
+      .reaction-hover {
+        display: flex;
+        align-items: flex-end;
+        opacity: 0;
+
+        .reaction-hover-container {
+          display: flex;
+          padding: 0 7px;
+          border-radius: 10px;
+          .flex-row-center();
+
+          .reaction-item {
+            .hover();
+          }
+
+          .reaction-icon {
+            position: relative;
+
+            .icons-container {
+              border: 1px solid black;
+              padding: 5px;
+              border-radius: 10px;
+              display: flex;
+              gap: 6px;
+              position: absolute;
+              bottom: -40px;
+              left: 0;
+              display: none;
+
+              img:hover {
+                .hover();
+              }
+            }
+
+            &:has(button.active) {
+              .icons-container {
+                display: flex;
+              }
+            }
+          }
+
+          //   :hover {
+          //     .hover();
+          //   }
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .divider {
+      width: 10px;
+      height: 10px;
+
+      .arrow-left {
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid @message-bg-color;
+      }
+    }
+  }
+}

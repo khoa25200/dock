@@ -1,5 +1,5 @@
 import { ICONS } from '../../../../../../assets/icons';
-import './Header_message.less';
+import './HeaderMessage.less';
 const HeaderMessage = () => {
   return (
     <div className="header--message">
