@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './InputMessage.less';
 import { ICONS } from '../../../../assets/icons';
+import EmojiPicker from 'emoji-picker-react';
 
 function InputMessage({
   message,
@@ -12,24 +13,32 @@ function InputMessage({
   const [text, setText] = useState('');
   const [open, setOpen] = useState(false);
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      setMessage([...message, text]);
+      setText('');
+    }
+  };
+
   return (
     <div className="bottom">
       <div className="icons">
         <label htmlFor="file">
-          <img src={ICONS.PAPER_CLIP} alt="" />
+          <img src={ICONS.PAPER_CLIP} alt="paper-clip" />
         </label>
         {/* TODO (NHA): Add components handle preview file: Image, File(optional) */}
         <input type="file" id="file" style={{ display: 'none' }} />
       </div>
+      {open ? <EmojiPicker /> : <></>}
       <div className="emoji icons">
-        <img src={ICONS.REACTION} alt="" onClick={() => setOpen((prev) => !prev)} />
-        <div className="picker"></div>
+        <img src={ICONS.REACTION} alt="reaction" onClick={() => setOpen((prev) => !prev)} />
       </div>
       <input
         type="text"
         placeholder={'Type a message...'}
         value={text}
         onChange={(e) => setText(e.target.value)}
+        onKeyPress={handleKeyPress}
       />
 
       {/* TODO (NHA): Handle Enter event for submit */}
