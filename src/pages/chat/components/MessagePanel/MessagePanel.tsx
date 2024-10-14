@@ -1,8 +1,8 @@
-import FormMessage from './partial/Form_message/Form_message';
-import HeaderMessage from './partial/Header_message/Header_message';
-import ChatDetail from './partial/Chat_details/Chat_details';
-import MediaFiles from './partial/Medias_files/Medias_files';
 import './MessagePanel.less';
+import ChatDetail from './partial/ChatDetails/ChatDetails';
+import FormMessage from './partial/FormMessage/FormMessage';
+import HeaderMessage from './partial/HeaderMessage/HeaderMessage';
+import MediaFiles from './partial/MediasFiles/MediasFiles';
 function MessagePanel() {
   return (
     <div className="message--panel">
