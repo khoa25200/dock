@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Form_message.less';
 import { IMAGES } from '../../../../../../assets/images';
 
@@ -7,7 +6,7 @@ const FormMessage = () => {
     <div className="form--messages">
       <div className="form--messages-list">
         <div className="form--messages-item">
-          <img src={IMAGES.AVT_TEXT} />
+          <img src={IMAGES.AVT_TEXT}/>
           <div className="texts">
             <span>Nguyễn Long Duy</span>
             <p>message.text</p>
