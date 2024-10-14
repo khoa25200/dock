@@ -19,10 +19,8 @@ const ModalCustom = ({ isModalOpen, setIsModalOpen }: TModelProps) => {
         open={isModalOpen}
         footer={null}
         onCancel={handleCancel}
-        // closable={false}
       >
         <FormEmail 
-          // setIsModalOpen={setIsModalOpen} 
         />
       </Modal>
     </>
