@@ -5,10 +5,6 @@ import { IMAGES } from '../../../assets/images';
 import ButtonAccount from '../../buttons/ButtonAccount/ButtonAccount';
 import ButtonAccountGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 
-// type TModelProps = {
-//     setIsModalOpen: any;
-// };
-
 const FormEmail = () => {
   return (
     <Layout className="modal-email">
