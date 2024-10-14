@@ -1,0 +1,91 @@
+.side-item {
+    left: 0;
+    top: 100%;
+    height: auto;
+    width: auto;
+    display: none;
+    overflow: hidden;
+    border: 1px solid;
+    position: absolute;
+    border-radius: 8px;
+    flex-direction: column;
+    background-color: #color[white-color];
+    
+    .side-item-workspase {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .side-item-workspase-item {
+            display: flex;
+            gap: 12px;
+            padding: 4px 12px;
+
+            img {
+                width: 24px;
+                border: 1px solid;
+                border-radius: 4px;
+            }
+
+            p {
+                display: flex;
+                text-align: left;
+                align-items: center;
+                text-transform: uppercase;
+                font-size: #font[font-size-14];
+                font-weight: #font-weight[font-weight-bold];
+            }
+
+            &:hover {
+                background-color: #EEEDED;
+            }
+
+        }
+        
+        &:active{
+            scale: (1) !important;
+        }
+    }
+
+    .side-item-workspase-item.active {
+        background-color: #EEEDED;
+    }
+
+    .side-item-add {
+        display: flex;
+        gap: 12px;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        padding: 4px 12px;
+
+        .side-item-add-icon {
+            border: 1px solid;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+
+            img {
+                width: 16px;
+            }
+        }
+
+        .side-item-add-text {
+            width: 100px;
+            text-align: left;
+            font-size: #font[font-size-light];
+            font-weight: #font-weight[font-weight-normal];
+        }
+
+        &:hover {
+            background-color: #EEEDED;
+        }
+    }
+
+    &:active {
+        scale: 1 !important;
+    }
+}
