@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './InputMessage.less';
 import { ICONS } from '../../../../assets/icons';
-import EmojiPicker from 'emoji-picker-react';
 import Picker, { EmojiClickData } from 'emoji-picker-react';
 import { TextArea } from '@ant-design/pro-chat/es/components/Input';
 
