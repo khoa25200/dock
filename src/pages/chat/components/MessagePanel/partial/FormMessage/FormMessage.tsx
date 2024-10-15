@@ -23,7 +23,7 @@ const FormMessage = () => {
     OWNER: 'owner',
   };
 
-  const props = {
+  let props = {
     sender: SENDER.OWNER,
     avtUrl: '',
     name: name,
@@ -32,10 +32,25 @@ const FormMessage = () => {
     reacts: [IMAGES.CLAP, IMAGES.DOWN, IMAGES.LIKE, IMAGES.ANGRY, IMAGES.CRY],
   };
 
+  useEffect(() => {
+    if (message) {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }, [message]);
+
   return (
     <div className="chat">
       <div className="center">
         {message.map((msg, index) => {
+          const randomSender = Math.random() < 0.5 ? SENDER.OWNER : SENDER.FRIEND;
+          props = {
+            ...props,
+            sender: randomSender,
+            text: msg,
+          };
           return <MessageBox key={index} {...props} />;
         })}
       </div>

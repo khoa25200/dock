@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import './InputMessage.less';
 import { ICONS } from '../../../../assets/icons';
 import Picker, { EmojiClickData } from 'emoji-picker-react';
