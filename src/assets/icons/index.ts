@@ -22,4 +22,6 @@ export const ICONS = {
   PLANE: new URL('./plane.svg', import.meta.url).href,
   REPLY: new URL('./reply.svg', import.meta.url).href,
   TRASH: new URL('./trash.svg', import.meta.url).href,
+  ELLIPSIS: new URL('./ellipsis.svg', import.meta.url).href,
+  DOWNLOAD: new URL('./download.svg', import.meta.url).href,
 };
