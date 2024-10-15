@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './InputMessage.less';
 import { ICONS } from '../../../../assets/icons';
 import EmojiPicker from 'emoji-picker-react';
@@ -59,16 +59,26 @@ function InputMessage({
         {open && <Picker className="emoji-picker" onEmojiClick={handleReactionClick} />}
         <img src={ICONS.REACTION} alt="reaction" onClick={() => setOpen((prev) => !prev)} />
       </div>
-
-      <TextArea
-        placeholder="Type a message..."
-        autoSize
-        onChange={(e) => setText(e.target.value)}
-        onKeyPress={handleKeyPress}
-        value={text}
-      />
-
-      {/* {chosenEmoji} */}
+      <div className="input-and-preview">
+        {image && (
+          <div className="image-preview">
+            <img src={image} alt={imageName || 'preview'} className="preview-image" />
+            <img
+              src={ICONS.DELETE}
+              alt="delete-image"
+              className="delete-image"
+              onClick={() => setImage(null)}
+            />
+          </div>
+        )}
+        <TextArea
+          placeholder="Type a message..."
+          autoSize
+          onChange={(e) => setText(e.target.value)}
+          onKeyPress={handleKeyPress}
+          value={text}
+        />
+      </div>
 
       <button className="sendButton icons" onClick={() => setMessage([...message, text])}>
         <img src={ICONS.PLANE} alt="" />
