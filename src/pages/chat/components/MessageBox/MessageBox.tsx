@@ -37,7 +37,7 @@ function MessageBox({ ...props }: any) {
                 <div className="reacts">
                   <Reacts reacts={reacts} />
                 </div>
-                <span>{time}</span>
+                <span className="time">{time}</span>
               </div>
             </div>
 
