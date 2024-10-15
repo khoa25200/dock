@@ -25,4 +25,6 @@ export const ICONS = {
   MEDIA_FILE: new URL('./media-file.svg', import.meta.url).href,
   DELETE: new URL('./delete.svg', import.meta.url).href,
   ACTIVE: new URL('./active.svg', import.meta.url).href,
+  ELLIPSIS: new URL('./ellipsis.svg', import.meta.url).href,
+  DOWNLOAD: new URL('./download.svg', import.meta.url).href,
 };
