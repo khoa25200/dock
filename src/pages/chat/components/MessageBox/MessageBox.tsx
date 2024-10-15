@@ -25,7 +25,7 @@ function MessageBox({ ...props }: any) {
       <img className="avt" src={avtUrl || 'https://i.pravatar.cc/30'} />
 
       <div className="texts">
-        <span>{name}</span>
+        <span className="name">{name}</span>
         <div className="message-container">
           <div className="message-content">
             <aside className="divider">

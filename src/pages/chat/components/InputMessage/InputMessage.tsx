@@ -56,7 +56,13 @@ function InputMessage({
         <input type="file" id="file" style={{ display: 'none' }} onChange={onImageChange} />
       </div>
       <div className="emoji icons">
-        {open && <Picker className="emoji-picker" onEmojiClick={handleReactionClick} />}
+        {open && (
+          <Picker
+            className="emoji-picker"
+            onEmojiClick={handleReactionClick}
+            lazyLoadEmojis={true}
+          />
+        )}
         <img src={ICONS.REACTION} alt="reaction" onClick={() => setOpen((prev) => !prev)} />
       </div>
       <div className="input-and-preview">
