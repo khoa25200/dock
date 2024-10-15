@@ -141,10 +141,12 @@
 .hover() {
   &:hover {
     opacity: 0.8;
+    scale: 0.95;
   }
 
   &:active {
     opacity: 0.6;
+    scale: 1.05;
   }
 }
 
@@ -157,9 +159,8 @@
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
-
-.scale(@scale: 0.9){
-  transition: .3s ease-in-out;
+.scale(@scale: 0.9) {
+  transition: 0.3s ease-in-out;
   transform: scale(@scale);
 }
 
@@ -181,4 +182,3 @@
     border-color: orange;
   }
 }
-
