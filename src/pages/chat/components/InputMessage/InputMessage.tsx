@@ -53,7 +53,13 @@ function InputMessage({
           <img src={ICONS.PAPER_CLIP} alt="paper-clip" />
         </label>
         {/* TODO (NHA): Add components handle preview file: Image, File(optional) */}
-        <input type="file" id="file" style={{ display: 'none' }} onChange={onImageChange} />
+        <input
+          type="file"
+          id="file"
+          accept="image/*"
+          style={{ display: 'none' }}
+          onChange={onImageChange}
+        />
       </div>
       <div className="emoji icons">
         {open && (
