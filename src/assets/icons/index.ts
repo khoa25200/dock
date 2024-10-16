@@ -24,4 +24,5 @@ export const ICONS = {
   TRASH: new URL('./trash.svg', import.meta.url).href,
   MEDIA_FILE: new URL('./media-file.svg', import.meta.url).href,
   DELETE: new URL('./delete.svg', import.meta.url).href,
+  ACTIVE: new URL('./active.svg', import.meta.url).href,
 };
