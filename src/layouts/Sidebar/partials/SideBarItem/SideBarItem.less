@@ -1,8 +1,9 @@
-.side-item {
+.side-sub {
     left: 0;
     top: 100%;
-    height: auto;
     width: auto;
+    height: auto;
+    z-index: 100;
     display: none;
     overflow: hidden;
     border: 1px solid;
@@ -11,26 +12,29 @@
     flex-direction: column;
     background-color: #color[white-color];
     
-    .side-item-workspase {
+    .side-sub-workspase {
         display: flex;
         flex-direction: column;
         justify-content: center;
 
-        .side-item-workspase-item {
+        .side-sub-workspase-item {
             display: flex;
+            align-items: center;
             gap: 12px;
+            height: 40px;
             padding: 4px 12px;
 
             img {
                 width: 24px;
+                height: 24px;
                 border: 1px solid;
                 border-radius: 4px;
             }
 
             p {
-                display: flex;
-                text-align: left;
-                align-items: center;
+                width: 128px;
+                text-align: center;
+                display: inline-block;
                 text-transform: uppercase;
                 font-size: #font[font-size-14];
                 font-weight: #font-weight[font-weight-bold];
@@ -47,19 +51,19 @@
         }
     }
 
-    .side-item-workspase-item.active {
+    .side-sub-workspase-item.active {
         background-color: #EEEDED;
     }
 
-    .side-item-add {
+    .side-sub-add {
         display: flex;
         gap: 12px;
         width: auto;
         justify-content: center;
         align-items: center;
-        padding: 4px 12px;
+        padding: 4px 12px 8px;
 
-        .side-item-add-icon {
+        .side-sub-add-icon {
             border: 1px solid;
             width: 24px;
             height: 24px;
@@ -73,8 +77,8 @@
             }
         }
 
-        .side-item-add-text {
-            width: 100px;
+        .side-sub-add-text {
+            width: 128px;
             text-align: left;
             font-size: #font[font-size-light];
             font-weight: #font-weight[font-weight-normal];
@@ -82,10 +86,18 @@
 
         &:hover {
             background-color: #EEEDED;
+
+            .side-sub-add-text {
+                font-weight: #font-weight[font-weight-bold];
+            }
         }
     }
 
     &:active {
         scale: 1 !important;
     }
+}
+
+.side-sub.open {
+    display: flex;
 }
