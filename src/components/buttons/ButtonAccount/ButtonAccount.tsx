@@ -9,7 +9,7 @@ interface ButtonProps {
 const ButtonAccount: React.FC<ButtonProps> = ({className, title}) => {
   return (
     <Button 
-      className={`custom-button ${className}`} 
+      className={`button-account ${className}`} 
     >
         {title}
     </Button>

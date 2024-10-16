@@ -11,7 +11,7 @@ interface ButtonProps {
 const ButtonFooter: React.FC<ButtonProps> = ({className, title, type = 'primary' }) => {
   return (
     <Button 
-      className={`custom-button ${className} ${type}`} 
+      className={`button-footer ${className} ${type}`} 
     >
       {title}
     </Button>

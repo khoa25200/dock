@@ -8,5 +8,11 @@ export const IMAGES = {
   LOGO_ACCOUNT: new URL('./logo-account.png', import.meta.url).href,
   AVT_TEXT: new URL('./avt.jpg', import.meta.url).href,
   LOGOFOOTER: new URL('./footer-logo.png', import.meta.url).href,
-  LOGOMODALEMAIL: new URL('./logo-dock.png', import.meta.url).href,
+  CLAP: new URL('./clap.png', import.meta.url).href,
+  DOWN: new URL('./down.png', import.meta.url).href,
+  LIKE: new URL('./like.png', import.meta.url).href,
+  LAUGH: new URL('./laugh.png', import.meta.url).href,
+  ANGRY: new URL('./angry.png', import.meta.url).href,
+  CRY: new URL('./cry.png', import.meta.url).href,
+  UA: new URL('./ua.png', import.meta.url).href,
 };

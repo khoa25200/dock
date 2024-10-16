@@ -1,14 +1,10 @@
 .message--panel {
   height: 100%;
-  cursor: pointer;
   .message--panel-inner {
-    height: 100%;
-    padding: 10px 0;
-    display: flex;
-    .message--container {
-      width: 640px;
-      flex: 1;
-    }
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+
     .message--detail {
       width: 362px;
     }

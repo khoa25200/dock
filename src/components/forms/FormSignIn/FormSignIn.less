@@ -102,9 +102,12 @@
                 color: #color[white-color];
                 border: none;
                 font-size: #font[font-size-small];
+                border-bottom-left-radius: 20px;
+                border-top-left-radius: 20px;
 
                 &:focus-visible {
                     outline: none;
+                    background-color: transparent;
                 }
 
                 &::placeholder {
@@ -136,7 +139,11 @@
         .signin-button-google,
         .signin-button-account {
             width: 360px;
-            height: 40px;
+            height: 44px;
+
+            &:hover {
+                .scale();
+            }
         }
 
         .signin-button-or {

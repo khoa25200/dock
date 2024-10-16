@@ -8,9 +8,26 @@
 
         .custom-layout-content {
             flex-direction: column;
+            position: relative;
+
+            .custom-layout-back {
+                top: 6%;
+                position: absolute;
+                color: #color[blue-color];
+
+                .icon {
+                    filter: invert(48%) sepia(99%) saturate(469%) hue-rotate(170deg) brightness(90%) contrast(89%);
+                }
+                
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
 
             .layout-content-img {
                 flex: 4;
+                margin-bottom: 40px;
                 justify-content: center;
                 
                 img {
@@ -34,10 +51,27 @@
         }
 
         .custom-layout-content {
+            position: relative;
             flex-direction: column;
+
+            .custom-layout-back {
+                top: 6%;
+                position: absolute;
+                color: #color[blue-color];
+
+                .icon {
+                    filter: invert(48%) sepia(99%) saturate(469%) hue-rotate(170deg) brightness(90%) contrast(89%);
+                }
+                
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
 
             .layout-content-img {
                 flex: 4;
+                margin-bottom: 40px;
                 justify-content: center;
                 
                 img {
@@ -62,6 +96,22 @@
 
         .custom-layout-content {
             flex-direction: column;
+
+            .custom-layout-back {
+                top: 2%;
+                margin-left: -40px;
+                position: absolute;
+                color: #color[blue-color];
+
+                .icon {
+                    filter: invert(48%) sepia(99%) saturate(469%) hue-rotate(170deg) brightness(90%) contrast(89%);
+                }
+                
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
 
             .layout-content-img {
                 flex: 3;

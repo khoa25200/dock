@@ -1,0 +1,103 @@
+.side-sub {
+    left: 0;
+    top: 100%;
+    width: auto;
+    height: auto;
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+    border: 1px solid;
+    position: absolute;
+    border-radius: 8px;
+    flex-direction: column;
+    background-color: #color[white-color];
+    
+    .side-sub-workspase {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .side-sub-workspase-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 40px;
+            padding: 4px 12px;
+
+            img {
+                width: 24px;
+                height: 24px;
+                border: 1px solid;
+                border-radius: 4px;
+            }
+
+            p {
+                width: 128px;
+                text-align: center;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: #font[font-size-14];
+                font-weight: #font-weight[font-weight-bold];
+            }
+
+            &:hover {
+                background-color: #EEEDED;
+            }
+
+        }
+        
+        &:active{
+            scale: (1) !important;
+        }
+    }
+
+    .side-sub-workspase-item.active {
+        background-color: #EEEDED;
+    }
+
+    .side-sub-add {
+        display: flex;
+        gap: 12px;
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        padding: 4px 12px 8px;
+
+        .side-sub-add-icon {
+            border: 1px solid;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+
+            img {
+                width: 16px;
+            }
+        }
+
+        .side-sub-add-text {
+            width: 128px;
+            text-align: left;
+            font-size: #font[font-size-light];
+            font-weight: #font-weight[font-weight-normal];
+        }
+
+        &:hover {
+            background-color: #EEEDED;
+
+            .side-sub-add-text {
+                font-weight: #font-weight[font-weight-bold];
+            }
+        }
+    }
+
+    &:active {
+        scale: 1 !important;
+    }
+}
+
+.side-sub.open {
+    display: flex;
+}

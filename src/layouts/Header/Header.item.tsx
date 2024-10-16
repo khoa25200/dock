@@ -5,7 +5,6 @@ import "./Header.less";
 import "./Header.media.less";
 import { useEffect, useState } from "react";
 import ModalCustom from "../../components/modals/ModalSignUpWithMail/ModalSignUpWithMail";
-// import ModalCustom from '../../components/modals/ModalCustom/ModalCustom';
 
 const useMenuItems = (isScroll: boolean) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,7 +42,7 @@ const useMenuItems = (isScroll: boolean) => {
   const authItems = [
     {
       label: (
-        <Link to="">
+        <Link to="/signin">
           <Button>Login</Button>
         </Link>
       ),
