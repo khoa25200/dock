@@ -15,4 +15,5 @@ export const IMAGES = {
   ANGRY: new URL('./angry.png', import.meta.url).href,
   CRY: new URL('./cry.png', import.meta.url).href,
   UA: new URL('./ua.png', import.meta.url).href,
+  FILE_ICON: new URL('./icon-file.png', import.meta.url).href
 };
