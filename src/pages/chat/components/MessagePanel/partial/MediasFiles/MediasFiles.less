@@ -1,74 +1,33 @@
-.files--container {
-  .files--container-heading {
+.ant-tabs-nav {
+  margin-bottom: 0 !important;
+  .ant-tabs-nav-wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 8px 12px;
     border-bottom: 2px solid #ebebeb;
     user-select: none;
-    .file--list,
-    .media--list {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border-radius: 10px;
-      h1 {
-        font-size: 15px;
-        font-weight: 600;
-        margin-right: 10px;
-      }
-      .files--count,
-      .medias--count {
-        gap: 10px;
+    .ant-tabs-nav-list {
+      .ant-tabs-tab {
         display: flex;
-        padding: 2px 8px;
-        flex-direction: column;
-        align-items: flex-start;
-        background-color: #edf2f7;
-        border-radius: 50%;
-        font-size: 14px;
-        font-weight: 600;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        & > div {
+          font-size: 15px;
+          font-weight: 500;
+          margin-right: 10px;
+        }
       }
-    }
-    .file--list:hover,
-    .media--list:hover {
-      background-color: #ededed;
-    }
-    .file--list:active,
-    .media--list:active {
-      scale: 0.9;
-    }
-  }
-  #scrollableDiv {
-    li {
-      padding: 10px;
-    }
-    li:hover {
-      background-color: #ededed;
-    }
-    h4 {
-      font-size: 14px !important;
-      font-weight: 600;
-      font-family: 'Asap', sans-serif;
-      margin: 0;
-    }
-    div {
-      font-size: 12px;
-      font-weight: 600;
-      font-family: 'Asap', sans-serif;
-    }
-    .media--icon-download {
-      display: flex;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #f0effe;
-    }
-    .media--icon-download:active {
-      scale: 0.9;
+      .ant-tabs-tab:hover {
+        background-color: #ededed;
+      }
+      .ant-tabs-tab:active {
+        scale: 0.9;
+      }
+      .ant-tabs-ink-bar {
+        display: none;
+      }
     }
   }
 }
