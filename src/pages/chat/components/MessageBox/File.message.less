@@ -1,0 +1,27 @@
+.file-message {
+  .flex-row();
+  text-decoration: underline;
+
+  .file-detail {
+    .flex-col();
+
+    p {
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+
+      span:nth-child(1) {
+        float: left;
+      }
+
+      span:nth-child(2) {
+        float: right;
+      }
+    }
+  }
+
+  img {
+    cursor: pointer;
+    .hover();
+  }
+}

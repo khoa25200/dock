@@ -26,5 +26,11 @@ export const ICONS = {
   DELETE: new URL('./delete.svg', import.meta.url).href,
   ACTIVE: new URL('./active.svg', import.meta.url).href,
   ELLIPSIS: new URL('./ellipsis.svg', import.meta.url).href,
+  SEND_MEDIA_FILE: new URL('./send-media-file.svg', import.meta.url).href,
+  FILE: new URL('./file.svg', import.meta.url).href,
+  CALL: new URL('./call.svg', import.meta.url).href,
+  MEETING: new URL('./meeting.svg', import.meta.url).href,
+  ONLINE: new URL('./online.svg', import.meta.url).href,
+  OFFLINE: new URL('./offline.svg', import.meta.url).href,
   DOWNLOAD: new URL('./download.svg', import.meta.url).href,
 };

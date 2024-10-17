@@ -113,50 +113,6 @@ button {
           display: flex;
         }
       }
-
-      .reaction-hover {
-        display: flex;
-        align-items: flex-end;
-
-        .reaction-hover-container {
-          display: flex;
-          padding: 0 7px;
-          border-radius: 10px;
-          .flex-row-center();
-
-          .reaction-item {
-            .hover();
-          }
-
-          .reaction-icon {
-            position: relative;
-
-            .icons-container {
-              box-shadow: #box-shadow[box-shadow-3];
-              border: 1px solid rgb(67, 67, 67);
-              padding: 5px;
-              border-radius: 10px;
-              display: flex;
-              gap: 6px;
-              position: absolute;
-              bottom: -40px;
-              left: 0;
-              display: none;
-              background: #fff;
-
-              img:hover {
-                .hover();
-              }
-            }
-
-            &:has(button.active) {
-              .icons-container {
-                display: flex;
-              }
-            }
-          }
-        }
-      }
     }
 
     .divider {
@@ -175,6 +131,7 @@ aside.emoji-picker {
   position: absolute;
   bottom: 50px;
   left: 0;
+  z-index: #z-index[z-index-lg];
 
   *:hover {
     opacity: 1;
@@ -195,13 +152,4 @@ span.time {
 
 span.name {
   font-size: 14px;
-}
-
-.reaction-hover {
-  .reaction-hover-container {
-    opacity: 0;
-    &:hover {
-      opacity: 1;
-    }
-  }
 }
