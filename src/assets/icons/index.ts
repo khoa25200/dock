@@ -30,5 +30,7 @@ export const ICONS = {
   MEETING: new URL('./meeting.svg', import.meta.url).href,
   ONLINE: new URL('./online.svg', import.meta.url).href,
   OFFLINE: new URL('./offline.svg', import.meta.url).href,
+  ACTIVE: new URL('./active.svg', import.meta.url).href,
+  ELLIPSIS: new URL('./ellipsis.svg', import.meta.url).href,
   DOWNLOAD: new URL('./download.svg', import.meta.url).href,
 };
