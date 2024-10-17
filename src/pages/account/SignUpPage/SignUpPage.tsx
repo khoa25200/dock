@@ -1,6 +1,6 @@
-import React from "react";
-import LayoutAcount from "../../../layouts/LayoutAccount/LayoutAccount";
-import FormSignUpPage from "../../../components/forms/FormSignUp/FormSignUp";
+import React from 'react';
+import LayoutAcount from '../../../layouts/LayoutAccount/LayoutAccount';
+import FormSignUpPage from '../../../components/forms/FormSignUp/FormSignUp';
 
 const SignUpPage: React.FC = () => {
   return (
