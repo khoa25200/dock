@@ -11,11 +11,11 @@ const SidebarLayout: React.FC = () => {
   const [openSub, setOpenSub] = useState(false);
   const [openSetting, setOpenSetting] = useState(false);
 
-  const showSideBarSub = () => {
-    setOpenSub((prevState) => !prevState);
+  const handleOpenSub = (newOpen: boolean) => {
+    setOpenSub(newOpen);
   };
 
-  const handleOpenChange = (newOpen: boolean) => {
+  const handleOpenUser = (newOpen: boolean) => {
     setOpenSetting(newOpen);
   };
 
@@ -23,10 +23,17 @@ const SidebarLayout: React.FC = () => {
     <div className="sidebar-wrapper">
       <div className="sidebar-inner">
         <img src={IMAGES.LOGO} className="logo-dockchat" />
-        <div className="sidebar-workspace" onClick={showSideBarSub}>
-          <img src={IMAGES.LOGO} className="logo-dockchat" />
-          <SideBarItem openSub={openSub} />
-        </div>
+        <Popover
+          content={<SideBarItem />}
+          trigger="click"
+          open={openSub}
+          onOpenChange={handleOpenSub}
+          prefixCls="sidebar-sub"
+        >
+          <div className="sidebar-workspace">
+            <img src={IMAGES.LOGO} className="logo-dockchat" />
+          </div>
+        </Popover>
         <div className="sidebar-list-feature">
           <ul>
             <li>
@@ -48,7 +55,8 @@ const SidebarLayout: React.FC = () => {
             content={<UserSetting />}
             trigger="click"
             open={openSetting}
-            onOpenChange={handleOpenChange}
+            onOpenChange={handleOpenUser}
+            prefixCls="user-setting"
           >
             <img src={IMAGES.LOGO} className="logo-dockchat" />
             <div className="online-indicator">

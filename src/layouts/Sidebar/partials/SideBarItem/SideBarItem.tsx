@@ -5,11 +5,11 @@ import './SideBarItem.media.less'
 import React from 'react'
 import {useLocation, useNavigate} from 'react-router-dom';
 
-type TSidebarSubProps = {
-    openSub: boolean,
-}
+// type TSidebarSubProps = {
+//     openSub: boolean,
+// }
 
-const SideBarItem: React.FC<TSidebarSubProps> = ({openSub}) => {
+const SideBarItem: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -24,7 +24,7 @@ const SideBarItem: React.FC<TSidebarSubProps> = ({openSub}) => {
     ];
 
     return (
-        <div className={`side-sub ${openSub ? "open" : ""}`}>
+        <div className="side-sub">
             <ul className='side-sub-workspase'>
                 {items.map((item, index) => (
                     <li

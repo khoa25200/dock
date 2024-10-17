@@ -4,7 +4,7 @@
     width: 270px;
     height: auto;
     z-index: 100;
-    display: none;
+    display: flex;
     overflow: hidden;
     border: 1px solid;
     position: absolute;
@@ -19,21 +19,19 @@
 
         .side-sub-workspase-item {
             gap: 12px;
-            height: 40px;
             display: flex;
             padding: 4px 12px;
             align-items: center;
 
             img {
-                width: 24px;
-                height: 24px;
+                height: 32px;
                 border: 1px solid;
                 border-radius: 4px;
             }
 
             p {
                 width: 100%;
-                text-align: center;
+                text-align: start;
                 display: inline-block;
                 text-transform: uppercase;
                 font-size: #font[font-size-14];
@@ -41,6 +39,7 @@
             }
 
             &:hover {
+                cursor: pointer;
                 background-color: #EEEDED;
             }
 
@@ -64,8 +63,8 @@
 
         .side-sub-add-icon {
             border: 1px solid;
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -84,6 +83,7 @@
         }
 
         &:hover {
+            cursor: pointer;
             background-color: #EEEDED;
 
             .side-sub-add-text {
@@ -95,8 +95,4 @@
     &:active {
         scale: 1 !important;
     }
-}
-
-.side-sub.open {
-    display: flex;
 }
