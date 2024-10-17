@@ -1,22 +1,16 @@
 import './ChatDetails.less';
 import { ICONS } from '../../../../../../assets/icons';
-import { Avatar, Divider, List, Skeleton } from 'antd';
-import { useState } from 'react';
-interface DataType {
+import { Avatar, List } from 'antd';
+import React, { useState } from 'react';
+interface TeamMember {
   name: string;
   role: string;
   picture: string;
 }
-const ChatDetail = () => {
-  const TeamMember = [
-    {
-      name: 'Nguyễn Long Duy',
-      role: 'Devloper',
-      picture:
-        'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    },
-  ];
-  const [data, setData] = useState<DataType[]>(TeamMember);
+interface ListMember {
+  members: TeamMember[];
+}
+const ChatDetail: React.FC<ListMember> = ({ members }) => {
   return (
     <div className="chatDetails--wrapper">
       <header className="chatDetails--header">
@@ -44,7 +38,7 @@ const ChatDetail = () => {
           }}
         >
           <List
-            dataSource={data}
+            dataSource={members}
             renderItem={(item) => (
               <List.Item key={item.role}>
                 <List.Item.Meta
