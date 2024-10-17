@@ -3,6 +3,7 @@ import './FormSignUp.media.less';
 import React from 'react';
 import axios from 'axios';
 import { Checkbox, Form, Input, Layout } from 'antd';
+import { useNavigate } from 'react-router-dom';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
 import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 
@@ -13,16 +14,22 @@ type FieldType = {
 };
 
 const FormSignUpPage: React.FC = () => {
+  const navigate = useNavigate();
   const [formAccountUser] = Form.useForm();
 
   const handleSubmitAccount = async () => {
     const formData = formAccountUser.getFieldsValue();
-    const data = await axios.post(
-      'http://47.129.183.26:8080/api/auth/sign-up',
-      formData
-    );
-    console.log(data);
-
+    try {
+      const response = await axios.post(
+        'http://47.129.183.26:8080/api/auth/sign-up',
+        formData
+      );
+      if (response && response.data) {
+        navigate(`/auth/${formData.email}`);
+      }
+    } catch (error) {
+      console.error('Error during sign up:', error);
+    }
     formAccountUser.resetFields();
   };
   return (
