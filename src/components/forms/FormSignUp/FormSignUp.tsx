@@ -1,42 +1,54 @@
-import "./FormSignUp.less";
-import "./FormSignUp.media.less";
-import React, { useState, useEffect } from "react";
-import { Checkbox, Form, Input, Layout } from "antd";
-import SignUpButton from "../../buttons/ButtonAccount/ButtonAccount";
-import SignUpGoogle from "../../buttons/ButtonAccountGoogle/ButtonAccountGoogle";
-import Loading from "../../loadings/Loading";
+import './FormSignUp.less';
+import './FormSignUp.media.less';
+import React from 'react';
+import axios from 'axios';
+import { Checkbox, Form, Input, Layout } from 'antd';
+import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
+import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 
 type FieldType = {
-  fullname?: string;
+  username?: string;
   email?: string;
   password?: string;
 };
 
 const FormSignUpPage: React.FC = () => {
+  const [formAccountUser] = Form.useForm();
+
+  const handleSubmitAccount = async () => {
+    const formData = formAccountUser.getFieldsValue();
+    const data = await axios.post(
+      'http://47.129.183.26:8080/api/auth/sign-up',
+      formData
+    );
+    console.log(data);
+
+    formAccountUser.resetFields();
+  };
   return (
     <Layout className="signup">
       <div className="signup-title">
         <h1 className="signup-title-name">Sign Up</h1>
       </div>
-      <Form className="signup-from">
+      <Form className="signup-from" form={formAccountUser}>
         <Form.Item<FieldType>
           className="signup-from-name"
-          name="fullname"
-          rules={[{ required: true, message: "Please input your fullname!" }]}
+          name="username"
+          rules={[{ required: true, message: 'Please input your fullname!' }]}
         >
           <Input placeholder="Enter FullName" />
         </Form.Item>
         <Form.Item<FieldType>
           className="signup-from-email"
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input placeholder="Enter Email" />
         </Form.Item>
         <Form.Item<FieldType>
           className="signup-from-password"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />
         </Form.Item>
@@ -48,6 +60,7 @@ const FormSignUpPage: React.FC = () => {
         <SignUpButton
           className="signup-button-account"
           title="Sign Up Account"
+          onclick={handleSubmitAccount}
         />
         <div className="signup-button-or">OR</div>
         <SignUpGoogle
@@ -62,5 +75,4 @@ const FormSignUpPage: React.FC = () => {
     </Layout>
   );
 };
-
 export default FormSignUpPage;
