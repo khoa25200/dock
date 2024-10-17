@@ -40,6 +40,101 @@ const photovideoData = [
       'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
     date_receive: '20/10/2024;',
   },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
+  {
+    link_file:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+    date_receive: '20/10/2024;',
+  },
 ];
 const items: TabsProps['items'] = [
   {
