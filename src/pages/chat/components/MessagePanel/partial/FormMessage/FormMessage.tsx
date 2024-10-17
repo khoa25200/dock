@@ -6,7 +6,7 @@ import { IMAGES } from '../../../../../../assets/images';
 
 const FormMessage = () => {
   const [message, setMessage] = useState<string[]>([]);
-
+  const [reply, setReply] = useState<string>('');
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -23,13 +23,25 @@ const FormMessage = () => {
     OWNER: 'owner',
   };
 
+  const MESSAGE_TYPE = {
+    TEXT: 'text',
+    MEDIA: 'media',
+    FILE: 'file',
+  };
+
   let props = {
     sender: SENDER.OWNER,
     avtUrl: '',
     name: name,
     text: message,
+    messageType: 'media',
+    mediaURL: IMAGES.AVT_TEXT,
     time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     reacts: [IMAGES.CLAP, IMAGES.DOWN, IMAGES.LIKE, IMAGES.ANGRY, IMAGES.CRY],
+    replyMessage: 'alksjlkjadas',
+    fileName: 'Jerry-2020_I-9_Form.pdf',
+    extension: 'pdf',
+    size: '100kb',
   };
 
   useEffect(() => {
@@ -46,15 +58,17 @@ const FormMessage = () => {
       <div className="center">
         {message.map((msg, index) => {
           const randomSender = Math.random() < 0.5 ? SENDER.OWNER : SENDER.FRIEND;
+          const randomMessageType = Math.random() < 0.5 ? MESSAGE_TYPE.MEDIA : MESSAGE_TYPE.FILE;
           props = {
             ...props,
             sender: randomSender,
+            messageType: randomMessageType,
             text: msg,
           };
-          return <MessageBox key={index} {...props} />;
+          return <MessageBox key={index} {...props} setReply={setReply} />;
         })}
       </div>
-      <InputMessage message={message} setMessage={setMessage} />
+      <InputMessage message={message} setMessage={setMessage} reply={reply} setReply={setReply} />
     </div>
   );
 };
