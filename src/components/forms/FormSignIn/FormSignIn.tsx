@@ -36,7 +36,6 @@ const FormSignInPage: React.FC = () => {
       formAccountUser.resetFields();
     } catch (error) {}
   };
-
   return (
     <Layout className="signin">
       <div className="signin-title">
