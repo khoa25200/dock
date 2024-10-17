@@ -1,16 +1,99 @@
 .header--message {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   gap: 6px;
   height: 57px;
-  padding: 0 10px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   border-bottom: 2px solid #ebebeb;
+
   & > h1 {
     font-size: 20px;
     font-weight: 600;
   }
+
   & > img {
     width: 20px;
     font-weight: 600;
+  }
+
+  &.private-message {
+    .flex-col-space-between();
+
+    .user-detail {
+      cursor: pointer;
+      .hover();
+      .flex-row-center();
+
+      img {
+        border-radius: 10%;
+      }
+
+      .user-info {
+        .flex-col(5px);
+
+        h3 {
+          font-weight: 400;
+        }
+
+        p {
+          .flex-row-center();
+          justify-content: flex-start;
+          font-size: 12px;
+          color: #000000ab;
+          font-weight: 300;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
+.online-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 4px;
+  right: 0;
+
+  .blink.online {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #0fcc45;
+    opacity: 0.7;
+    border-radius: 50%;
+    border: 3px solid black;
+  }
+
+  .blink.offline {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    opacity: 0.7;
+    border-radius: 50%;
+    border: 3px solid #ededed;
+  }
+
+  .logo-dockchat {
+    width: 50px;
+    height: 50px;
+    margin-left: 8px;
+    border-radius: 50%;
+
+    &:active {
+      transform: scale(0.9);
+    }
   }
 }
