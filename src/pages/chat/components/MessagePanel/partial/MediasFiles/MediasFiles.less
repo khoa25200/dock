@@ -1,0 +1,33 @@
+.ant-tabs-nav {
+  margin-bottom: 0 !important;
+  .ant-tabs-nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 2px solid #ebebeb;
+    user-select: none;
+    .ant-tabs-nav-list {
+      .ant-tabs-tab {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        & > div {
+          font-size: 15px;
+          font-weight: 500;
+          margin-right: 10px;
+        }
+      }
+      .ant-tabs-tab:hover {
+        background-color: #ededed;
+      }
+      .ant-tabs-tab:active {
+        scale: 0.9;
+      }
+      .ant-tabs-ink-bar {
+        display: none;
+      }
+    }
+  }
+}
