@@ -1,6 +1,7 @@
 import './FormSignUp.less';
 import './FormSignUp.media.less';
 import React from 'react';
+import axios from 'axios';
 import { Checkbox, Form, Input, Layout } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
@@ -60,22 +61,22 @@ const FormSignUpPage: React.FC = () => {
           <Input.Password placeholder="Enter Password" />
         </Form.Item>
       </Form>
-      <Checkbox className="signUp-checkbox">
+      <Checkbox className="signup-checkbox">
         I accept the Terms and Conditions.
       </Checkbox>
-      <div className="signUp-button">
+      <div className="signup-button">
         <SignUpButton
-          className="signUp-button-account"
+          className="signup-button-account"
           title="Sign Up Account"
           onclick={handleSubmitAccount}
         />
-        <div className="signUp-button-or">OR</div>
+        <div className="signup-button-or">OR</div>
         <SignUpGoogle
-          className="signUp-button-google"
+          className="signup-button-google"
           title="Continue with Google"
         />
       </div>
-      <div className="signUp-content">
+      <div className="signup-content">
         <span>Already using DockChat?</span>
         <span>Sign in to an existing workspace</span>
       </div>
