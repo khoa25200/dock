@@ -19,7 +19,7 @@ const UserSetting: React.FC = () => {
                     <div className='user-infor-status'>
                         {/* <img src={ICONS.ACTIVE} alt="Active" /> */}
                         <div className='user-infor-status-btn'>
-                            < ButtonBadge status='success' />
+                            <ButtonBadge status='success' />
                         </div>
                         <p>Active</p>
                     </div>
