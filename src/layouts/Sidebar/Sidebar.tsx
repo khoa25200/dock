@@ -6,6 +6,7 @@ import { ICONS } from "../../assets/icons";
 import SideBarItem from "./partials/SideBarItem/SideBarItem";
 import { Popover } from "antd";
 import UserSetting from "./partials/UserSetting/UserSetting";
+import ButtonBadge from "../../components/buttons/ButtonBadge/ButtonBadge";
 
 const SidebarLayout: React.FC = () => {
   const [openSub, setOpenSub] = useState(false);
@@ -60,7 +61,8 @@ const SidebarLayout: React.FC = () => {
           >
             <img src={IMAGES.LOGO} className="logo-dockchat" />
             <div className="online-indicator">
-              <span className="blink offline"></span>
+              {/* <span className="blink offline"></span> */}
+              <ButtonBadge status="default" />
             </div>
           </Popover>
         </div>
