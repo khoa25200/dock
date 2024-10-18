@@ -141,7 +141,7 @@
             width: 360px;
             height: 44px;
 
-            &:hover {
+            &:active {
                 .scale();
             }
         }
@@ -154,11 +154,12 @@
             position: relative;
 
             &::before, &::after {
-                content: '';
-                position: absolute;
                 top: 50%;
+                content: '';
                 width: 42%;
                 height: 1px;
+                opacity: 0.08;
+                position: absolute;
                 background-color: #090808;
             }
             
