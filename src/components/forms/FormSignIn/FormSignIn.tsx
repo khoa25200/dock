@@ -1,26 +1,28 @@
 import './FormSignIn.less';
 import './FormSignIn.media.less';
 import React from 'react';
-import axios from 'axios';
 import { Checkbox, Form, Input, Layout } from 'antd';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
 import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
-
-type FieldType = {
-  username?: string;
-  password?: string;
-};
+import { AccountUser } from '../../../libs/api/auth';
+import { IUser } from '../../../libs/types/auth';
+import { useNavigate } from 'react-router-dom';
 
 const FormSignInPage: React.FC = () => {
+  const navigate = useNavigate();
   const [formAccountUser] = Form.useForm();
 
   const handleSignIn = async () => {
     const formData = formAccountUser.getFieldsValue();
-    const data = await axios.post(
-      'http://47.129.183.26:8080/api/auth/sign-in',
-      formData
-    );
-    console.log(data);
+    try {
+      const response = await AccountUser.loginUser(formData);
+      if (response) {
+        navigate('/chat');
+      }
+    } catch (error) {
+      console.error('Error during sign up:', error);
+    }
+    console.log(formData);
 
     formAccountUser.resetFields();
   };
@@ -29,15 +31,15 @@ const FormSignInPage: React.FC = () => {
       <div className="signin-title">
         <h1 className="signin-title-name">Sign In</h1>
       </div>
-      <Form className="signin-from">
-        <Form.Item<FieldType>
+      <Form className="signin-from" form={formAccountUser}>
+        <Form.Item<IUser>
           className="signin-from-email"
-          name="username"
+          name="email"
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input placeholder="Enter Email" />
         </Form.Item>
-        <Form.Item<FieldType>
+        <Form.Item<IUser>
           className="signin-from-password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}

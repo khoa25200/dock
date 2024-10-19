@@ -1,17 +1,12 @@
 import './FormSignUp.less';
 import './FormSignUp.media.less';
 import React from 'react';
-import axios from 'axios';
 import { Checkbox, Form, Input, Layout } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
 import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
-
-type FieldType = {
-  username?: string;
-  email?: string;
-  password?: string;
-};
+import { IUser } from '../../../libs/types/auth';
+import { AccountUser } from '../../../libs/api/auth';
 
 const FormSignUpPage: React.FC = () => {
   const navigate = useNavigate();
@@ -20,11 +15,8 @@ const FormSignUpPage: React.FC = () => {
   const handleSubmitAccount = async () => {
     const formData = formAccountUser.getFieldsValue();
     try {
-      const response = await axios.post(
-        'http://47.129.183.26:8080/api/auth/sign-up',
-        formData
-      );
-      if (response && response.data) {
+      const response = await AccountUser.registerUser(formData);
+      if (response) {
         navigate(`/auth/${formData.email}`);
       }
     } catch (error) {
@@ -38,21 +30,21 @@ const FormSignUpPage: React.FC = () => {
         <h1 className="signup-title-name">Sign Up</h1>
       </div>
       <Form className="signup-from" form={formAccountUser}>
-        <Form.Item<FieldType>
+        <Form.Item<IUser>
           className="signup-from-name"
           name="username"
           rules={[{ required: true, message: 'Please input your fullname!' }]}
         >
           <Input placeholder="Enter FullName" />
         </Form.Item>
-        <Form.Item<FieldType>
+        <Form.Item<IUser>
           className="signup-from-email"
           name="email"
           rules={[{ required: true, message: 'Please input your email!' }]}
         >
           <Input placeholder="Enter Email" />
         </Form.Item>
-        <Form.Item<FieldType>
+        <Form.Item<IUser>
           className="signup-from-password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
