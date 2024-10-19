@@ -1,9 +1,9 @@
-import { ICONS } from '../../../../assets/icons'
-import { IMAGES } from '../../../../assets/images'
 import './UserSetting.less'
 import './UserSetting.media.less'
 
 import React from 'react'
+import { IMAGES } from '../../../../assets/images'
+import ButtonBadge from '../../../../components/buttons/ButtonOnlineStatus/ButtonOnlineStatus'
 
 const UserSetting: React.FC = () => {
     return (
@@ -17,7 +17,9 @@ const UserSetting: React.FC = () => {
                         Current - user - login
                     </div>
                     <div className='user-infor-status'>
-                        <img src={ICONS.ACTIVE} alt="Active" />
+                        <div className='user-infor-status-btn'>
+                            <ButtonBadge active='online' />
+                        </div>
                         <p>Active</p>
                     </div>
                 </div>

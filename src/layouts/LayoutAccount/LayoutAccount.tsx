@@ -10,7 +10,7 @@ const LayoutAcount: React.FC<PropsWithChildren> = ({ children }) => {
     <Layout className="custom-layout">
       <div className="custom-layout-background"></div>
       <div className="custom-layout-content">
-        <ButtonBack title="Quay Lại" className="custom-layout-back" />
+        <ButtonBack title="Back" className="custom-layout-back" />
         <div className="layout-content-img">
           <img src={IMAGES.LOGO_ACCOUNT} alt="Logo Project" />
         </div>

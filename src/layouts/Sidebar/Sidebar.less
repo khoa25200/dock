@@ -60,31 +60,19 @@
       position: absolute;
       bottom: 10px;
       .online-indicator {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        background-color: white;
-        border-radius: 50%;
-        position: absolute;
-        bottom: 4px;
         right: 0;
-        .blink.online {
-          display: block;
-          width: 12px;
-          height: 12px;
-          background-color: #0fcc45;
-          opacity: 0.7;
-          border-radius: 50%;
-          border: 3px solid black;
-        }
-        .blink.offline {
-          display: block;
-          width: 12px;
-          height: 12px;
-          background-color: black;
-          opacity: 0.7;
-          border-radius: 50%;
-          border: 3px solid #ededed;
+        width: 12px;
+        bottom: 4px;
+        height: 12px;
+        display: flex;
+        position: absolute;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+
+        .ant-badge-status-default {
+          width: 8px;
+          height: 8px;
         }
       }
       .logo-dockchat {
