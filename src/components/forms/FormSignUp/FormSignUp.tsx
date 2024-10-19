@@ -1,7 +1,6 @@
 import './FormSignUp.less';
 import './FormSignUp.media.less';
 import React from 'react';
-import axios from 'axios';
 import { Checkbox, Form, Input, Layout } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';

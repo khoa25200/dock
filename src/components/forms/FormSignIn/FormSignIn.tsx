@@ -44,7 +44,7 @@ const FormSignInPage: React.FC = () => {
       <Form className="signin-from" form={formAccountUser}>
         <Form.Item<IUser>
           className="signin-from-email"
-          name="username"
+          name="email"
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
           <Input placeholder="Enter Username" />
