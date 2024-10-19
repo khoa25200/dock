@@ -1,9 +1,11 @@
 import './FormAuth.less';
 import './FormAuth.media.less';
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Flex, Input, Layout } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
+import { verifyAccount } from '../../../libs/types/auth';
+import { AccountUser } from '../../../libs/api/auth';
 
 type OTPProps = {
   onChange: (text: string) => void;
@@ -12,11 +14,10 @@ type OTPProps = {
 
 const FormAuthPage: React.FC = () => {
   const { email } = useParams();
+  const navigate = useNavigate();
 
   const [otp, setOtp] = useState<string>('');
-
   const onChange: OTPProps['onChange'] = (text) => {
-    console.log('onChange:', text);
     setOtp(text);
   };
 
@@ -24,11 +25,22 @@ const FormAuthPage: React.FC = () => {
     onChange,
   };
 
-  const handleVerifyOTP = () => {
-    if (otp) {
-      console.log('OTP nè:', otp);
+  const handleVerifyOTP = async () => {
+    if (email) {
+      const VerifyEmail: verifyAccount = {
+        otp: otp,
+        email: email,
+      };
+      try {
+        const response = await AccountUser.verifyEmail(VerifyEmail);
+        if (response) {
+          navigate(`/signin`);
+        }
+      } catch (error) {
+        console.error('Error during sign up:', error);
+      }
     } else {
-      console.log('Vui lòng nhập OTP');
+      alert('Vui lòng nhập OTP');
     }
   };
 
