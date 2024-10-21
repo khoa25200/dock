@@ -3,6 +3,14 @@ import ChatDetail from './partial/ChatDetails/ChatDetails';
 import FormMessage from './partial/FormMessage/FormMessage';
 import HeaderMessage from './partial/HeaderMessage/HeaderMessage';
 import MediaFiles from './partial/MediasFiles/MediasFiles';
+const TeamMember = [
+  {
+    name: 'Nguyễn Long Duy',
+    role: 'Devloper',
+    picture:
+      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+  },
+];
 function MessagePanel() {
   const headerMessageProps = {
     status: 'online',
@@ -17,7 +25,7 @@ function MessagePanel() {
           <FormMessage />
         </div>
         <div className="message--detail">
-          <ChatDetail />
+          <ChatDetail members={TeamMember} />
           <MediaFiles />
         </div>
       </div>
