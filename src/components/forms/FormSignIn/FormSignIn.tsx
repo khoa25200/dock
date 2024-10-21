@@ -27,18 +27,14 @@ const FormSignInPage: React.FC = () => {
   const [formAccountUser] = Form.useForm();
 
   const handleSignIn = async () => {
-    const formData = formAccountUser.getFieldsValue();
     try {
+      const formData = await formAccountUser.validateFields();
       const response = await AccountUser.loginUser(formData);
       if (response) {
         navigate('/chat');
       }
-    } catch (error) {
-      console.error('Error during sign up:', error);
-    }
-    console.log(formData);
-
-    formAccountUser.resetFields();
+      formAccountUser.resetFields();
+    } catch (error) {}
   };
 
   return (
@@ -49,10 +45,10 @@ const FormSignInPage: React.FC = () => {
       <Form className="signin-from" form={formAccountUser}>
         <Form.Item<IUser>
           className="signin-from-email"
-          name="email"
+          name="username"
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input placeholder="Enter Email" />
+          <Input placeholder="Enter Username" />
         </Form.Item>
         <Form.Item<IUser>
           className="signin-from-password"

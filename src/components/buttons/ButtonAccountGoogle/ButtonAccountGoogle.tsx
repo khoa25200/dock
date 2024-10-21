@@ -1,19 +1,20 @@
-import './ButtonAccountGoogle.less'
+import './ButtonAccountGoogle.less';
 import { Button } from 'antd';
-import { ICONS } from '../../../assets/icons/index';
 
 interface ButtonProps {
   title: string;
   className?: string;
+  href?: string;
 }
 
-const ButtonAccountGoogle: React.FC<ButtonProps> = ({className, title}) => {
+const ButtonAccountGoogle: React.FC<ButtonProps> = ({
+  className,
+  title,
+  href,
+}) => {
   return (
-    <Button 
-      className={`button-google ${className}`} 
-    >
-        <img className='icon-google' src={ICONS.GOOGLE} alt="Google" />
-        {title}
+    <Button href={href} className={`button-google ${className}`}>
+      {title}
     </Button>
   );
 };

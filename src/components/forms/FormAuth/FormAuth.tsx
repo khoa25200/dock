@@ -2,7 +2,7 @@ import './FormAuth.less';
 import './FormAuth.media.less';
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Flex, Input, Layout } from 'antd';
+import { Flex, Input, Layout, Form } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
 import { verifyAccount } from '../../../libs/types/auth';
 import { AccountUser } from '../../../libs/api/auth';
@@ -17,8 +17,14 @@ const FormAuthPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [otp, setOtp] = useState<string>('');
+  const [formAccountUser] = Form.useForm();
+
   const onChange: OTPProps['onChange'] = (text) => {
-    setOtp(text);
+    if (!text) {
+      console.error('Please input your OTP!');
+    } else {
+      setOtp(text);
+    }
   };
 
   const sharedProps: OTPProps = {
@@ -26,7 +32,9 @@ const FormAuthPage: React.FC = () => {
   };
 
   const handleVerifyOTP = async () => {
-    if (email) {
+    if (!email || !otp) {
+      await formAccountUser.validateFields();
+    } else {
       const VerifyEmail: verifyAccount = {
         otp: otp,
         email: email,
@@ -39,8 +47,6 @@ const FormAuthPage: React.FC = () => {
       } catch (error) {
         console.error('Error during sign up:', error);
       }
-    } else {
-      alert('Vui lòng nhập OTP');
     }
   };
 
@@ -51,9 +57,14 @@ const FormAuthPage: React.FC = () => {
         we’re sending a code to{' '}
         <strong>{email ? email : 'namework@gmail.com'}</strong>
       </p>
-      <Flex gap="middle" align="flex-start" vertical className="auth-from">
-        <Input.OTP formatter={(str) => str.toUpperCase()} {...sharedProps} />
-      </Flex>
+      <Form className="auth-from" form={formAccountUser}>
+        <Form.Item
+          name="otp"
+          rules={[{ required: true, message: 'Please input your OTP!' }]}
+        >
+          <Input.OTP formatter={(str) => str.toUpperCase()} {...sharedProps} />
+        </Form.Item>
+      </Form>
       <VerifyButton
         className="auth-button"
         title="Verify"

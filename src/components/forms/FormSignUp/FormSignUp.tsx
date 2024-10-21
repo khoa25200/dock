@@ -13,61 +13,69 @@ const FormSignUpPage: React.FC = () => {
   const [formAccountUser] = Form.useForm();
 
   const handleSubmitAccount = async () => {
-    const formData = formAccountUser.getFieldsValue();
     try {
+      const formData = await formAccountUser.validateFields();
       const response = await AccountUser.registerUser(formData);
       if (response) {
         navigate(`/auth/${formData.email}`);
       }
-    } catch (error) {
-      console.error('Error during sign up:', error);
-    }
-    formAccountUser.resetFields();
+      formAccountUser.resetFields();
+    } catch (error) {}
   };
+
   return (
-    <Layout className="signup">
-      <div className="signup-title">
-        <h1 className="signup-title-name">Sign Up</h1>
+    <Layout className="signUp">
+      <div className="signUp-title">
+        <h1 className="signUp-title-name">Sign Up</h1>
       </div>
-      <Form className="signup-from" form={formAccountUser}>
+      <Form className="signUp-from" form={formAccountUser}>
         <Form.Item<IUser>
-          className="signup-from-name"
+          className="signUp-from-name"
           name="username"
-          rules={[{ required: true, message: 'Please input your fullname!' }]}
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input placeholder="Enter FullName" />
+          <Input placeholder="Enter Username" />
         </Form.Item>
         <Form.Item<IUser>
-          className="signup-from-email"
+          className="signUp-from-email"
           name="email"
-          rules={[{ required: true, message: 'Please input your email!' }]}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your email!',
+            },
+            {
+              type: 'email',
+              message: 'The input is not valid email!',
+            },
+          ]}
         >
           <Input placeholder="Enter Email" />
         </Form.Item>
         <Form.Item<IUser>
-          className="signup-from-password"
+          className="signUp-from-password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />
         </Form.Item>
       </Form>
-      <Checkbox className="signup-checkbox">
+      <Checkbox className="signUp-checkbox">
         I accept the Terms and Conditions.
       </Checkbox>
-      <div className="signup-button">
+      <div className="signUp-button">
         <SignUpButton
-          className="signup-button-account"
+          className="signUp-button-account"
           title="Sign Up Account"
           onclick={handleSubmitAccount}
         />
-        <div className="signup-button-or">OR</div>
+        <div className="signUp-button-or">OR</div>
         <SignUpGoogle
-          className="signup-button-google"
+          className="signUp-button-google"
           title="Continue with Google"
         />
       </div>
-      <div className="signup-content">
+      <div className="signUp-content">
         <span>Already using DockChat?</span>
         <span>Sign in to an existing workspace</span>
       </div>
