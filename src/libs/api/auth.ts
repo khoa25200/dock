@@ -2,7 +2,6 @@ import { IUser, verifyAccount } from '../types/auth';
 import api from './api';
 
 export const AccountUser = {
-  // ACCOUNT FULL OPTIONS
   registerUser: async (data: IUser) => {
     const response = await api.post<IUser>('/sign-up', data);
     return response.data;

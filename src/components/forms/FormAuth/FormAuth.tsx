@@ -18,13 +18,8 @@ const FormAuthPage: React.FC = () => {
 
   const [otp, setOtp] = useState<string>('');
   const [formAccountUser] = Form.useForm();
-
   const onChange: OTPProps['onChange'] = (text) => {
-    if (!text) {
-      console.error('Please input your OTP!');
-    } else {
-      setOtp(text);
-    }
+    setOtp(text);
   };
 
   const sharedProps: OTPProps = {
@@ -32,9 +27,7 @@ const FormAuthPage: React.FC = () => {
   };
 
   const handleVerifyOTP = async () => {
-    if (!email || !otp) {
-      await formAccountUser.validateFields();
-    } else {
+    if (email) {
       const VerifyEmail: verifyAccount = {
         otp: otp,
         email: email,
@@ -47,6 +40,8 @@ const FormAuthPage: React.FC = () => {
       } catch (error) {
         console.error('Error during sign up:', error);
       }
+    } else {
+      alert('Vui lòng nhập OTP');
     }
   };
 
@@ -65,6 +60,7 @@ const FormAuthPage: React.FC = () => {
           <Input.OTP formatter={(str) => str.toUpperCase()} {...sharedProps} />
         </Form.Item>
       </Form>
+
       <VerifyButton
         className="auth-button"
         title="Verify"

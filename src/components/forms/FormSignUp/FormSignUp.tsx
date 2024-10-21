@@ -53,7 +53,7 @@ const FormSignUpPage: React.FC = () => {
           <Input placeholder="Enter Email" />
         </Form.Item>
         <Form.Item<IUser>
-          className="signUp-from-password"
+          className="signup-from-password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
         >

@@ -15,12 +15,16 @@ const FormSignInPage: React.FC = () => {
   const handleSignIn = async () => {
     try {
       const formData = await formAccountUser.validateFields();
+
       const response = await AccountUser.loginUser(formData);
       if (response) {
         navigate('/chat');
       }
-      formAccountUser.resetFields();
-    } catch (error) {}
+    } catch (error) {
+      console.error('Error during sign up:', error);
+    }
+
+    formAccountUser.resetFields();
   };
   return (
     <Layout className="signin">
@@ -30,10 +34,10 @@ const FormSignInPage: React.FC = () => {
       <Form className="signin-from" form={formAccountUser}>
         <Form.Item<IUser>
           className="signin-from-email"
-          name="username"
+          name="email"
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input placeholder="Enter Username" />
+          <Input placeholder="Enter Email" />
         </Form.Item>
         <Form.Item<IUser>
           className="signin-from-password"
