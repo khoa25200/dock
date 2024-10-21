@@ -1,8 +1,8 @@
-import { verify } from 'crypto';
 import { IUser, verifyAccount } from '../types/auth';
 import api from './api';
 
 export const AccountUser = {
+  // ACCOUNT FULL OPTIONS
   registerUser: async (data: IUser) => {
     const response = await api.post<IUser>('/sign-up', data);
     return response.data;
@@ -14,5 +14,14 @@ export const AccountUser = {
   loginUser: async (data: IUser) => {
     const response = await api.post<IUser>('/sign-in', data);
     return response.data;
+  },
+  // ACCOUNT WITH EMAIL
+  registerWithEmail: async (data: IUser) => {
+    const response = await api.post<IUser>('/sign-up-email', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response;
   },
 };

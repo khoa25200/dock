@@ -17,6 +17,6 @@ export const ROUTES: IRoute = {
   ABOUT: 'about',
   SIGNUP: 'signup',
   SIGNIN: 'signin',
-  AUTH: 'auth/:email',
+  AUTH: 'verify/:email',
   CHAT: 'chat',
 };
