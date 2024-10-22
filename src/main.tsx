@@ -36,7 +36,8 @@ const router = createBrowserRouter(
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
       <Route path={ROUTES.SIGNUP} element={<SignUpPage />} />
       <Route path={ROUTES.SIGNIN} element={<SignInPage />} />
-      <Route path={ROUTES.AUTH} element={<AuthPage />} />
+      <Route path={ROUTES.VERIFY} element={<AuthPage />} />
+
       <Route path={ROUTES.SIGNIN_OTP} element={<SignInOtpPage />} />
       <Route path={ROUTES.CHAT} element={<ChatPage />} />
     </>

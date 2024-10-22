@@ -27,21 +27,26 @@ const FormSignInPage: React.FC = () => {
   };
   const navigate = useNavigate();
   const { clearErrors, errors, setFieldError } = useFormErrors();
-  const [formAccountUser] = Form.useForm();
+  const [formAccountUser] = Form.useForm<IUser>();
 
   const handleSignIn = async () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
-
       const response = await AccountUser.loginUser(formData);
       if (response) {
         navigate('/chat');
       }
-    } catch (error) {
-      console.error('Error during sign up:', error);
+      formAccountUser.resetFields();
+    } catch (error: unknown) {
+      if (error instanceof Error && (error as any).response) {
+        const errorResponse = (error as any).response.data;
+        const errorMessage = errorResponse.message;
+        setFieldError('email', errorMessage);
+      } else {
+        console.error('An unexpected error occurred:', error);
+      }
     }
-    formAccountUser.resetFields();
   };
   return (
     <Layout className="signin">
@@ -53,7 +58,6 @@ const FormSignInPage: React.FC = () => {
           name="email"
           className="signin-from-email"
           error={errors.email}
-          onChange={() => setFieldError('email', null)}
           rules={[
             { required: true, message: 'Please input your email!' },
             { type: 'email', message: 'The input is not valid Email!' },
@@ -64,8 +68,7 @@ const FormSignInPage: React.FC = () => {
         <FormInput
           name="password"
           className="signin-from-password"
-          error={errors.email}
-          onChange={() => setFieldError('email', null)}
+          error={errors.password}
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />

@@ -43,7 +43,6 @@ const FormAuthPage: React.FC = () => {
         <FormInput
           name="otp"
           error={errors.error}
-          onChange={() => setFieldError('email', null)}
           rules={[{ required: true, message: 'Please input your OTP!' }]}
         >
           <Input.OTP formatter={(str) => str.toUpperCase()} />

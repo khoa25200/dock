@@ -1,8 +1,8 @@
 import './FormSignInOtp.less';
 import './FormSignInOtp.media.less';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Input, Layout, Form, Checkbox } from 'antd';
+import { Input, Layout, Form } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
 import { verifyAccount } from '../../../libs/types/auth';
 import { AccountUser } from '../../../libs/api/auth';
@@ -11,6 +11,7 @@ import useFormErrors from '../../../libs/hooks/useFormErrors';
 
 const FormSignInOtp: React.FC = () => {
   const [isLoginOtp, setIsLoginOtp] = useState(true);
+  const [email, setEmail] = useState<string | undefined>();
   const { clearErrors, errors, setFieldError } = useFormErrors();
   const navigate = useNavigate();
 
@@ -18,26 +19,47 @@ const FormSignInOtp: React.FC = () => {
   const [formOtpUser] = Form.useForm<verifyAccount>();
 
   const handleRequestOTP = async () => {
-    setIsLoginOtp((isLoginOtp) => !isLoginOtp);
-    // clearErrors();
-    // try {
-    //   const formData = await formEmailUser.validateFields();
-    //   // const response = await AccountUser.requestOtp(formData);
-    //   // if (response) {
-    //   isLoginWithOtp = false;
-    //   // }
-    // } catch (error) {
-    //   console.error('Error during sign up:', error);
-    // }
-
-    // formEmailUser.resetFields();
+    clearErrors();
+    try {
+      const formData = await formEmailUser.validateFields();
+      setEmail(formData.email);
+      const response = await AccountUser.requestOtp(formData);
+      if (response) {
+        setIsLoginOtp((isLoginOtp) => !isLoginOtp);
+      }
+      formEmailUser.resetFields();
+    } catch (error: unknown) {
+      if (error instanceof Error && (error as any).response) {
+        const errorResponse = (error as any).response.data;
+        const errorMessage = errorResponse.message;
+        setFieldError('email', errorMessage);
+      } else {
+        console.error('An unexpected error occurred:', error);
+      }
+    }
   };
 
   const handleSignInWithOTP = async () => {
     clearErrors();
-    const formData = await formOtpUser.validateFields();
-    console.log(formData);
+    try {
+      const formData = await formEmailUser.validateFields();
+      const response = await AccountUser.loginUserWithOTP(formData);
+      if (response) {
+        navigate('/chat');
+      }
+      formEmailUser.resetFields();
+    } catch (error: unknown) {
+      if (error instanceof Error && (error as any).response) {
+        const errorResponse = (error as any).response.data;
+        const errorMessage = errorResponse.message;
+        setFieldError('email', errorMessage);
+      } else {
+        console.error('An unexpected error occurred:', error);
+      }
+    }
   };
+  console.log(email);
+
   return (
     <Layout className="signIn--otp">
       <div className="signIn--title">
@@ -50,7 +72,6 @@ const FormSignInOtp: React.FC = () => {
               name="email"
               error={errors.email}
               className="signIn-from-email"
-              onChange={() => setFieldError('email', null)}
               rules={[
                 { required: true, message: 'Please input your email!' },
                 { type: 'email', message: 'The input is not valid Email!' },
@@ -78,12 +99,11 @@ const FormSignInOtp: React.FC = () => {
                 { type: 'email', message: 'The input is not valid Email!' },
               ]}
             >
-              <Input placeholder="Enter your email" />
+              <Input type="text" value="Nguyễn Long Duy" />
             </FormInput>
             <FormInput
               name="otp"
-              error={errors.otp}
-              onChange={() => setFieldError('email', null)}
+              error={errors.email}
               rules={[{ required: true, message: 'Please input your OTP!' }]}
             >
               <Input.OTP formatter={(str) => str.toUpperCase()} />
