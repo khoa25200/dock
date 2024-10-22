@@ -1,7 +1,8 @@
 import './FormSignIn.less'
 import './FormSignIn.media.less'
-import React from 'react';
-import { Checkbox, Form, Input, Layout } from 'antd';
+
+import React, { useState } from 'react';
+import { Checkbox, Form, Input, Layout, notification } from 'antd';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount'
 import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 
@@ -11,6 +12,17 @@ type FieldType = {
 };  
 
 const FormSignInPage: React.FC = () => {
+    const [status, setStatus] = useState<'success' | 'info' | 'warning' | 'error'>('info');
+    const [message, setMessage] = useState<string>('Sign In Successful');
+    const [description, setDescription] = useState<string>('You have successfully signed in!');
+
+    const handleClick = () => {
+        notification[status]({
+            message: message,
+            description: description,
+        });
+    };
+
     return ( 
         <Layout className="signin">
             <div className='signin-title'>
@@ -34,7 +46,12 @@ const FormSignInPage: React.FC = () => {
             </Form>
             <Checkbox className='signin-checkbox'>I accept the Terms and Conditions.</Checkbox>
             <div className='signin-button'>
-                <SignUpButton className='signin-button-account' title='Sign In'/>
+                <SignUpButton 
+                    className='signin-button-account'
+                    title='Sign In'
+                    onClick={handleClick}
+                    // navigation='/chat'
+                />
                 <div className='signin-button-or'>OR</div>
                 <SignUpGoogle className='signin-button-google' title='Continue with Google' />
             </div>
