@@ -198,7 +198,7 @@ function InputMessage({
         )}
         <TextArea
           placeholder="Type a message..."
-          autoSize
+          autoSize={{ minRows: 1, maxRows: 6 }}
           onChange={(e) => setText(e.target.value)}
           onKeyPress={handleKeyPress}
           value={text}
