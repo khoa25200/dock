@@ -1,6 +1,6 @@
 import './FormEmail.less';
 import './FormEmail.media.less';
-import { Layout, Form } from 'antd';
+import { Layout, Form, Input } from 'antd';
 import { IMAGES } from '../../../assets/images';
 import ButtonAccount from '../../buttons/ButtonAccount/ButtonAccount';
 import ButtonAccountGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
@@ -29,7 +29,7 @@ const FormEmail: React.FC = () => {
         const errorMessage = errorResponse.message;
         setFieldError('email', errorMessage);
       } else {
-        console.error('An unexpected error occurred:', error); // Xử lý lỗi không mong muốn
+        console.error('An unexpected error occurred:', error);
       }
     }
   };
@@ -46,19 +46,20 @@ const FormEmail: React.FC = () => {
       <Form className="modal-email-input" form={formEmailUser}>
         <FormInput
           name="email"
-          label="Enter your email"
           error={errors.email}
           onChange={() => setFieldError('email', null)}
           rules={[
             { required: true, message: 'Please input your email!' },
-            { type: 'email', message: 'The input is not valid Email!' }, // Kiểm tra định dạng email
+            { type: 'email', message: 'The input is not valid Email!' },
           ]}
-        />
+        >
+          <Input placeholder="Enter your email" />
+        </FormInput>
       </Form>
       <ButtonAccount
         title="Continue with email"
         className="modal-email-continue"
-        onclick={handleSubmitAccount} // Sử dụng onclick để xử lý sự kiện
+        onclick={handleSubmitAccount}
       />
       <div className="modal-email-or">OR</div>
       <ButtonAccountGoogle
@@ -67,8 +68,12 @@ const FormEmail: React.FC = () => {
         className="modal-email-google"
       />
       <div className="modal-email-content">
-        <span>Already using DockChat?</span>
-        <span>Sign in to an existing workspace</span>
+        <a href="/request-otp">
+          <span>Already using DockChat?</span>
+        </a>
+        <a>
+          <span>Sign in to an existing workspace</span>
+        </a>
       </div>
     </Layout>
   );

@@ -24,4 +24,12 @@ export const AccountUser = {
     });
     return response;
   },
+  requestOtp: async (data: verifyAccount) => {
+    const response = await api.post<verifyAccount>('/request-otp', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response;
+  },
 };

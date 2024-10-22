@@ -6,5 +6,5 @@ export interface IUser {
 
 export interface verifyAccount {
   otp: string;
-  email: string;
+  email: string | undefined;
 }

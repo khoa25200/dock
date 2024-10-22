@@ -7,6 +7,8 @@ import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle'
 import { AccountUser } from '../../../libs/api/auth';
 import { IUser } from '../../../libs/types/auth';
 import { useNavigate } from 'react-router-dom';
+import FormInput from '../FormInput/FormInput';
+import useFormErrors from '../../../libs/hooks/useFormErrors';
 
 const FormSignInPage: React.FC = () => {
   const [status, setStatus] = useState<
@@ -24,9 +26,11 @@ const FormSignInPage: React.FC = () => {
     });
   };
   const navigate = useNavigate();
+  const { clearErrors, errors, setFieldError } = useFormErrors();
   const [formAccountUser] = Form.useForm();
 
   const handleSignIn = async () => {
+    clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
       const response = await AccountUser.loginUser(formData);
@@ -42,20 +46,27 @@ const FormSignInPage: React.FC = () => {
         <h1 className="signin-title-name">Sign In</h1>
       </div>
       <Form className="signin-from" form={formAccountUser}>
-        <Form.Item<IUser>
-          className="signin-from-email"
+        <FormInput
           name="email"
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          className="signin-from-email"
+          error={errors.email}
+          onChange={() => setFieldError('email', null)}
+          rules={[
+            { required: true, message: 'Please input your email!' },
+            { type: 'email', message: 'The input is not valid Email!' },
+          ]}
         >
-          <Input placeholder="Enter Username" />
-        </Form.Item>
-        <Form.Item<IUser>
-          className="signin-from-password"
+          <Input placeholder="Enter your email" />
+        </FormInput>
+        <FormInput
           name="password"
+          className="signin-from-password"
+          error={errors.email}
+          onChange={() => setFieldError('email', null)}
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />
-        </Form.Item>
+        </FormInput>
       </Form>
       <Checkbox className="signin-checkbox">
         I accept the Terms and Conditions.
@@ -70,12 +81,15 @@ const FormSignInPage: React.FC = () => {
         <div className="signin-button-or">OR</div>
         <SignUpGoogle
           className="signin-button-google"
-          title="Continue with Google"
+          title="Sign In with OTP"
+          href="/sign-in-otp"
         />
       </div>
       <div className="signin-content">
         <span>Already using DockChat?</span>
-        <span>Sign in to an existing workspace</span>
+        <a href="/signup">
+          <span>Sign up account</span>
+        </a>
       </div>
     </Layout>
   );

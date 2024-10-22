@@ -1,52 +1,34 @@
 import './FormAuth.less';
 import './FormAuth.media.less';
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Flex, Input, Layout, Form } from 'antd';
+import { Input, Layout, Form } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
 import { verifyAccount } from '../../../libs/types/auth';
 import { AccountUser } from '../../../libs/api/auth';
-
-type OTPProps = {
-  onChange: (text: string) => void;
-  otp?: string;
-};
+import FormInput from '../FormInput/FormInput';
+import useFormErrors from '../../../libs/hooks/useFormErrors';
 
 const FormAuthPage: React.FC = () => {
   const { email } = useParams();
   const navigate = useNavigate();
-
-  const [otp, setOtp] = useState<string>('');
-  const [formAccountUser] = Form.useForm();
-
-  const onChange: OTPProps['onChange'] = (text) => {
-    if (!text) {
-      console.error('Please input your OTP!');
-    } else {
-      setOtp(text);
-    }
-  };
-
-  const sharedProps: OTPProps = {
-    onChange,
-  };
+  const { clearErrors, errors, setFieldError } = useFormErrors();
+  const [formAccountUser] = Form.useForm<verifyAccount>();
 
   const handleVerifyOTP = async () => {
-    if (!email || !otp) {
-      await formAccountUser.validateFields();
-    } else {
-      const VerifyEmail: verifyAccount = {
-        otp: otp,
+    clearErrors();
+    const form = formAccountUser.validateFields();
+    if (email) {
+      const VerifyEmail = {
         email: email,
+        otp: (await form).otp,
       };
       try {
         const response = await AccountUser.verifyEmail(VerifyEmail);
         if (response) {
           navigate(`/signin`);
         }
-      } catch (error) {
-        console.error('Error during sign up:', error);
-      }
+      } catch (error) {}
     }
   };
 
@@ -58,12 +40,14 @@ const FormAuthPage: React.FC = () => {
         <strong>{email ? email : 'namework@gmail.com'}</strong>
       </p>
       <Form className="auth-from" form={formAccountUser}>
-        <Form.Item
+        <FormInput
           name="otp"
+          error={errors.error}
+          onChange={() => setFieldError('email', null)}
           rules={[{ required: true, message: 'Please input your OTP!' }]}
         >
-          <Input.OTP formatter={(str) => str.toUpperCase()} {...sharedProps} />
-        </Form.Item>
+          <Input.OTP formatter={(str) => str.toUpperCase()} />
+        </FormInput>
       </Form>
       <VerifyButton
         className="auth-button"

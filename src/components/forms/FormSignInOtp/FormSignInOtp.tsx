@@ -19,16 +19,18 @@ const FormSignInOtp: React.FC = () => {
 
   const handleRequestOTP = async () => {
     setIsLoginOtp((isLoginOtp) => !isLoginOtp);
-    clearErrors();
-    try {
-      const formData = await formEmailUser.validateFields();
-      if (response) {
-      }
-    } catch (error) {
-      console.error('Error during sign up:', error);
-    }
+    // clearErrors();
+    // try {
+    //   const formData = await formEmailUser.validateFields();
+    //   // const response = await AccountUser.requestOtp(formData);
+    //   // if (response) {
+    //   isLoginWithOtp = false;
+    //   // }
+    // } catch (error) {
+    //   console.error('Error during sign up:', error);
+    // }
 
-    formEmailUser.resetFields();
+    // formEmailUser.resetFields();
   };
 
   const handleSignInWithOTP = async () => {
