@@ -1,30 +1,32 @@
 // src/FormInput.tsx
-import React from 'react';
-import { Form, Input } from 'antd';
+import React, { ReactNode } from 'react';
+import { Form } from 'antd';
 
 interface FormInputProps {
   name: string;
-  label?: string;
   error: string | null;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   rules?: any[];
+  className?: string;
+  children: ReactNode;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
   name,
-  label,
-  onChange,
   error,
   rules,
+  className,
+  children,
 }) => {
   return (
     <Form.Item
       name={name}
       rules={rules}
       help={error}
+      className={className}
       validateStatus={error ? 'error' : undefined}
     >
-      <Input onChange={onChange} placeholder={label} />
+      {children}
     </Form.Item>
   );
 };

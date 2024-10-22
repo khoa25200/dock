@@ -1,0 +1,111 @@
+.signIn--otp {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: transparent;
+  justify-content: center;
+  margin-left: 60px;
+
+  .signIn--title {
+    min-width: 240px;
+    width: 400px;
+    margin: 0 0 20px;
+    .signIn--title-name {
+      font-size: #font[font-size-xxxl];
+      color: #color[white-color];
+      font-weight: #font-weight[font-weight-bold];
+    }
+  }
+
+  .signIn--from {
+    width: 400px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    .signIn-from-email {
+      input {
+        padding: 12px 16px;
+        width: 100%;
+        background-color: transparent;
+        color: #color[white-color];
+        border: none;
+        font-size: #font[font-size-small];
+        border: 1px solid #color[white-color];
+        background-color: transparent;
+        border-radius: 20px;
+
+        &:focus-visible {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: #color[white-color];
+        }
+
+        &:focus-within,
+        &:hover {
+          background-color: transparent;
+          border-color: #color[white-color];
+        }
+      }
+    }
+    .ant-otp {
+      .ant-input {
+        padding: 16px;
+        margin-left: 2px;
+        width: 100%;
+        border: 1px solid #color[white-color];
+        background-color: transparent;
+        color: #color[white-color];
+        font-size: #font[font-size-small];
+        font-weight: #font-weight[font-weight-bold];
+
+        &:focus-visible {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: #color[white-color];
+        }
+      }
+    }
+    .ant-form-item-explain-error {
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  .sign--in-checkbox {
+    width: 400px;
+    color: #color[white-color];
+    font-size: #font[font-size-light];
+    padding: 6px;
+    margin: 10px 0;
+
+    .ant-checkbox-inner {
+      border-color: #color[white-color];
+    }
+  }
+
+  .sign--in-button {
+    width: 400px;
+    height: 40px;
+    span {
+      color: #color[blue-color];
+    }
+  }
+
+  .sign--in-notice {
+    margin-top: 18px;
+    text-align: center;
+    font-size: #font[font-size-14];
+    color: #color[white-color];
+
+    strong:hover {
+      color: #color[black-color];
+      cursor: pointer;
+    }
+  }
+}

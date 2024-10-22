@@ -10,7 +10,7 @@ import { AccountUser } from '../../../libs/api/auth';
 
 const FormSignUpPage: React.FC = () => {
   const navigate = useNavigate();
-  const [formAccountUser] = Form.useForm();
+  const [formAccountUser] = Form.useForm<IUser>();
 
   const handleSubmitAccount = async () => {
     try {
@@ -53,7 +53,7 @@ const FormSignUpPage: React.FC = () => {
           <Input placeholder="Enter Email" />
         </Form.Item>
         <Form.Item<IUser>
-          className="signup-from-password"
+          className="signUp-from-password"
           name="password"
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
@@ -77,7 +77,9 @@ const FormSignUpPage: React.FC = () => {
       </div>
       <div className="signUp-content">
         <span>Already using DockChat?</span>
-        <span>Sign in to an existing workspace</span>
+        <a href="/signin">
+          <span>Sign in to an existing workspace</span>
+        </a>
       </div>
     </Layout>
   );

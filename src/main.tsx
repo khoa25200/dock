@@ -17,6 +17,7 @@ import AuthPage from './pages/account/AuthPage/AuthPage.tsx';
 import ChatPage from './pages/chat/ChatPage.tsx';
 import { Provider } from 'react-redux';
 import store from './libs/redux/index.ts';
+import SignInOtpPage from './pages/account/SignInOtpPage/SignInOtpPage.tsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path={ROUTES.SIGNUP} element={<SignUpPage />} />
       <Route path={ROUTES.SIGNIN} element={<SignInPage />} />
       <Route path={ROUTES.AUTH} element={<AuthPage />} />
+      <Route path={ROUTES.SIGNIN_OTP} element={<SignInOtpPage />} />
       <Route path={ROUTES.CHAT} element={<ChatPage />} />
     </>
   )
