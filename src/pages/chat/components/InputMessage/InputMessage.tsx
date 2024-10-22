@@ -101,7 +101,11 @@ function InputMessage({
 
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
     console.log(e);
-    handleSendMessage();
+    if (e.clipboardData.files.length) {
+      const fileObject = e.clipboardData.files[0];
+      console.log(fileObject);
+      setImage(URL.createObjectURL(fileObject));
+    }
   };
 
   useEffect(() => {
