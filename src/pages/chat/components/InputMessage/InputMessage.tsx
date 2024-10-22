@@ -99,6 +99,11 @@ function InputMessage({
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    console.log(e);
+    handleSendMessage();
+  };
+
   useEffect(() => {
     if (reply) {
       setReplyText(reply);
@@ -193,6 +198,7 @@ function InputMessage({
           onChange={(e) => setText(e.target.value)}
           onKeyPress={handleKeyPress}
           value={text}
+          onPaste={handlePaste}
         />
       </div>
 
