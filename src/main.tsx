@@ -19,18 +19,26 @@ import { Provider } from 'react-redux';
 import store from './libs/redux/index.ts';
 import { Suspense } from 'react';
 import Loading from './components/loadings/Loading.tsx';
-
+import SignInOtpPage from './pages/account/SignInOtpPage/SignInOtpPage.tsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Suspense fallback={<Loading isLoading={true}/>}><HomePage /></Suspense>} />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<Loading isLoading={true} />}>
+            <HomePage />
+          </Suspense>
+        }
+      />
       <Route path={ROUTES.HOMEPAGE} element={<HomePage />} />
       <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
       <Route path={ROUTES.ABOUT} element={<AboutPage />} />
-
       <Route path={ROUTES.SIGNUP} element={<SignUpPage />} />
       <Route path={ROUTES.SIGNIN} element={<SignInPage />} />
-      <Route path={ROUTES.AUTH} element={<AuthPage />} />
+      <Route path={ROUTES.VERIFY} element={<AuthPage />} />
+
+      <Route path={ROUTES.SIGNIN_OTP} element={<SignInOtpPage />} />
       <Route path={ROUTES.CHAT} element={<ChatPage />} />
     </>
   )

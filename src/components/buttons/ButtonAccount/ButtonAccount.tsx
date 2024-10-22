@@ -1,33 +1,21 @@
-import './ButtonAccount.less'
-
+import { ReactEventHandler } from 'react';
+import './ButtonAccount.less';
 import { Button } from 'antd';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 interface ButtonProps {
   title: string;
   className?: string;
-  navigation?: string
-  onClick?: () => void;
+  onclick?: ReactEventHandler;
 }
 
-const ButtonAccount: React.FC<ButtonProps> = ({className, title, navigation, onClick}) => {
-
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (navigation) {
-      navigate(navigation);
-    }
-    if (onClick) {
-      onClick();
-    }
-  };
-
+const ButtonAccount: React.FC<ButtonProps> = ({
+  className,
+  title,
+  onclick,
+}) => {
   return (
-    <Button 
-      className={`button-account ${className}`}
-      onClick={handleClick}
-    >
-        {title}
+    <Button className={`button-account ${className}`} onClick={onclick}>
+      {title}
     </Button>
   );
 };

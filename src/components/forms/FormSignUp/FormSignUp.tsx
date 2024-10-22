@@ -1,63 +1,85 @@
-import "./FormSignUp.less";
-import "./FormSignUp.media.less";
-import React, { useState, useEffect } from "react";
-import { Checkbox, Form, Input, Layout } from "antd";
-import SignUpButton from "../../buttons/ButtonAccount/ButtonAccount";
-import SignUpGoogle from "../../buttons/ButtonAccountGoogle/ButtonAccountGoogle";
-import Loading from "../../loadings/Loading";
-
-type FieldType = {
-  fullname?: string;
-  email?: string;
-  password?: string;
-};
+import './FormSignUp.less';
+import './FormSignUp.media.less';
+import React from 'react';
+import { Checkbox, Form, Input, Layout } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
+import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
+import { IUser } from '../../../libs/types/auth';
+import { AccountUser } from '../../../libs/api/auth';
 
 const FormSignUpPage: React.FC = () => {
+  const navigate = useNavigate();
+  const [formAccountUser] = Form.useForm<IUser>();
+
+  const handleSubmitAccount = async () => {
+    try {
+      const formData = await formAccountUser.validateFields();
+      const response = await AccountUser.registerUser(formData);
+      if (response) {
+        navigate(`/auth/${formData.email}`);
+      }
+      formAccountUser.resetFields();
+    } catch (error) {}
+  };
+
   return (
-    <Layout className="signup">
-      <div className="signup-title">
-        <h1 className="signup-title-name">Sign Up</h1>
+    <Layout className="signUp">
+      <div className="signUp-title">
+        <h1 className="signUp-title-name">Sign Up</h1>
       </div>
-      <Form className="signup-from">
-        <Form.Item<FieldType>
-          className="signup-from-name"
-          name="fullname"
-          rules={[{ required: true, message: "Please input your fullname!" }]}
+      <Form className="signUp-from" form={formAccountUser}>
+        <Form.Item<IUser>
+          className="signUp-from-name"
+          name="username"
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input placeholder="Enter FullName" />
+          <Input placeholder="Enter Username" />
         </Form.Item>
-        <Form.Item<FieldType>
-          className="signup-from-email"
+        <Form.Item<IUser>
+          className="signUp-from-email"
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[
+            {
+              required: true,
+              message: 'Please input your email!',
+            },
+            {
+              type: 'email',
+              message: 'The input is not valid email!',
+            },
+          ]}
         >
           <Input placeholder="Enter Email" />
         </Form.Item>
-        <Form.Item<FieldType>
-          className="signup-from-password"
+        <Form.Item<IUser>
+          className="signUp-from-password"
           name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />
         </Form.Item>
       </Form>
-      <Checkbox className="signup-checkbox">
+      <Checkbox className="signUp-checkbox">
         I accept the Terms and Conditions.
       </Checkbox>
-      <div className="signup-button">
+      <div className="signUp-button">
         <SignUpButton
-          className="signup-button-account"
+          className="signUp-button-account"
           title="Sign Up Account"
+          onclick={handleSubmitAccount}
         />
-        <div className="signup-button-or">OR</div>
+        <div className="signUp-button-or">OR</div>
         <SignUpGoogle
-          className="signup-button-google"
+          className="signUp-button-google"
           title="Continue with Google"
         />
       </div>
-      <div className="signup-content">
+      <div className="signUp-content">
         <span>Already using DockChat?</span>
-        <span>Sign in to an existing workspace</span>
+        <a href="/signin">
+          <span>Sign in to an existing workspace</span>
+        </a>
       </div>
     </Layout>
   );
