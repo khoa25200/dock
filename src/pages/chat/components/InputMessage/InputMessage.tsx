@@ -99,6 +99,15 @@ function InputMessage({
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    console.log(e);
+    if (e.clipboardData.files.length) {
+      const fileObject = e.clipboardData.files[0];
+      console.log(fileObject);
+      setImage(URL.createObjectURL(fileObject));
+    }
+  };
+
   useEffect(() => {
     if (reply) {
       setReplyText(reply);
@@ -193,6 +202,7 @@ function InputMessage({
           onChange={(e) => setText(e.target.value)}
           onKeyPress={handleKeyPress}
           value={text}
+          onPaste={handlePaste}
         />
       </div>
 
