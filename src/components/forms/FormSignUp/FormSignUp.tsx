@@ -60,22 +60,22 @@ const FormSignUpPage: React.FC = () => {
           <Input.Password placeholder="Enter Password" />
         </Form.Item>
       </Form>
-      <Checkbox className="signup-checkbox">
+      <Checkbox className="signUp-checkbox">
         I accept the Terms and Conditions.
       </Checkbox>
-      <div className="signup-button">
+      <div className="signUp-button">
         <SignUpButton
-          className="signup-button-account"
+          className="signUp-button-account"
           title="Sign Up Account"
           onclick={handleSubmitAccount}
         />
-        <div className="signup-button-or">OR</div>
+        <div className="signUp-button-or">OR</div>
         <SignUpGoogle
-          className="signup-button-google"
+          className="signUp-button-google"
           title="Continue with Google"
         />
       </div>
-      <div className="signup-content">
+      <div className="signUp-content">
         <span>Already using DockChat?</span>
         <a href="/signin">
           <span>Sign in to an existing workspace</span>
@@ -84,4 +84,5 @@ const FormSignUpPage: React.FC = () => {
     </Layout>
   );
 };
+
 export default FormSignUpPage;

@@ -33,12 +33,15 @@ const FormSignInPage: React.FC = () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
+
       const response = await AccountUser.loginUser(formData);
       if (response) {
         navigate('/chat');
       }
-      formAccountUser.resetFields();
-    } catch (error) {}
+    } catch (error) {
+      console.error('Error during sign up:', error);
+    }
+    formAccountUser.resetFields();
   };
   return (
     <Layout className="signin">
@@ -75,8 +78,7 @@ const FormSignInPage: React.FC = () => {
         <SignUpButton
           className="signin-button-account"
           title="Sign In"
-          onclick={handleClick}
-          // navigation='/chat'
+          onclick={handleSignIn}
         />
         <div className="signin-button-or">OR</div>
         <SignUpGoogle
@@ -94,4 +96,5 @@ const FormSignInPage: React.FC = () => {
     </Layout>
   );
 };
+
 export default FormSignInPage;
