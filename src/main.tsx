@@ -17,7 +17,6 @@ import AboutPage from './pages/about/about.tsx';
 // Lazy load the pages
 const HomePage = lazy(() => import('./pages/home/HomePage.tsx'));
 const ProfilePage = lazy(() => import('./pages/profile/ProfilePage.tsx'));
-// const AboutPage = lazy(() => import('./pages/about/about.tsx'));
 const SignUpPage = lazy(() => import('./pages/account/SignUpPage/SignUpPage.tsx'));
 const SignInPage = lazy(() => import('./pages/account/SignInPage/SignInPage.tsx'));
 const AuthPage = lazy(() => import('./pages/account/AuthPage/AuthPage.tsx'));
