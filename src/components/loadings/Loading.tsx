@@ -7,8 +7,6 @@ type TLoadingProps = {
     isLoading: boolean
 }
 
-const content = <div />;
-
 const Loading:React.FC<TLoadingProps> = ({isLoading}) => {
     const [loading, setLoading] = useState(isLoading);
 
@@ -28,9 +26,7 @@ const Loading:React.FC<TLoadingProps> = ({isLoading}) => {
                 size="large"
                 spinning={loading} 
                 tip="Data Loading ..." 
-            >
-                {content}
-            </Spin>
+            />
         </Flex>
     )
 }
