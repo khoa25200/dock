@@ -1,12 +1,16 @@
-import './FormSignUp.less';
-import './FormSignUp.media.less';
-import React from 'react';
-import { Checkbox, Form, Input, Layout } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
-import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
-import { IUser } from '../../../libs/types/auth';
-import { AccountUser } from '../../../libs/api/auth';
+import "./FormSignUp.less";
+import "./FormSignUp.media.less";
+import React, { useState, useEffect } from "react";
+import { Checkbox, Form, Input, Layout } from "antd";
+import SignUpButton from "../../buttons/ButtonAccount/ButtonAccount";
+import SignUpGoogle from "../../buttons/ButtonAccountGoogle/ButtonAccountGoogle";
+import Loading from "../../loadings/Loading";
+
+type FieldType = {
+  fullname?: string;
+  email?: string;
+  password?: string;
+};
 
 const FormSignUpPage: React.FC = () => {
   const navigate = useNavigate();
