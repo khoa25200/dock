@@ -1,0 +1,79 @@
+.setting {
+    gap: 8px;
+    width: 258px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    .setting-user {
+        width: 100%;
+        display: flex;
+        padding: 0 8px;
+        border: 1px solid;
+        border-radius: 8px;
+        gap: 14px;
+
+        .setting-user-avatar {
+            display: flex;
+            align-items: center;
+            width: 40px;
+            
+            img {
+                height: 40px;
+                border-radius: 4px;
+            }
+        }
+
+        .setting-user-infor {
+            display: flex;
+            flex-direction: column;
+
+            .user-infor-name {
+                flex: 1;
+                color: @black-color;
+                font-size: @font-size-small;
+                font-weight: @font-weight-bold;
+            }
+
+            .user-infor-status {
+                flex: 1;
+                gap: 4px;
+                display: flex;
+
+                .user-infor-status-btn {
+                    
+                    .ant-badge-status-success {
+                        width: 8px;
+                        height: 8px;
+                    }
+                }
+
+                p {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    font-size: @font-size-light;
+                    font-weight: @font-weight-normal;
+                }
+            }
+        }
+    }
+
+    .setting-action {
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+
+        .setting-action-items {
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: @font-size-small;
+            font-weight: @font-weight-normal;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #ededed;
+            }
+        }
+    }
+}

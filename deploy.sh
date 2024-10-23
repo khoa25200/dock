@@ -4,7 +4,7 @@ docker build -t khoa25200/dock:latest .
 
 docker push khoa25200/dock:latest
 
-ssh -i ~/.ssh/class3.pem ec2-user@13.229.93.83
+ssh -i ~/.ssh/class3.pem ec2-user@47.129.201.22
 docker pull khoa25200/dock:latest
 docker stop dock-container
 docker rm dock-container 

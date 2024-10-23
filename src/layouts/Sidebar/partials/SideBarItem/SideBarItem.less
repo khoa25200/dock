@@ -1,0 +1,98 @@
+.side-sub {
+    left: 0;
+    top: 100%;
+    width: 270px;
+    height: auto;
+    z-index: 100;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid;
+    position: absolute;
+    border-radius: 8px;
+    flex-direction: column;
+    background-color: #color[white-color];
+    
+    .side-sub-workspase {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .side-sub-workspase-item {
+            gap: 12px;
+            display: flex;
+            padding: 4px 12px;
+            align-items: center;
+
+            img {
+                height: 32px;
+                border: 1px solid;
+                border-radius: 4px;
+            }
+
+            p {
+                width: 100%;
+                text-align: start;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: #font[font-size-14];
+                font-weight: #font-weight[font-weight-bold];
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: #EEEDED;
+            }
+
+        }
+        
+        &:active{
+            scale: (1) !important;
+        }
+    }
+
+    .side-sub-workspase-item.active {
+        background-color: #EEEDED;
+    }
+
+    .side-sub-add {
+        gap: 12px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 4px 12px 8px;
+
+        .side-sub-add-icon {
+            border: 1px solid;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+
+            img {
+                width: 16px;
+            }
+        }
+
+        .side-sub-add-text {
+            width: 128px;
+            text-align: left;
+            font-size: #font[font-size-light];
+            font-weight: #font-weight[font-weight-normal];
+        }
+
+        &:hover {
+            cursor: pointer;
+            background-color: #EEEDED;
+
+            .side-sub-add-text {
+                font-weight: #font-weight[font-weight-bold];
+            }
+        }
+    }
+
+    &:active {
+        scale: 1 !important;
+    }
+}

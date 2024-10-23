@@ -14,7 +14,7 @@
         position: absolute;
         background-color: #color[blue-color];
         clip-path: polygon(0 0, 100% 0, 100% 120%, 0 28%);
-    }
+    }  
 
     .custom-layout-content {
         top: 0;
@@ -25,15 +25,27 @@
         display: flex;
         padding: 0 12%;
         position: absolute;
-        
 
+        .custom-layout-back {
+            top: 6%;
+            position: absolute;
+            
+            &:hover {
+                cursor: pointer;
+            }
+    
+            &:hover > .icon {
+                filter: invert(48%) sepia(99%) saturate(469%) hue-rotate(170deg) brightness(90%) contrast(89%);
+            }
+        }  
+        
         .layout-content-img {
             flex: 1;
             display: flex;
             align-items: center;
 
             img {
-                width: 80%;
+                width: 90%;
                 z-index: 100;
             }
         }
