@@ -1,39 +1,49 @@
-import { IUser, verifyAccount } from '../types/auth';
+import { IUser, ToastMessage, verifyAccount } from '../types/auth';
 import api from './api';
-
+import { BE_ENDPOINT } from '../../configs/constants/backend.const';
 export const AccountUser = {
   // ACCOUNT FULL OPTIONS
   registerUser: async (data: IUser) => {
-    const response = await api.post<IUser>('/auth/sign-up', data);
+    const response = await api.post<ToastMessage>(BE_ENDPOINT.SignUp, data);
     return response.data;
   },
   verifyEmail: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>('/auth/verify-email', data);
+    const response = await api.post<ToastMessage>(
+      BE_ENDPOINT.VerifyByEmail,
+      data
+    );
     return response.data;
   },
   loginUser: async (data: IUser) => {
-    const response = await api.post<IUser>('/auth/sign-in', data);
+    const response = await api.post<ToastMessage>(BE_ENDPOINT.Login, data);
     return response.data;
   },
   // ACCOUNT WITH EMAIL
   registerWithEmail: async (data: IUser) => {
-    const response = await api.post<IUser>('/auth/sign-up-email', data, {
+    const response = await api.post<IUser>(BE_ENDPOINT.SignUpWithEmail, data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-    return response;
+    return response.data;
   },
   requestOtp: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>('/auth/request-otp', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    return response;
+    const response = await api.post<verifyAccount>(
+      BE_ENDPOINT.requestOtp,
+      data,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    return response.data;
   },
   loginUserWithOTP: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>('/auth/sign-in-email', data);
-    return response;
+    const response = await api.post<verifyAccount>(
+      BE_ENDPOINT.loginUserWithOTP,
+      data
+    );
+    return response.data;
   },
 };

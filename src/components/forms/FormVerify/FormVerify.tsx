@@ -1,19 +1,23 @@
-import './FormAuth.less';
-import './FormAuth.media.less';
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import './FormVerify.less';
+import './FormVerify.media.less';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Input, Layout, Form } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
-import { verifyAccount } from '../../../libs/types/auth';
+import { ToastMessage, verifyAccount } from '../../../libs/types/auth';
 import { AccountUser } from '../../../libs/api/auth';
 import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
+import useQuery from '../../../libs/hooks/useQuery';
+import CustomAlert from '../../notifis/Alert';
 
-const FormAuthPage: React.FC = () => {
-  const { email } = useParams();
+const FormVerifyPage: React.FC = () => {
+  const query = useQuery();
+  const email = query.get('email');
   const navigate = useNavigate();
   const { clearErrors, errors, setFieldError } = useFormErrors();
   const [formAccountUser] = Form.useForm<verifyAccount>();
+  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
 
   const handleVerifyOTP = async () => {
     clearErrors();
@@ -26,14 +30,35 @@ const FormAuthPage: React.FC = () => {
       try {
         const response = await AccountUser.verifyEmail(VerifyEmail);
         if (response) {
-          navigate(`/signin`);
+          setAlertMessage({
+            status: response.status,
+            message: response.message,
+          });
+          setTimeout(() => {
+            navigate(`/signin`);
+          }, 5000);
         }
-      } catch (error) {}
+        formAccountUser.resetFields();
+      } catch (error: unknown) {
+        if (error instanceof Error && (error as any).response) {
+          const errorResponse = (error as any).response.data;
+          const errorMessage = errorResponse.message;
+          setFieldError('error', errorMessage);
+        } else {
+          console.error('An unexpected error occurred:', error);
+        }
+      }
     }
   };
 
   return (
     <Layout className="auth">
+      {alertMessage && (
+        <CustomAlert
+          status={alertMessage.status === 'success' ? 'success' : 'error'}
+          message={alertMessage.message}
+        />
+      )}
       <h1 className="auth-title">Please check your email</h1>
       <p className="auth-email">
         we’re sending a code to{' '}
@@ -60,4 +85,4 @@ const FormAuthPage: React.FC = () => {
   );
 };
 
-export default FormAuthPage;
+export default FormVerifyPage;

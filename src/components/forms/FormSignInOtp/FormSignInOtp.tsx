@@ -10,10 +10,10 @@ import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
 
 const FormSignInOtp: React.FC = () => {
+  const navigate = useNavigate();
   const [isLoginOtp, setIsLoginOtp] = useState(true);
   const [email, setEmail] = useState<string | undefined>();
   const { clearErrors, errors, setFieldError } = useFormErrors();
-  const navigate = useNavigate();
 
   const [formEmailUser] = Form.useForm<verifyAccount>();
   const [formOtpUser] = Form.useForm<verifyAccount>();
