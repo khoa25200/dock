@@ -83,6 +83,14 @@ const router = createBrowserRouter(
         }
       />
       <Route
+        path={ROUTES.SIGNIN_OTP}
+        element={
+          <Suspense fallback={<Loading isLoading={true} />}>
+            <SignInOtpPage />
+          </Suspense>
+        }
+      />
+      <Route
         path={ROUTES.CHAT}
         element={
           <Suspense fallback={<Loading isLoading={true} />}>
