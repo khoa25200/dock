@@ -4,21 +4,23 @@ import React, { useState, useEffect } from 'react';
 import { Flex, Spin } from 'antd';
 
 type TLoadingProps = {
-    isLoading: boolean
+    isLoading: boolean;
 }
 
-const content = <div />;
-
-const Loading:React.FC<TLoadingProps> = ({isLoading}) => {
+const Loading:React.FC<TLoadingProps> = ({ isLoading }) => {
     const [loading, setLoading] = useState(isLoading);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-          setLoading(false);
-        }, 500);
+        setLoading(isLoading);
     
-        return () => clearTimeout(timer);
-    }, []);
+        if (isLoading) {
+          const timer = setTimeout(() => {
+            setLoading(false);
+          }, 1000);
+    
+          return () => clearTimeout(timer);
+        }
+      }, [isLoading]);
     
     return (
         <Flex gap="middle" vertical>
@@ -28,9 +30,7 @@ const Loading:React.FC<TLoadingProps> = ({isLoading}) => {
                 size="large"
                 spinning={loading} 
                 tip="Data Loading ..." 
-            >
-                {content}
-            </Spin>
+            />
         </Flex>
     )
 }

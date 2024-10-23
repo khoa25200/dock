@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Checkbox, Form, Input, Layout } from "antd";
 import SignUpButton from "../../buttons/ButtonAccount/ButtonAccount";
 import SignUpGoogle from "../../buttons/ButtonAccountGoogle/ButtonAccountGoogle";
-import Loading from "../../loadings/Loading";
 
 type FieldType = {
   fullname?: string;
