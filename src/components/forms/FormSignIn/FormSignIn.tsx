@@ -10,39 +10,34 @@ import { useNavigate } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
 import CustomAlert from '../../notifis/Alert';
+import Loading from '../../loadings/Loading';
 
 const FormSignInPage: React.FC = () => {
   const navigate = useNavigate();
-  const { clearErrors, errors, setFieldError } = useFormErrors();
   const [formAccountUser] = Form.useForm<IUser>();
+  const { clearErrors, errors, setFieldError } = useFormErrors();
+  const [isLoading, setIsLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
   const handleSignIn = async () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
       const response = await AccountUser.loginUser(formData);
+      setIsLoading(true);
       if (response) {
-        setAlertMessage({
-          status: response.status,
-          message: response.message,
-        });
-        setTimeout(() => {
-          navigate('/chat');
-        }, 5000);
+        setAlertMessage({ status: response.status, message: response.message });
+        setTimeout(() => navigate('/chat'), 3000);
+        formAccountUser.resetFields();
       }
-      formAccountUser.resetFields();
-    } catch (error: unknown) {
-      if (error instanceof Error && (error as any).response) {
-        const errorResponse = (error as any).response.data;
-        const errorMessage = errorResponse.message;
-        setFieldError('error', errorMessage);
-      } else {
-        console.error('An unexpected error occurred:', error);
-      }
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
     }
   };
   return (
     <Layout className="signin">
+      {isLoading && <Loading isLoading={isLoading} />}
       <div className="signin-title">
         <h1 className="signin-title-name">Sign In</h1>
       </div>
