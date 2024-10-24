@@ -6,22 +6,22 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
+
 // import ContextProvider from './libs/context/index.tsx';
+import { ROUTES } from './configs/constants/routes.ts';
 import { Provider } from 'react-redux';
 import store from './libs/redux/index.ts';
 import Loading from './components/loadings/Loading.tsx';
-import SignInOtpPage from './pages/account/SignInOtpPage/SignInOtpPage.tsx';
-
-import { ROUTES } from './configs/constants/routes.ts';
+import AboutPage from './pages/about/about.tsx';
 
 // Lazy load the pages
 const HomePage = lazy(() => import('./pages/home/HomePage.tsx'));
 const ProfilePage = lazy(() => import('./pages/profile/ProfilePage.tsx'));
-const AboutPage = lazy(() => import('./pages/about/about.tsx'));
 const SignUpPage = lazy(() => import('./pages/account/SignUpPage/SignUpPage.tsx'));
 const SignInPage = lazy(() => import('./pages/account/SignInPage/SignInPage.tsx'));
 const AuthPage = lazy(() => import('./pages/account/AuthPage/AuthPage.tsx'));
 const ChatPage = lazy(() => import('./pages/chat/ChatPage.tsx'));
+const SignInOtpPage = lazy(() => import('./pages/account/SignInOtpPage/SignInOtpPage.tsx'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -50,13 +50,7 @@ const router = createBrowserRouter(
           </Suspense>
         }
       />
-      <Route
-        path={ROUTES.ABOUT}
-        element={
-          <Suspense fallback={<Loading isLoading={true} />}>
-            <AboutPage />
-          </Suspense>
-        }
+      <Route path={ROUTES.ABOUT} element={<AboutPage />}
       />
       <Route
         path={ROUTES.SIGNUP}

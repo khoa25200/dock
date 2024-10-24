@@ -7,7 +7,7 @@ type TLoadingProps = {
     isLoading: boolean;
 }
 
-const Loading:React.FC<TLoadingProps> = ({ isLoading }) => {
+const Loading:React.FC<TLoadingProps> = ({isLoading}) => {
     const [loading, setLoading] = useState(isLoading);
 
     useEffect(() => {
