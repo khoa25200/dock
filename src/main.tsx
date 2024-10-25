@@ -12,7 +12,6 @@ import { ROUTES } from './configs/constants/routes.ts';
 import { Provider } from 'react-redux';
 import store from './libs/redux/index.ts';
 import Loading from './components/loadings/Loading.tsx';
-import AboutPage from './pages/about/about.tsx';
 
 // Lazy load the pages
 const HomePage = lazy(() => import('./pages/home/HomePage.tsx'));
@@ -27,9 +26,8 @@ const VerifyPage = lazy(
   () => import('./pages/account/VerifyPage/VerifyPage.tsx')
 );
 const ChatPage = lazy(() => import('./pages/chat/ChatPage.tsx'));
-const SignInOtpPage = lazy(
-  () => import('./pages/account/SignInOtpPage/SignInOtpPage.tsx')
-);
+const SignInOtpPage = lazy(() => import('./pages/account/SignInOtpPage/SignInOtpPage.tsx'));
+const AboutPage = lazy(() => import('./pages/about/about.tsx'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -58,7 +56,13 @@ const router = createBrowserRouter(
           </Suspense>
         }
       />
-      <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+      <Route 
+        path={ROUTES.ABOUT} 
+        element={
+          <Suspense fallback={<Loading isLoading={true}/>}>
+            <AboutPage />
+          </Suspense>}
+      />
       <Route
         path={ROUTES.SIGNUP}
         element={
