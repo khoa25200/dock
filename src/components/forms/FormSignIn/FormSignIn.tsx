@@ -10,23 +10,21 @@ import { useNavigate } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
 import CustomAlert from '../../notifis/Alert';
-import Loading from '../../loadings/Loading';
 
 const FormSignInPage: React.FC = () => {
   const navigate = useNavigate();
   const [formAccountUser] = Form.useForm<IUser>();
   const { clearErrors, errors, setFieldError } = useFormErrors();
-  const [isLoading, setIsLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
+
   const handleSignIn = async () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
       const response = await AccountUser.loginUser(formData);
-      setIsLoading(true);
       if (response) {
         setAlertMessage({ status: response.status, message: response.message });
-        setTimeout(() => navigate('/chat'), 3000);
+        setTimeout(() => navigate('/chat'), 2000);
         formAccountUser.resetFields();
       }
     } catch (error: any) {
@@ -37,13 +35,12 @@ const FormSignInPage: React.FC = () => {
   };
   return (
     <Layout className="signin">
-      {isLoading && <Loading isLoading={isLoading} />}
       <div className="signin-title">
         <h1 className="signin-title-name">Sign In</h1>
       </div>
       {alertMessage && (
         <CustomAlert
-          status={alertMessage.status === 'success' ? 'success' : 'error'}
+          status={alertMessage.status}
           message={alertMessage.message}
         />
       )}

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { Checkbox, Form, Input, Layout } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
-import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 import { IUser, ToastMessage } from '../../../libs/types/auth';
 import { AccountUser } from '../../../libs/api/auth';
 import FormInput from '../FormInput/FormInput';
@@ -13,32 +12,28 @@ import CustomAlert from '../../notifis/Alert';
 
 const FormSignUpPage: React.FC = () => {
   const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
   const [formAccountUser] = Form.useForm<IUser>();
   const { clearErrors, errors, setFieldError } = useFormErrors();
-  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
   const handleSubmitAccount = async () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
       const response = await AccountUser.registerUser(formData);
-      if (response) {
+      if (response.status === 'success') {
         setAlertMessage({
           status: response.status,
           message: response.message,
         });
         setTimeout(() => {
           navigate(`/verify?email=${formData.email}`);
-        }, 5000);
+        }, 2500);
       }
       formAccountUser.resetFields();
-    } catch (error: unknown) {
-      if (error instanceof Error && (error as any).response) {
-        const errorResponse = (error as any).response.data;
-        const errorMessage = errorResponse.message;
-        setFieldError('error', errorMessage);
-      } else {
-        console.error('An unexpected error occurred:', error);
-      }
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
     }
   };
 
@@ -90,11 +85,6 @@ const FormSignUpPage: React.FC = () => {
           className="signUp-button-account"
           title="Sign Up Account"
           onclick={handleSubmitAccount}
-        />
-        <div className="signUp-button-or">OR</div>
-        <SignUpGoogle
-          className="signUp-button-google"
-          title="Continue with Google"
         />
       </div>
       <div className="signUp-content">

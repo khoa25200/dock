@@ -20,15 +20,19 @@ export const AccountUser = {
   },
   // ACCOUNT WITH EMAIL
   registerWithEmail: async (data: IUser) => {
-    const response = await api.post<IUser>(BE_ENDPOINT.SignUpWithEmail, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
+    const response = await api.post<ToastMessage>(
+      BE_ENDPOINT.SignUpWithEmail,
+      data,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
     return response.data;
   },
   requestOtp: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>(
+    const response = await api.post<ToastMessage>(
       BE_ENDPOINT.requestOtp,
       data,
       {
@@ -40,7 +44,7 @@ export const AccountUser = {
     return response.data;
   },
   loginUserWithOTP: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>(
+    const response = await api.post<ToastMessage>(
       BE_ENDPOINT.loginUserWithOTP,
       data
     );
