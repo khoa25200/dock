@@ -21,7 +21,7 @@ const FormEmail: React.FC = () => {
       const response = await AccountUser.registerWithEmail(formData);
 
       if (response) {
-        navigate(`/verify/${formData.email}`);
+        navigate(`/verify?email=${formData.email}`);
       }
     } catch (error: unknown) {
       if (error instanceof Error && (error as any).response) {

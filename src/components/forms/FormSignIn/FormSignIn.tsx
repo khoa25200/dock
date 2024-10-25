@@ -1,74 +1,65 @@
 import './FormSignIn.less';
 import './FormSignIn.media.less';
 import React, { useState } from 'react';
-import { Checkbox, Form, Input, Layout, notification } from 'antd';
+import { Checkbox, Form, Input, Layout } from 'antd';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
 import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 import { AccountUser } from '../../../libs/api/auth';
-import { IUser } from '../../../libs/types/auth';
+import { IUser, ToastMessage } from '../../../libs/types/auth';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
+import CustomAlert from '../../notifis/Alert';
+import Loading from '../../loadings/Loading';
 
 const FormSignInPage: React.FC = () => {
-  const [status, setStatus] = useState<
-    'success' | 'info' | 'warning' | 'error'
-  >('info');
-  const [message, setMessage] = useState<string>('Sign In Successful');
-  const [description, setDescription] = useState<string>(
-    'You have successfully signed in!'
-  );
-
-  const handleClick = () => {
-    notification[status]({
-      message: message,
-      description: description,
-    });
-  };
   const navigate = useNavigate();
-  const { clearErrors, errors, setFieldError } = useFormErrors();
   const [formAccountUser] = Form.useForm<IUser>();
-
+  const { clearErrors, errors, setFieldError } = useFormErrors();
+  const [isLoading, setIsLoading] = useState(false);
+  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
   const handleSignIn = async () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
       const response = await AccountUser.loginUser(formData);
+      setIsLoading(true);
       if (response) {
-        navigate('/chat');
+        setAlertMessage({ status: response.status, message: response.message });
+        setTimeout(() => navigate('/chat'), 3000);
+        formAccountUser.resetFields();
       }
-      formAccountUser.resetFields();
-    } catch (error: unknown) {
-      if (error instanceof Error && (error as any).response) {
-        const errorResponse = (error as any).response.data;
-        const errorMessage = errorResponse.message;
-        setFieldError('email', errorMessage);
-      } else {
-        console.error('An unexpected error occurred:', error);
-      }
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
     }
   };
   return (
     <Layout className="signin">
+      {isLoading && <Loading isLoading={isLoading} />}
       <div className="signin-title">
         <h1 className="signin-title-name">Sign In</h1>
       </div>
+      {alertMessage && (
+        <CustomAlert
+          status={alertMessage.status === 'success' ? 'success' : 'error'}
+          message={alertMessage.message}
+        />
+      )}
       <Form className="signin-from" form={formAccountUser}>
         <FormInput
-          name="email"
+          name="username"
           className="signin-from-email"
-          error={errors.email}
-          rules={[
-            { required: true, message: 'Please input your email!' },
-            { type: 'email', message: 'The input is not valid Email!' },
-          ]}
+          error={errors.error}
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input placeholder="Enter your email" />
+          <Input placeholder="Enter your username" />
         </FormInput>
         <FormInput
           name="password"
           className="signin-from-password"
-          error={errors.password}
+          error={errors.error}
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />
