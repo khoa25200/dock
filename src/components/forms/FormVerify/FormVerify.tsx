@@ -39,14 +39,10 @@ const FormVerifyPage: React.FC = () => {
           }, 5000);
         }
         formAccountUser.resetFields();
-      } catch (error: unknown) {
-        if (error instanceof Error && (error as any).response) {
-          const errorResponse = (error as any).response.data;
-          const errorMessage = errorResponse.message;
-          setFieldError('error', errorMessage);
-        } else {
-          console.error('An unexpected error occurred:', error);
-        }
+      } catch (error: any) {
+        const errorMessage =
+          error?.response?.data?.message || 'An unexpected error occurred';
+        setFieldError('error', errorMessage);
       }
     }
   };

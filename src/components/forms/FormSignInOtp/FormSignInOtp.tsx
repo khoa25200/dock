@@ -4,16 +4,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input, Layout, Form } from 'antd';
 import VerifyButton from '../../buttons/ButtonAccount/ButtonAccount';
-import { verifyAccount } from '../../../libs/types/auth';
+import { ToastMessage, verifyAccount } from '../../../libs/types/auth';
 import { AccountUser } from '../../../libs/api/auth';
 import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
+import CustomAlert from '../../notifis/Alert';
 
 const FormSignInOtp: React.FC = () => {
   const navigate = useNavigate();
   const [isLoginOtp, setIsLoginOtp] = useState(true);
   const [email, setEmail] = useState<string | undefined>();
+
   const { clearErrors, errors, setFieldError } = useFormErrors();
+  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
 
   const [formEmailUser] = Form.useForm<verifyAccount>();
   const [formOtpUser] = Form.useForm<verifyAccount>();
@@ -22,20 +25,16 @@ const FormSignInOtp: React.FC = () => {
     clearErrors();
     try {
       const formData = await formEmailUser.validateFields();
-      setEmail(formData.email);
       const response = await AccountUser.requestOtp(formData);
+      setEmail(formData.email);
       if (response) {
+        setAlertMessage({ status: response.status, message: response.message });
         setIsLoginOtp((isLoginOtp) => !isLoginOtp);
       }
-      formEmailUser.resetFields();
-    } catch (error: unknown) {
-      if (error instanceof Error && (error as any).response) {
-        const errorResponse = (error as any).response.data;
-        const errorMessage = errorResponse.message;
-        setFieldError('email', errorMessage);
-      } else {
-        console.error('An unexpected error occurred:', error);
-      }
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
     }
   };
 
@@ -45,20 +44,16 @@ const FormSignInOtp: React.FC = () => {
       const formData = await formEmailUser.validateFields();
       const response = await AccountUser.loginUserWithOTP(formData);
       if (response) {
-        navigate('/chat');
+        setAlertMessage({ status: response.status, message: response.message });
+        setTimeout(() => navigate('/chat'), 2000);
       }
       formEmailUser.resetFields();
-    } catch (error: unknown) {
-      if (error instanceof Error && (error as any).response) {
-        const errorResponse = (error as any).response.data;
-        const errorMessage = errorResponse.message;
-        setFieldError('email', errorMessage);
-      } else {
-        console.error('An unexpected error occurred:', error);
-      }
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
     }
   };
-  console.log(email);
 
   return (
     <Layout className="signIn--otp">
@@ -67,10 +62,16 @@ const FormSignInOtp: React.FC = () => {
       </div>
       {isLoginOtp ? (
         <>
+          {alertMessage && (
+            <CustomAlert
+              status={alertMessage.status}
+              message={alertMessage.message}
+            />
+          )}
           <Form className="signIn--from" form={formEmailUser}>
             <FormInput
               name="email"
-              error={errors.email}
+              error={errors.errors}
               className="signIn-from-email"
               rules={[
                 { required: true, message: 'Please input your email!' },
@@ -88,18 +89,24 @@ const FormSignInOtp: React.FC = () => {
         </>
       ) : (
         <>
+          {alertMessage && (
+            <CustomAlert
+              status={alertMessage.status}
+              message={alertMessage.message}
+            />
+          )}
           <Form className="signIn--from" form={formOtpUser}>
             <FormInput
               name="email"
-              error={errors.email}
+              error={errors.errors}
               className="signIn-from-email"
-              onChange={() => setFieldError('email', null)}
+              onChange={() => setFieldError('errors', null)}
               rules={[
                 { required: true, message: 'Please input your email!' },
                 { type: 'email', message: 'The input is not valid Email!' },
               ]}
             >
-              <Input type="text" value="Nguyễn Long Duy" />
+              <Input placeholder="Please input your Email!" value={email} />
             </FormInput>
             <FormInput
               name="otp"
