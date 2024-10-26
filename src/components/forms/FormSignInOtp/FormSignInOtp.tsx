@@ -14,6 +14,7 @@ const FormSignInOtp: React.FC = () => {
   const navigate = useNavigate();
   const [isLoginOtp, setIsLoginOtp] = useState(true);
   const [email, setEmail] = useState<string | undefined>();
+
   const { clearErrors, errors, setFieldError } = useFormErrors();
   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
 
@@ -24,13 +25,12 @@ const FormSignInOtp: React.FC = () => {
     clearErrors();
     try {
       const formData = await formEmailUser.validateFields();
-      setEmail(formData.email);
       const response = await AccountUser.requestOtp(formData);
+      setEmail(formData.email);
       if (response) {
         setAlertMessage({ status: response.status, message: response.message });
         setIsLoginOtp((isLoginOtp) => !isLoginOtp);
       }
-      formEmailUser.resetFields();
     } catch (error: any) {
       const errorMessage =
         error?.response?.data?.message || 'An unexpected error occurred';
@@ -45,7 +45,7 @@ const FormSignInOtp: React.FC = () => {
       const response = await AccountUser.loginUserWithOTP(formData);
       if (response) {
         setAlertMessage({ status: response.status, message: response.message });
-        navigate('/chat');
+        setTimeout(() => navigate('/chat'), 2000);
       }
       formEmailUser.resetFields();
     } catch (error: any) {
@@ -106,7 +106,7 @@ const FormSignInOtp: React.FC = () => {
                 { type: 'email', message: 'The input is not valid Email!' },
               ]}
             >
-              <Input value={email} placeholder="duy123" />
+              <Input placeholder="Please input your Email!" value={email} />
             </FormInput>
             <FormInput
               name="otp"

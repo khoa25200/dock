@@ -18,9 +18,9 @@ const FormInput: React.FC<FormInputProps> = ({
   className,
   children,
 }) => {
-  const noWhitespaceValidator = (rule: any, value: string) => {
+  const noWhitespaceValidator = (rule: string, value: string) => {
     if (value && value.startsWith(' ')) {
-      return Promise.reject('Không được có khoảng trắng ở đầu chuỗi!');
+      return Promise.reject('Vui Lòng Không Nhập Khoảng Trắng!');
     }
     return Promise.resolve();
   };
