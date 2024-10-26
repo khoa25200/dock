@@ -28,6 +28,7 @@ const VerifyPage = lazy(
 const ChatPage = lazy(() => import('./pages/chat/ChatPage.tsx'));
 const SignInOtpPage = lazy(() => import('./pages/account/SignInOtpPage/SignInOtpPage.tsx'));
 const AboutPage = lazy(() => import('./pages/about/about.tsx'));
+const Workspace = lazy(() => import('./pages/workspace/Workspace.tsx'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -100,6 +101,14 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<Loading isLoading={true} />}>
             <ChatPage />
+          </Suspense>
+        }
+      />
+      <Route
+        path={ROUTES.WORKSPACE}
+        element={
+          <Suspense fallback={<Loading isLoading={true} />}>
+            <Workspace />
           </Suspense>
         }
       />
