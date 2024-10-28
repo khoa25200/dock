@@ -16,4 +16,10 @@ export const BE_ENDPOINT = {
 
   // Authentication before using email
   VerifyByEmail: '/auth/verify-email',
+
+  // Workspaces get all
+  getWorkspace: '/workspaces',
+
+  // Workspaces register
+  createWorkspace: '/workspaces',
 };
