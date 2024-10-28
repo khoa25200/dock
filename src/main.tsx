@@ -9,9 +9,9 @@ import {
 
 // import ContextProvider from './libs/context/index.tsx';
 import { ROUTES } from './configs/constants/routes.ts';
-import { Provider } from 'react-redux';
-import store from './libs/redux/index.ts';
 import Loading from './components/loadings/Loading.tsx';
+import { Provider } from 'react-redux';
+import { store } from './libs/redux/store.ts';
 
 // Lazy load the pages
 const HomePage = lazy(() => import('./pages/home/HomePage.tsx'));
