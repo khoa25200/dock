@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Layout } from 'antd';
 import WorkspaceHeader from './partials/WorkspaceHeader/WorkspaceHeader';
 import WorkspaceContent from './partials/WorkspaceContent/WorkspaceContent';
-import { PROPS } from '../../configs/constants/workspace.const';
+import { PROPS } from '../../configs/constants/workspace.config';
 
 const Workspace = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
