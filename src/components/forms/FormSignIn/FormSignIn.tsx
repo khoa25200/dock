@@ -1,32 +1,41 @@
 import './FormSignIn.less';
 import './FormSignIn.media.less';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Checkbox, Form, Input, Layout } from 'antd';
 import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
-import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
-import { AccountUser } from '../../../libs/api/auth';
-import { IUser, ToastMessage } from '../../../libs/types/auth';
+import { IUser } from '../../../libs/types/auth';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import useFormErrors from '../../../libs/hooks/useFormErrors';
 import CustomAlert from '../../notifis/Alert';
+import { authActions } from '../../../libs/redux/auth/authSlice';
+import {
+  useAppSelector,
+  useAppDispatch,
+} from '../../../libs/hooks/useSelectorApp';
+import SignUpGoogle from '../../buttons/ButtonAccountGoogle/ButtonAccountGoogle';
 
 const FormSignInPage: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const [formAccountUser] = Form.useForm<IUser>();
   const { clearErrors, errors, setFieldError } = useFormErrors();
-  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
+  const { isLoggedIn, error } = useAppSelector((state) => state.auth);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/chat');
+    }
+    if (error) {
+      const errorMessage = error || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
+    }
+  }, [isLoggedIn, error, navigate]);
   const handleSignIn = async () => {
     clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
-      const response = await AccountUser.loginUser(formData);
-      if (response) {
-        setAlertMessage({ status: response.status, message: response.message });
-        setTimeout(() => navigate('/chat'), 2000);
-        formAccountUser.resetFields();
-      }
+      dispatch(authActions.signIn(formData));
     } catch (error: any) {
       const errorMessage =
         error?.response?.data?.message || 'An unexpected error occurred';
@@ -38,10 +47,10 @@ const FormSignInPage: React.FC = () => {
       <div className="signin-title">
         <h1 className="signin-title-name">Sign In</h1>
       </div>
-      {alertMessage && (
+      {isLoggedIn && (
         <CustomAlert
-          status={alertMessage.status}
-          message={alertMessage.message}
+          status="success"
+          message="Sign in successful. Redirecting..."
         />
       )}
       <Form className="signin-from" form={formAccountUser}>
