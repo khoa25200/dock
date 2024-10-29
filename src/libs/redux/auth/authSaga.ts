@@ -27,8 +27,7 @@ function* handleSignIn(action: PayloadAction<IUser>) {
 }
 function* handleSignOut() {
   localStorage.removeItem('tk');
-  localStorage.removeItem('persist:root');
-  localStorage.setItem('isLoggedIn', 'false');
+  localStorage.removeItem('isLoggedIn');
 }
 function* watchLoginFlow() {
   while (true) {

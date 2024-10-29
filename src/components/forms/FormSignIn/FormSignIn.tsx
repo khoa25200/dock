@@ -24,7 +24,7 @@ const FormSignInPage: React.FC = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/chat');
+      navigate('/workspace');
     }
     if (error) {
       const errorMessage = error || 'An unexpected error occurred';
