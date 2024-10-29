@@ -7,17 +7,13 @@ import { Button } from "antd";
 interface ButtonProps {
   title: string;
   className?: string;
+  showModal?: () => void;
 }
 
-const ButtonCreate: React.FC<ButtonProps> = ({ title, className }) => {
+const ButtonCreate: React.FC<ButtonProps> = ({ title, className, showModal }) => {
 //   const navigate = useNavigate();
-
-//   const goBack = () => {
-//     navigate(-1);
-//   };
-
   return (
-    <Button className={`button-create ${className}`}>
+    <Button onClick={showModal} className={`button-create ${className}`}>
       {title}
     </Button>
   );

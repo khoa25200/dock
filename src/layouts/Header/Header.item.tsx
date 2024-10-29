@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Header.less";
 import "./Header.media.less";
 import { useEffect, useState } from "react";
-import ModalCustom from "../../components/modals/ModalSignUpWithMail/ModalSignUpWithMail";
+import ModalFormEmail from "../../components/modals/partials/ModalSignUpWithMail/ModalSignUpWithMail";
 
 const useMenuItems = (isScroll: boolean) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,7 +52,7 @@ const useMenuItems = (isScroll: boolean) => {
       label: (
         <>
           <Button onClick={showModal}>Try it Free</Button>
-          <ModalCustom
+          <ModalFormEmail
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
           />

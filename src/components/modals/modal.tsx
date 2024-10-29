@@ -1,5 +1,6 @@
-import FormEmail from "../../forms/FormEmail/FormEmail";
-import "./ModalSignUpWithMail.less";
+import "./modal.less";
+
+import React, { PropsWithChildren } from "react";
 import { Modal } from "antd";
 
 type TModelProps = {
@@ -7,7 +8,7 @@ type TModelProps = {
   setIsModalOpen: any;
 };
 
-const ModalCustom = ({ isModalOpen, setIsModalOpen }: TModelProps) => {
+const ModalCustom: React.FC<PropsWithChildren<TModelProps>> = ({ isModalOpen, setIsModalOpen, children }) => {
   
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -20,8 +21,7 @@ const ModalCustom = ({ isModalOpen, setIsModalOpen }: TModelProps) => {
         footer={null}
         onCancel={handleCancel}
       >
-        <FormEmail 
-        />
+        {children}
       </Modal>
     </>
   );
