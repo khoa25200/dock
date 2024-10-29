@@ -31,6 +31,7 @@ const FormSignInPage: React.FC = () => {
       setFieldError('error', errorMessage);
     }
   }, [isLoggedIn, error, navigate, errors]);
+
   const handleSignIn = async () => {
     clearErrors();
     try {
