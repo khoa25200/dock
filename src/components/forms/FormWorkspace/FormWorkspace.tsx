@@ -1,7 +1,6 @@
 import "./FormWorkspace.less";
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import useFormErrors from "../../../libs/hooks/useFormErrors";
 import { Form, Layout, Input } from "antd";
 import FormInput from "../FormInput/FormInput";
@@ -9,9 +8,13 @@ import FormInput from "../FormInput/FormInput";
 import CreateButton from "../../buttons/ButtonAccount/ButtonAccount";
 // import CustomAlert from "../../notifis/Alert";
 import { WorkspacesUserService } from "../../../libs/api/apiWorkspace";
+import { IMAGES } from "../../../assets/images";
 
-const FormWorkspace: React.FC = () => {
-  const navigate = useNavigate();
+type TModelProps = {
+  setIsModalOpen: any;
+};
+
+const FormWorkspace: React.FC<TModelProps> = ({setIsModalOpen}) => {
   const [formCreateWorkspace] = Form.useForm();
   const { clearErrors, errors, setFieldError } = useFormErrors();
 //   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
@@ -23,7 +26,7 @@ const FormWorkspace: React.FC = () => {
       const response = await WorkspacesUserService.registerWorkspaces(formData);
       if (response) {
         // setAlertMessage({ status: response.status, message: response.message });
-        navigate("/workspace");
+        setIsModalOpen(false)
       }
     } catch (error: any) {
       const errorMessage =
@@ -33,13 +36,15 @@ const FormWorkspace: React.FC = () => {
   };
   return (
     <Layout className="modal-workspace">
-      <div>dsd</div>
       {/* {alertMessage && (
         <CustomAlert
-          status={alertMessage.status}
-          message={alertMessage.message}
+        status={alertMessage.status}
+        message={alertMessage.message}
         />
-      )} */}
+        )} */}
+      <div className="modal-workspace-img">
+        <img src={IMAGES.LOGO} alt="Avatar" />
+      </div>
       <Form className="modal-workspace-form" form={formCreateWorkspace}>
         <FormInput
           name="name"
@@ -48,6 +53,7 @@ const FormWorkspace: React.FC = () => {
             { required: true, message: "Please input your workspace name!" },
             { type: "text" },
           ]}
+          className="modal-workspace-form-item"
         >
           <Input placeholder="Enter your workspace name" />
         </FormInput>
@@ -61,13 +67,13 @@ const FormWorkspace: React.FC = () => {
             },
             { type: "text" },
           ]}
+          className="modal-workspace-form-item"
         >
           <Input placeholder="Enter your workspace description" />
         </FormInput>
       </Form>
-
       <CreateButton
-        title="Submit"
+        title="Save"
         className="modal-workspace-btn"
         onclick={handleSubmitWorkspace}
       />
