@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUser } from '../../types/auth';
+import { IListResponse } from '../../types/common';
 
 export interface SignInPayload {
   isLoggedIn: boolean;
   logging?: boolean;
-  currentUser?: IUser;
+  currentUser?: IListResponse;
   error?: string | null;
   isRegister?: boolean;
 }
@@ -24,7 +25,7 @@ const authSlice = createSlice({
     signInStart: (state) => {
       state.logging = true;
     },
-    signInSuccess(state, action: PayloadAction<IUser>) {
+    signInSuccess(state, action: PayloadAction<IListResponse>) {
       state.isLoggedIn = true;
       state.currentUser = action.payload;
       state.logging = false;

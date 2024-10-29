@@ -1,4 +1,7 @@
-export interface ListResponse<T> {
-  data: T[];
-  // Thêm các trường khác nếu cần
+export interface IListResponse {
+  data: {
+    'access-token'?: string | undefined;
+  };
+  message: string;
+  status: string;
 }
