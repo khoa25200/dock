@@ -5,9 +5,9 @@ import ButtonCreate from "../../../../components/buttons/ButtonCreate/ButtonCrea
 import ButtonMore from "../../../../components/buttons/ButtonMore/ButtonMore";
 import { ICONS } from "../../../../assets/icons";
 import WorkspaceItem from "../WorkspaceItem/WorkspaceItem";
-import { WorkspacesUserService } from "../../../../libs/api/apiWorkspace"
+import { WorkspacesUserService } from "../../../../libs/api/apiWorkspace";
 import { TWorkspace } from "../../../../libs/types/workspace";
-import ModalWorkspace from "../../../../components/modals/partials/ModalWorkspace/ModalWorkspace"
+import ModalWorkspace from "../../../../components/modals/partials/ModalWorkspace/ModalWorkspace";
 
 type TWorkspaceContentProps = {
   className: string;
@@ -19,19 +19,26 @@ type TWorkspaceContentProps = {
   showModal: () => void;
 };
 
-const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({ className, welcome, workspacefor, createWorkspace, isModalOpen, setIsModalOpen, showModal }) => {
- 
+const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({
+  className,
+  welcome,
+  workspacefor,
+  createWorkspace,
+  isModalOpen,
+  setIsModalOpen,
+  showModal,
+}) => {
   const [isHidden, setIsHidden] = useState(true);
   const [workspaces, setWorkspaces] = useState<TWorkspace[]>([]);
 
   const fetchWorkspaces = async () => {
-      const response = await WorkspacesUserService.getAllWorkspaces();
-      setWorkspaces(response.data);
+    const response = await WorkspacesUserService.getAllWorkspaces();
+    setWorkspaces(response.data);
   };
-    
-  useEffect(() => {
-    fetchWorkspaces();
-  }, []);
+
+  // useEffect(() => {
+  //   fetchWorkspaces();
+  // }, []);
 
   const handleShowItems = () => {
     setIsHidden(false);
@@ -47,15 +54,21 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({ className, welcome
       <div className="content-render">
         <h3>{workspacefor} email@.com</h3>
         <div className="content-render-list">
-          {workspaces.map((workspace, index) => (
-            <WorkspaceItem
-              key={workspace.id}
-              name={workspace.name}
-              member={workspace.description}
-              avatarURL={workspace.avatarURL}
-              isHidden={index > 2 && isHidden}
-            />
-          ))}
+          {workspaces && workspaces.length > 0 ? (
+            workspaces.map((workspace, index) => (
+              <WorkspaceItem
+                key={workspace.id}
+                name={workspace.name}
+                member={workspace.description}
+                avatarURL={workspace.avatarURL}
+                isHidden={index > 2 && isHidden}
+              />
+            ))
+          ) : (
+            <div className="render-list-null">
+              You don't have a workspace yet. <strong>Join a workspace</strong> or <strong onClick={showModal}>create your own</strong>.
+            </div>
+          )}
         </div>
         <div className="content-render-more">
           <ButtonMore
@@ -74,7 +87,7 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({ className, welcome
           className="content-create-btn"
           showModal={showModal}
         />
-        <ModalWorkspace 
+        <ModalWorkspace
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
         />
