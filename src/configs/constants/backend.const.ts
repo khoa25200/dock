@@ -22,4 +22,7 @@ export const BE_ENDPOINT = {
 
   // Workspaces register
   createWorkspace: '/workspaces',
+
+  // USER
+  getUser: '/self',
 };

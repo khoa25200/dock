@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { takeLatest, put, call, take, fork } from 'redux-saga/effects';
+import { put, call, take, fork } from 'redux-saga/effects';
 import { authActions } from './authSlice';
 import { IUser } from '../../types/auth';
 import { AccountUser } from '../../api/auth';

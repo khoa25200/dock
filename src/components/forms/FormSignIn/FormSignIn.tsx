@@ -30,7 +30,7 @@ const FormSignInPage: React.FC = () => {
       const errorMessage = error || 'An unexpected error occurred';
       setFieldError('error', errorMessage);
     }
-  }, [isLoggedIn, error, navigate, errors]);
+  }, [isLoggedIn, error, errors]);
 
   const handleSignIn = async () => {
     clearErrors();
