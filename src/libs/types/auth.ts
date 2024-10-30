@@ -2,6 +2,7 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
+  data?: string[] | undefined;
 }
 
 export interface verifyAccount {
@@ -11,7 +12,7 @@ export interface verifyAccount {
 
 export interface ToastMessage {
   data?: IUser;
-  status: 'success' | 'error' | 'warning' | 'info';
+  status?: 'success' | 'error' | 'warning' | 'info';
   message: string;
   description?: string;
 }
