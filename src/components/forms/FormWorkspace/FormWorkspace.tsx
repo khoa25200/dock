@@ -54,9 +54,10 @@ const FormWorkspace: React.FC<TModelProps> = ({setIsModalOpen}) => {
         <img src={IMAGES.LOGO} alt="Avatar" />
       </div>
       <Upload
-        accept="image/*"
-        showUploadList={false}
-        beforeUpload={() => false}
+        action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+        // accept="image/*"
+        // showUploadList={false}
+        // beforeUpload={() => false}
       >
         <Button type="primary" icon={<UploadOutlined />} onClick={handleImageUpload}>
           Upload Image
