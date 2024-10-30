@@ -9,7 +9,7 @@ type TModelProps = {
 const ModalWorkspace: React.FC<TModelProps> = ({isModalOpen, setIsModalOpen}) => {
   return (
       <ModalCustom isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-          <FormWorkspace />
+          <FormWorkspace setIsModalOpen={setIsModalOpen}/>
       </ModalCustom>
   )
 }

@@ -52,6 +52,7 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({ className, welcome
               key={workspace.id}
               name={workspace.name}
               member={workspace.description}
+              avatarURL={workspace.avatarURL}
               isHidden={index > 2 && isHidden}
             />
           ))}

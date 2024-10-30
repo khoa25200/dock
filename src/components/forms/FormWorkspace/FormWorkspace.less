@@ -1,8 +1,43 @@
 .modal-workspace {
-    gap: 12px;
+    // gap: 12px;
     width: 100%;
     height: auto;
     padding: 20px 60px;
-    border-radius: 20px;
     align-items: center;
+    border-radius: 20px;
+    justify-content: space-between;
+
+    // .modal-workspace-title {
+
+    // }
+    
+    .modal-workspace-img {
+        width: 100px;
+        height: 100px;
+        opacity: hidden;
+        
+        img {
+            height: 100%;
+            border-radius: 20px;
+        }
+    }
+
+    .modal-workspace-form {
+        margin: 40px 0 16px;
+
+        .modal-workspace-form-item {
+            min-width: 260px;
+
+            input {
+                height: 40px;
+            }
+        }
+    }
+
+    .modal-workspace-btn {
+        text-transform: uppercase;
+        color: #color[white-color];
+        font-size: #font[font-size-normal];
+        background-color: #color[blue-color];
+    }
 }

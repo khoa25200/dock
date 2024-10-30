@@ -2,19 +2,19 @@
 import React from "react";
 import "./WorkspaceItem.less";
 import ButtonLaunch from "../../../../components/buttons/ButtonLaunch/ButtonLaunch";
-import { IMAGES } from "../../../../assets/images";
 
 type WorkspaceItemProps = {
   name: string;
   member: string;
+  avatarURL: string;
   isHidden: boolean;
 };
 
-const WorkspaceItem: React.FC<WorkspaceItemProps> = ({ name, member, isHidden }) => {
+const WorkspaceItem: React.FC<WorkspaceItemProps> = ({ name, member, avatarURL, isHidden }) => {
   return (
     <div className={`render-list-item ${isHidden ? "hidden" : ""}`}>
       <div className="list-item-avatar">
-        <img src={IMAGES.LOGO} alt="Avatar" />
+        <img src={avatarURL} alt="Avatar" />
       </div>
       <div className="list-item-details">
         <h4 className="list-item-details-name">{name}</h4>

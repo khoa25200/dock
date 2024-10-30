@@ -1,29 +1,35 @@
 import "./FormWorkspace.less";
 
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useState} from "react";
 import useFormErrors from "../../../libs/hooks/useFormErrors";
 import { Form, Layout, Input } from "antd";
 import FormInput from "../FormInput/FormInput";
-// import { ToastMessage } from "../../../libs/types/auth";
+import { ToastMessage } from "../../../libs/types/auth";
 import CreateButton from "../../buttons/ButtonAccount/ButtonAccount";
-// import CustomAlert from "../../notifis/Alert";
+import CustomAlert from "../../notifis/Alert";
 import { WorkspacesUserService } from "../../../libs/api/apiWorkspace";
+import { IMAGES } from "../../../assets/images";
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Upload } from 'antd';
 
-const FormWorkspace: React.FC = () => {
-  const navigate = useNavigate();
+type TModelProps = {
+  setIsModalOpen: any;
+};
+
+const FormWorkspace: React.FC<TModelProps> = ({setIsModalOpen}) => {
   const [formCreateWorkspace] = Form.useForm();
   const { clearErrors, errors, setFieldError } = useFormErrors();
-//   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
+  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
+  const [imageUrl, setImageUrl] = useState<string>("");
 
   const handleSubmitWorkspace = async () => {
     clearErrors();
     try {
       const formData = await formCreateWorkspace.validateFields();
-      const response = await WorkspacesUserService.registerWorkspaces(formData);
+      const response = await WorkspacesUserService.registerWorkspaces({...formData, avatarURL: imageUrl});
       if (response) {
-        // setAlertMessage({ status: response.status, message: response.message });
-        navigate("/workspace");
+        setAlertMessage({ status: response.status, message: response.message });
+        setIsModalOpen(false)
       }
     } catch (error: any) {
       const errorMessage =
@@ -31,15 +37,31 @@ const FormWorkspace: React.FC = () => {
       setFieldError("error", errorMessage);
     }
   };
+
+  const handleImageUpload = () => {
+    setImageUrl("https://picsum.photos/100/100");
+  };
+
   return (
     <Layout className="modal-workspace">
-      <div>dsd</div>
-      {/* {alertMessage && (
+      {alertMessage && (
         <CustomAlert
-          status={alertMessage.status}
-          message={alertMessage.message}
+        status={alertMessage.status}
+        message={alertMessage.message}
         />
-      )} */}
+        )}
+      <div className="modal-workspace-img">
+        <img src={IMAGES.LOGO} alt="Avatar" />
+      </div>
+      <Upload
+        accept="image/*"
+        showUploadList={false}
+        beforeUpload={() => false}
+      >
+        <Button type="primary" icon={<UploadOutlined />} onClick={handleImageUpload}>
+          Upload Image
+        </Button>
+      </Upload>
       <Form className="modal-workspace-form" form={formCreateWorkspace}>
         <FormInput
           name="name"
@@ -48,6 +70,7 @@ const FormWorkspace: React.FC = () => {
             { required: true, message: "Please input your workspace name!" },
             { type: "text" },
           ]}
+          className="modal-workspace-form-item"
         >
           <Input placeholder="Enter your workspace name" />
         </FormInput>
@@ -61,13 +84,13 @@ const FormWorkspace: React.FC = () => {
             },
             { type: "text" },
           ]}
+          className="modal-workspace-form-item"
         >
           <Input placeholder="Enter your workspace description" />
         </FormInput>
       </Form>
-
       <CreateButton
-        title="Submit"
+        title="Save"
         className="modal-workspace-btn"
         onclick={handleSubmitWorkspace}
       />
