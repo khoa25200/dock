@@ -34,12 +34,35 @@
             font-size: #font[font-size-18];
         }
 
-        .render-list-item.hidden {
-            display: none;
+        .content-render-list {
+            .render-list-item.hidden {
+                display: none;
+            }
+
+            .render-list-null {
+                height: 100px;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                font-size: #font[font-size-18];
+                background-color: #color[white-color];
+
+                strong {
+                    font-weight: 400;
+                    text-decoration: underline;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: #color[blue-color];
+                    }
+                }
+            }
         }
 
         .content-render-more {
+            height: 52px;
             display: flex;
+            align-items: center;
             justify-content: center;
             background-color: #ecdeec;
         }

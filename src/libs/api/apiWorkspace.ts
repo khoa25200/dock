@@ -9,7 +9,6 @@ export const WorkspacesUserService = {
         const response = await api.post(BE_ENDPOINT.createWorkspace, data);
         return response.data;
       } catch (error) {
-        console.log(error);
         throw error;
       }
     },
@@ -20,7 +19,6 @@ export const WorkspacesUserService = {
         const response = await api.get(BE_ENDPOINT.getWorkspace);
         return response.data;
       } catch (error) {
-        console.log(error);
         throw error;
       }
     },

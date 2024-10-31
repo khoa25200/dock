@@ -9,8 +9,9 @@ import CreateButton from "../../buttons/ButtonAccount/ButtonAccount";
 import CustomAlert from "../../notifis/Alert";
 import { WorkspacesUserService } from "../../../libs/api/apiWorkspace";
 import { IMAGES } from "../../../assets/images";
-import { UploadOutlined } from '@ant-design/icons';
+import UploadFiles from "../../../libs/api/apiFile";
 import { Button, Upload } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
 type TModelProps = {
   setIsModalOpen: any;
@@ -38,8 +39,16 @@ const FormWorkspace: React.FC<TModelProps> = ({setIsModalOpen}) => {
     }
   };
 
-  const handleImageUpload = () => {
-    setImageUrl("https://picsum.photos/100/100");
+  const handleImageUpload = async (file: any) => {
+    clearErrors();
+      try {
+        const response = await UploadFiles.uploadFiles(file);
+        setImageUrl(response.data)
+      } catch (error: any) {
+        const errorMessage =
+          error?.response?.data?.message || "An unexpected error occurred";
+        setFieldError("error", errorMessage);
+      }
   };
 
   return (
@@ -54,11 +63,13 @@ const FormWorkspace: React.FC<TModelProps> = ({setIsModalOpen}) => {
         <img src={IMAGES.LOGO} alt="Avatar" />
       </div>
       <Upload
+        listType="picture"
+        maxCount={1}
         accept="image/*"
-        showUploadList={false}
+        onChange={handleImageUpload}
         beforeUpload={() => false}
       >
-        <Button type="primary" icon={<UploadOutlined />} onClick={handleImageUpload}>
+        <Button type="primary" icon={<UploadOutlined />}>
           Upload Image
         </Button>
       </Upload>

@@ -10,6 +10,9 @@ export const BE_ENDPOINT = {
   Login: '/auth/sign-in',
   loginUserWithOTP: '/auth/sign-in-email',
 
+  // Upload files
+  uploadFiles: '/self/upload-files',
+
   // Get OTP replace for password
   requestOtp: '/auth/request-otp',
   registerWithEmail: '/auth/sign-up-email',
