@@ -1,7 +1,9 @@
 export interface IListResponse {
-  data: {
-    'access-token'?: string | undefined;
-  };
+  data: AccountResponse;
   message: string;
   status: string;
+}
+export interface AccountResponse {
+  access_token?: string | undefined;
+  userId?: string | undefined;
 }

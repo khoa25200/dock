@@ -50,10 +50,4 @@ export const AccountUser = {
     );
     return response.data;
   },
-
-  //User
-  getUser: async (data: IUser) => {
-    const response = await api.get(`${BE_ENDPOINT.getUser}/${data.idUser}`);
-    return response.data;
-  },
 };
