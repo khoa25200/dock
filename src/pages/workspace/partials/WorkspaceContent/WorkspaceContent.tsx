@@ -36,9 +36,9 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({
     setWorkspaces(response.data);
   };
 
-  // useEffect(() => {
-  //   fetchWorkspaces();
-  // }, []);
+  useEffect(() => {
+    fetchWorkspaces();
+  }, []);
 
   const handleShowItems = () => {
     setIsHidden(false);
@@ -66,7 +66,11 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({
             ))
           ) : (
             <div className="render-list-null">
-              You don't have a workspace yet. <strong>Join a workspace</strong> or <strong onClick={showModal}>create your own</strong>.
+              You don't have a workspace yet.
+              <a>Join a workspace</a>
+              or
+              <a onClick={showModal}>Create your workspace</a>
+              by clicking here!
             </div>
           )}
         </div>

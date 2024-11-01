@@ -3,12 +3,12 @@ import FormEmail from "../../../forms/FormEmail/FormEmail";
 
 type TModelProps = {
   isModalOpen: boolean;
-  setIsModalOpen: any;
+  setIsModalOpen: (isOpen: boolean) => void;
 };
 
 const ModalFormEmail: React.FC<TModelProps> = ({isModalOpen, setIsModalOpen}) => {
   return (
-      <ModalCustom isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+      <ModalCustom isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} closable={true}>
           <FormEmail />
       </ModalCustom>
   )

@@ -1,14 +1,20 @@
 import "./modal.less";
 
-import React, { PropsWithChildren } from "react";
 import { Modal } from "antd";
+import React, { PropsWithChildren } from "react";
 
 type TModelProps = {
   isModalOpen: boolean;
-  setIsModalOpen: any;
+  setIsModalOpen: (isOpen: boolean) => void;
+  closable: boolean;
 };
 
-const ModalCustom: React.FC<PropsWithChildren<TModelProps>> = ({ isModalOpen, setIsModalOpen, children }) => {
+const ModalCustom: React.FC<PropsWithChildren<TModelProps>> = ({ 
+    isModalOpen,
+    setIsModalOpen,
+    closable,
+    children 
+  }) => {
   
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -18,7 +24,9 @@ const ModalCustom: React.FC<PropsWithChildren<TModelProps>> = ({ isModalOpen, se
     <>
       <Modal
         open={isModalOpen}
+        closable={closable}
         footer={null}
+        maskClosable={false}
         onCancel={handleCancel}
       >
         {children}

@@ -3,12 +3,12 @@ import FormWorkspace from "../../../forms/FormWorkspace/FormWorkspace";
 
 type TModelProps = {
   isModalOpen: boolean;
-  setIsModalOpen: any;
+  setIsModalOpen: (isOpen: boolean) => void;
 };
 
 const ModalWorkspace: React.FC<TModelProps> = ({isModalOpen, setIsModalOpen}) => {
   return (
-      <ModalCustom isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+      <ModalCustom isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} closable={true}>
           <FormWorkspace setIsModalOpen={setIsModalOpen}/>
       </ModalCustom>
   )

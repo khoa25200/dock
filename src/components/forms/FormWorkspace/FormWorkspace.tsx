@@ -14,7 +14,7 @@ import { Button, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 type TModelProps = {
-  setIsModalOpen: any;
+  setIsModalOpen: (isOpen: boolean) => void;
 };
 
 const FormWorkspace: React.FC<TModelProps> = ({setIsModalOpen}) => {
