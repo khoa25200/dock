@@ -4,6 +4,7 @@ export interface SelfResponse {
   status: string;
 }
 export interface SelfUser {
+  id: string;
   phoneNumber: string;
   lastName: string;
   firstName: string;

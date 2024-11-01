@@ -56,4 +56,15 @@ export const AccountUser = {
     const response = await api.get(`${BE_ENDPOINT.getUser}/${data.idUser}`);
     return response.data;
   },
+
+  //Update user
+  putUser: async (data: IUser) => {
+    console.log(data)
+    try {
+      const response = await api.put(`${BE_ENDPOINT.putUser}/${data.userId}`, data);
+      return response.data;
+    } catch (err) {
+      throw err;
+    }
+  },
 };

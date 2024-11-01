@@ -28,4 +28,7 @@ export const BE_ENDPOINT = {
 
   // USER
   getUser: '/self',
+
+  //Update User
+  putUser: '/self/update-user'
 };
