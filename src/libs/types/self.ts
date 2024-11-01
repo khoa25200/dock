@@ -9,4 +9,6 @@ export interface SelfUser {
   firstName: string;
   avatarURL: string;
   online: boolean;
+  email: string;
+  username: string;
 }

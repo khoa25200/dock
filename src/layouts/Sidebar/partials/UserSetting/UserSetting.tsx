@@ -1,19 +1,28 @@
 import './UserSetting.less';
 import './UserSetting.media.less';
 
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IMAGES } from '../../../../assets/images';
 import ButtonBadge from '../../../../components/buttons/ButtonOnlineStatus/ButtonOnlineStatus';
 import { useAppDispatch } from '../../../../libs/hooks/useSelectorApp';
 import { authActions } from '../../../../libs/redux/auth/authSlice';
 import { SelfUser } from '../../../../libs/types/self';
+import ModalProfile from '../../../../components/modals/partials/ModalProfile/ModalProfile';
 interface SelfUserProps {
   setUserInfo?: Partial<SelfUser>;
 }
 const UserSetting: React.FC<SelfUserProps> = ({ setUserInfo }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+      setIsModalOpen(true);
+  };
+
   const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
+
   const handleLogOut = () => {
     dispatch(authActions.logout());
     navigate('/');
@@ -43,9 +52,17 @@ const UserSetting: React.FC<SelfUserProps> = ({ setUserInfo }) => {
         </div>
       </div>
       <div className="setting-action">
-        <div id="profile" className="setting-action-items">
+        <div 
+          id="profile"
+          className="setting-action-items"
+          onClick={showModal}
+        >
           Profile
         </div>
+        <ModalProfile
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
         <div id="preference" className="setting-action-items">
           Preferences
         </div>

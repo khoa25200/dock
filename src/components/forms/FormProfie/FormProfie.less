@@ -1,0 +1,81 @@
+.modal-profile {
+    width: auto;
+    display: flex;
+    border-radius: 12px;
+    flex-direction: column;
+    background-color: #color[white-color];
+
+    .modal-profile-content {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        margin-top: 8px;
+        overflow-y: auto;
+        min-height: 360px;
+
+        .profile-content-infor {
+            width: 360px;
+
+            .content-infor-form {
+                width: 90%;
+
+                .ant-form-item-control-input-content {
+                    display: flex;
+                }
+
+                input {
+                    height: 40px;
+                    font-weight: 400;
+                    font-size: #font[font-size-small];
+                }
+            }
+        }
+
+        .profile-content-avatar {
+            gap: 20px;
+            width: 240px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            img {
+                width: 200px;
+                height: 200px;
+                border-radius: 12px;
+                border: 1px solid #ccc;
+            }
+        }
+    }
+
+    .modal-profile-footer {
+        gap: 20px;
+        height: 60px;
+        display: flex;
+        padding: 20px;
+        align-items: center;
+        border-top: 1px solid;
+        justify-content: flex-end;
+
+        .profile-footer-cancel {
+            border-radius: 12px;
+        }
+
+        .profile-footer-edit {
+            border-radius: 12px;
+
+            &:hover {
+                color: #color[black-color];
+                background-color: yellow;
+            }
+        }
+
+        .profile-footer-save {
+            border-radius: 12px;
+
+            &:hover {
+                background-color: green;
+                color: #color[white-color];
+            }
+        }
+    }
+}
