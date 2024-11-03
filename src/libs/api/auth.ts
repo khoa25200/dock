@@ -53,7 +53,7 @@ export const AccountUser = {
 
   //User
   getUser: async (data: IUser) => {
-    const response = await api.get(`${BE_ENDPOINT.getUser}/${data.idUser}`);
+    const response = await api.get(`${BE_ENDPOINT.getUser}/${data.userId}`);
     return response.data;
   },
 

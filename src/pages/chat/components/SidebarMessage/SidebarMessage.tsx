@@ -1,12 +1,25 @@
 import './SidebarMessage.less';
 import { ICONS } from '../../../../assets/icons';
 import { IMAGES } from '../../../../assets/images';
-function SidebarMessage() {
+import { useNavigate } from 'react-router-dom';
+import useQuery from '../../../../libs/hooks/useQuery';
+import { ChannelData } from '../../../../libs/types/channels';
+interface ChannelsProps {
+  channels: ChannelData | null;
+}
+function SidebarMessage({ channels }: ChannelsProps) {
+  const query = useQuery();
+  const id_workspace = query.get('id_workspace');
+  const navigate = useNavigate();
+  const handleNavigateChannels = () => {
+    navigate(`/chat/channels?id_channels=${12}&id_workspace=${id_workspace}`);
+  };
+
   return (
     <div className="sidebar-message">
       <div className="sidebar--message-inner">
-        <div className="sidebar--message-header">
-          <h1>KTC-FE-BASIC</h1>
+        <div className="sidebar--message-header" key={channels?.id}>
+          <h1>{channels?.name}</h1>
           <img src={ICONS.ARROW_DOWN_LIGHT} alt="image error" />
         </div>
         <div className="sidebar--message-channels">
@@ -16,18 +29,12 @@ function SidebarMessage() {
           </div>
           <div className="sidebar--channel-list">
             <ul>
-              <li>
-                <img src={ICONS.HASH} alt="image error" />
-                <span>Code</span>
-              </li>
-              <li>
-                <img src={ICONS.HASH} alt="image error" />
-                <span>Code</span>
-              </li>
-              <li>
-                <img src={ICONS.HASH} alt="image error" />
-                <span>Code</span>
-              </li>
+              {channels?.channels.map((channelChildren) => (
+                <li onClick={handleNavigateChannels} key={channelChildren.id}>
+                  <img src={ICONS.HASH} alt="image error" />
+                  <span>{channelChildren.name}</span>
+                </li>
+              ))}
             </ul>
             <div className="sidebar--btn-addChannel">
               <img src={ICONS.PLUS} />

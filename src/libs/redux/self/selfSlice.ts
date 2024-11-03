@@ -1,5 +1,4 @@
 import { IUser } from '../../types/auth';
-import { IListResponse } from '../../types/common';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SelfResponse } from '../../types/self';
 
