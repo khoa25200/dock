@@ -12,4 +12,5 @@ export interface SelfUser {
   online: boolean;
   email: string;
   username: string;
+  id: string;
 }

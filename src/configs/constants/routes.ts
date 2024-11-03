@@ -21,6 +21,6 @@ export const ROUTES: IRoute = {
   SIGNIN: 'signin',
   VERIFY: 'verify',
   SIGNIN_OTP: 'sign-in-otp',
-  CHAT: 'chat',
+  CHAT: 'chat/*',
   WORKSPACE: 'workspace',
 };
