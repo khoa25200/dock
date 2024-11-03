@@ -1,4 +1,4 @@
-import './Workspace.less'
+import './Workspace.less';
 
 import { useState } from 'react';
 import { Layout } from 'antd';
@@ -10,26 +10,26 @@ const Workspace = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
-      setIsModalOpen(true);
+    setIsModalOpen(true);
   };
 
   return (
-    <Layout className='workspace'>
-      <WorkspaceHeader 
-        className='workspace-header' 
+    <Layout className="workspace">
+      <WorkspaceHeader
+        className="workspace-header"
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         showModal={showModal}
       />
-      <WorkspaceContent 
-        className='workspace-content'
+      <WorkspaceContent
+        className="workspace-content"
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         showModal={showModal}
         {...PROPS.WORKSPACE}
       />
     </Layout>
-  )
-}
+  );
+};
 
-export default Workspace
+export default Workspace;
