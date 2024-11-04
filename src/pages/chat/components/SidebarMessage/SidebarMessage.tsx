@@ -12,7 +12,6 @@ function SidebarMessage({ channels }: ChannelsProps) {
   const query = useQuery();
   const id_workspace = query.get('id_workspace');
   const navigate = useNavigate();
-
   useEffect(() => {
     if (channels && channels.channels.length > 0) {
       const firstChannel = channels.channels[0];

@@ -14,16 +14,13 @@ import { channelActions } from '../../libs/redux/channel/channelSlice';
 const ChatPage: React.FC = () => {
   const query = useQuery();
   const idWorkSpace = query.get('id_workspace');
-  const [channels, setChannels] = useState<ChannelData | null>(null);
   const dispatch = useAppDispatch();
   const { channelData } = useAppSelector((state) => state.channel);
-
   useEffect(() => {
     dispatch(channelActions.getChannels({ idWorkSpace }));
-    setChannels(channelData);
   }, []);
   return (
-    <LayoutDefault sidebarMessage={<SidebarMessage channels={channels} />}>
+    <LayoutDefault sidebarMessage={<SidebarMessage channels={channelData} />}>
       <Routes>
         <Route path="/channels" element={<MessagePanel />} />
       </Routes>
