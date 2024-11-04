@@ -168,7 +168,6 @@ const FormProfie: React.FC<TFormProfileProps> = ({ setIsModalOpen }) => {
           <Upload
             maxCount={1}
             accept="image/*"
-            // listType="picture"
             onChange={handleImageUpload}
             beforeUpload={() => false}
           >
