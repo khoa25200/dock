@@ -12,7 +12,7 @@ function HeaderComponent({ isScroll }: { isScroll: boolean }) {
   return (
     <Header className={`header ${isScroll ? 'header-scroll' : ''}`}>
       <div className="header-content">
-        <Link to="/" className="logo-container">
+        <Link to="/workspace" className="logo-container">
           <img className="logo" src={IMAGES.LOGO_WHITE} alt="Logo" />
         </Link>
         <Menu
@@ -24,7 +24,8 @@ function HeaderComponent({ isScroll }: { isScroll: boolean }) {
             height: '100%',
             alignItems: 'center',
           }}
-          items={menuItems}></Menu>
+          items={menuItems}
+        ></Menu>
       </div>
     </Header>
   );

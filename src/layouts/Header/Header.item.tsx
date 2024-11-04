@@ -1,10 +1,10 @@
-import { MenuOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import { Link } from "react-router-dom";
-import "./Header.less";
-import "./Header.media.less";
-import { useEffect, useState } from "react";
-import ModalFormEmail from "../../components/modals/partials/ModalSignUpWithMail/ModalSignUpWithMail";
+import { MenuOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { Link } from 'react-router-dom';
+import './Header.less';
+import './Header.media.less';
+import { useEffect, useState } from 'react';
+import ModalFormEmail from '../../components/modals/partials/ModalSignUpWithMail/ModalSignUpWithMail';
 
 const useMenuItems = (isScroll: boolean) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,10 +20,10 @@ const useMenuItems = (isScroll: boolean) => {
       setVW(window.innerWidth);
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -32,10 +32,10 @@ const useMenuItems = (isScroll: boolean) => {
 
   // Common menu items
   const baseItems = [
-    { label: <Link to="/home">Home</Link>, key: "/home" },
-    { label: <Link to="/features">Features</Link>, key: "/features" },
-    { label: <Link to="/about">About Us</Link>, key: "/about" },
-    { label: <Link to="/download">Download</Link>, key: "/download" },
+    { label: <Link to="#">Home</Link>, key: '/home' },
+    { label: <Link to="#">Features</Link>, key: '/features' },
+    { label: <Link to="#">About Us</Link>, key: '/about' },
+    { label: <Link to="#">Download</Link>, key: '/download' },
   ];
 
   // Login and Signup items
@@ -46,7 +46,7 @@ const useMenuItems = (isScroll: boolean) => {
           <Button>Login</Button>
         </Link>
       ),
-      key: "/login",
+      key: '/login',
     },
     {
       label: (
@@ -58,15 +58,15 @@ const useMenuItems = (isScroll: boolean) => {
           />
         </>
       ),
-      key: "/try",
-      selectable: false
+      key: '/try',
+      selectable: false,
     },
   ];
 
   const getMobileMenuItems = () => [
     {
-      key: "mobile-menu",
-      icon: <MenuOutlined style={{ color: isScroll ? "black" : "white" }} />,
+      key: 'mobile-menu',
+      icon: <MenuOutlined style={{ color: isScroll ? 'black' : 'white' }} />,
       children: [...baseItems, ...authItems],
     },
   ];
@@ -74,8 +74,8 @@ const useMenuItems = (isScroll: boolean) => {
   const getTabletMenuItems = () => [
     ...baseItems,
     {
-      key: "tablet-menu",
-      icon: <MenuOutlined style={{ color: isScroll ? "black" : "white" }} />,
+      key: 'tablet-menu',
+      icon: <MenuOutlined style={{ color: isScroll ? 'black' : 'white' }} />,
       children: authItems,
     },
   ];

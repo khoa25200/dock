@@ -21,14 +21,18 @@ export const BE_ENDPOINT = {
   VerifyByEmail: '/auth/verify-email',
 
   // Workspaces get all
-  getWorkspace: '/workspaces',
+  getWorkspaceOfSelf: '/workspaces/users',
 
   // Workspaces register
-  createWorkspace: '/workspaces',
+  createWorkspace: '/workspaces/users',
 
   // USER
   getUser: '/self',
 
   //Update User
-  putUser: '/self/update-user'
+  putUser: '/self/update-user',
+  // Channels get all of workspace
+  getChannelsOfWorkspace: '/channels/workspace',
+  // Channels get follow id
+  getChannelWithId: '/channels/workspace',
 };

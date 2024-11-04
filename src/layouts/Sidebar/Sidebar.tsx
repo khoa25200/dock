@@ -7,21 +7,20 @@ import SideBarItem from './partials/SideBarItem/SideBarItem';
 import { Popover } from 'antd';
 import UserSetting from './partials/UserSetting/UserSetting';
 import ButtonBadge from '../../components/buttons/ButtonOnlineStatus/ButtonOnlineStatus';
-import { useNavigate } from 'react-router-dom';
 import {
   useAppDispatch,
   useAppSelector,
 } from '../../libs/hooks/useSelectorApp';
+import { useNavigate } from 'react-router-dom';
 import { selfUserActions } from '../../libs/redux/self/selfSlice';
 
 const SidebarLayout: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [openSub, setOpenSub] = useState(false);
-  const [openSetting, setOpenSetting] = useState(false);
   const { currentUser, isLoggedIn } = useAppSelector((state) => state.auth);
   const userId = currentUser?.data.userId;
-  const { infoUser } = useAppSelector((state) => state.self);
+  const [openSub, setOpenSub] = useState(false);
+  const [openSetting, setOpenSetting] = useState(false);
 
   const handleOpenSub = (newOpen: boolean) => {
     setOpenSub(newOpen);
@@ -31,17 +30,16 @@ const SidebarLayout: React.FC = () => {
     setOpenSetting(newOpen);
   };
   useEffect(() => {
-    if (!isLoggedIn) {
-      navigate('/signin');
-    } else {
+    if (userId) {
       dispatch(selfUserActions.getSelfUser({ userId }));
     }
-  }, []);
-
+  }, [isLoggedIn, userId, navigate, dispatch]);
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-inner">
-        <img src={IMAGES.LOGO} className="logo-dockchat" />
+        <a href="/workspace">
+          <img src={IMAGES.LOGO} className="logo-dockchat" />
+        </a>
         <Popover
           content={<SideBarItem />}
           trigger="click"
@@ -71,34 +69,15 @@ const SidebarLayout: React.FC = () => {
         </div>
         <div className="user-current">
           <Popover
-            content={
-              <UserSetting
-                setUserInfo={{
-                  phoneNumber: infoUser?.data.phoneNumber,
-                  avatarURL: infoUser?.data.avatarURL,
-                  firstName: infoUser?.data.firstName,
-                  lastName: infoUser?.data.lastName,
-                  online: infoUser?.data.online,
-                }}
-              />
-            }
+            content={<UserSetting />}
             trigger="click"
             open={openSetting}
             onOpenChange={handleOpenUser}
             prefixCls="user-setting"
           >
-            <img
-              src={
-                infoUser?.data.avatarURL
-                  ? infoUser?.data.avatarURL
-                  : IMAGES.LOGO
-              }
-              className="logo-dockchat"
-            />
+            <img src={IMAGES.LOGO} className="logo-dockchat" />
             <div className="online-indicator">
-              <ButtonBadge
-                active={infoUser?.data.online ? 'online' : 'offline'}
-              />
+              <ButtonBadge active="offline" />
             </div>
           </Popover>
         </div>
