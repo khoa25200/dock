@@ -59,7 +59,6 @@ export const AccountUser = {
 
   //Update user
   putUser: async (data: IUser) => {
-    console.log(data)
     try {
       const response = await api.put(`${BE_ENDPOINT.putUser}/${data.userId}`, data);
       return response.data;
