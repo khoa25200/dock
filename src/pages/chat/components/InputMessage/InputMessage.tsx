@@ -153,14 +153,22 @@ function InputMessage({
             lazyLoadEmojis={true}
           />
         )}
-        <img src={ICONS.REACTION} alt="reaction" onClick={() => setOpen((prev) => !prev)} />
+        <img
+          src={ICONS.REACTION}
+          alt="reaction"
+          onClick={() => setOpen((prev) => !prev)}
+        />
       </div>
 
       {/* For image and text */}
       <div className="input-and-preview">
         {image && (
           <div className="image-preview">
-            <img src={image} alt={imageName || 'preview'} className="preview-image" />
+            <img
+              src={image}
+              alt={imageName || 'preview'}
+              className="preview-image"
+            />
             <img
               src={ICONS.DELETE}
               alt="delete-image"
@@ -171,7 +179,11 @@ function InputMessage({
         )}
         {file && (
           <div className="file-preview">
-            <img src={ICONS.FILE} alt={fileName || 'preview'} className="preview-file" />
+            <img
+              src={ICONS.FILE}
+              alt={fileName || 'preview'}
+              className="preview-file"
+            />
             <div className="file-name">{fileName}</div>
             <img
               src={ICONS.DELETE}

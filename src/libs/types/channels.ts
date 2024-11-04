@@ -1,5 +1,5 @@
 export type TChannels = {
-  idChannels?: string;
+  idChannels?: string | null;
   idWorkSpace?: string | null;
   nameChannels?: string;
   descriptionChannels?: string;
@@ -12,6 +12,7 @@ export interface ChannelData {
   description: string;
   avatarURL: string;
   isDeleted: boolean;
+  workspaceId?: string;
   channels: Array<{
     id: string;
     name: string;
@@ -19,4 +20,11 @@ export interface ChannelData {
     isPrivate: boolean;
     workspaceId: string;
   }>;
+}
+
+export interface ChannelState {
+  channelData: ChannelData | null;
+  channelCurrent: ChannelData | null;
+  loading: boolean;
+  error: string | null;
 }

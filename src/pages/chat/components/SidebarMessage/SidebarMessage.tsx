@@ -4,6 +4,7 @@ import { IMAGES } from '../../../../assets/images';
 import { useNavigate } from 'react-router-dom';
 import useQuery from '../../../../libs/hooks/useQuery';
 import { ChannelData } from '../../../../libs/types/channels';
+import { useEffect } from 'react';
 interface ChannelsProps {
   channels: ChannelData | null;
 }
@@ -11,8 +12,17 @@ function SidebarMessage({ channels }: ChannelsProps) {
   const query = useQuery();
   const id_workspace = query.get('id_workspace');
   const navigate = useNavigate();
-  const handleNavigateChannels = () => {
-    navigate(`/chat/channels?id_channels=${12}&id_workspace=${id_workspace}`);
+
+  useEffect(() => {
+    if (channels && channels.channels.length > 0) {
+      const firstChannel = channels.channels[0];
+      navigate(
+        `/chat/channels?id_channels=${firstChannel.id}&id_workspace=${id_workspace}`
+      );
+    }
+  }, [channels, id_workspace]);
+  const handleNavigateChannels = (id: string) => {
+    navigate(`/chat/channels?id_channels=${id}&id_workspace=${id_workspace}`);
   };
 
   return (
@@ -30,7 +40,10 @@ function SidebarMessage({ channels }: ChannelsProps) {
           <div className="sidebar--channel-list">
             <ul>
               {channels?.channels.map((channelChildren) => (
-                <li onClick={handleNavigateChannels} key={channelChildren.id}>
+                <li
+                  onClick={() => handleNavigateChannels(channelChildren.id)}
+                  key={channelChildren.id}
+                >
                   <img src={ICONS.HASH} alt="image error" />
                   <span>{channelChildren.name}</span>
                 </li>

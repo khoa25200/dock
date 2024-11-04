@@ -8,5 +8,10 @@ export const ChannelsService = {
     );
     return response.data;
   },
-  getChannelWithId: async () => {},
+  getChannelWithId: async (data: TChannels) => {
+    const response = await api.get(
+      `${BE_ENDPOINT.getChannelsOfWorkspace}/${data.idWorkSpace}/channels/${data.idChannels}`
+    );
+    return response.data;
+  },
 };

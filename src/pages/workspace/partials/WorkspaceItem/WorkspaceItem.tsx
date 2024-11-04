@@ -20,7 +20,6 @@ const WorkspaceItem: React.FC<WorkspaceItemProps> = ({
   id,
 }) => {
   const navigate = useNavigate();
-
   const handleClick = async () => {
     navigate(`/chat?id_workspace=${id}`);
   };

@@ -1,24 +1,22 @@
 import { ICONS } from '../../../../../../assets/icons';
 import { IMAGES } from '../../../../../../assets/images';
+import { ChannelData } from '../../../../../../libs/types/channels';
 import Action from './Action';
 import './HeaderMessage.less';
-const HeaderMessage = ({
-  status,
-  name,
-  isPrivateMessage,
-}: {
-  status?: string;
-  name?: string;
-  isPrivateMessage: boolean;
-}) => {
+interface InfoChannelProps {
+  InfoChannel: ChannelData | null;
+}
+const HeaderMessage = ({ InfoChannel }: InfoChannelProps) => {
+  console.log(InfoChannel);
+
   return (
-    <div className={`header--message ${isPrivateMessage && 'private-message'}`}>
-      {isPrivateMessage ? (
-        <>
+    <>
+      {InfoChannel?.workspaceId ? (
+        <div className="header--message private-message">
           <div className="user-detail">
             <img src={IMAGES.AVT_TEXT} alt="avatar" width={50} height={50} />
             <div className="user-info">
-              <h3>{name}</h3>
+              <h3>{InfoChannel?.name}</h3>
               <p>
                 {status === 'online' ? (
                   <>
@@ -38,14 +36,14 @@ const HeaderMessage = ({
             <Action icon={ICONS.CALL} actionName="Call" />
             <Action icon={ICONS.MEETING} actionName="Meeting" />
           </div>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="header--message">
           <img src={ICONS.HASH} />
-          <h1>notice</h1>
-        </>
+          <h1>{InfoChannel?.name}</h1>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 export default HeaderMessage;
