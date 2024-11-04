@@ -1,7 +1,7 @@
 import "./FormProfie.less";
 
 import React, { useState } from "react";
-import { Button, Flex, Upload } from "antd";
+import { Button, Flex, Spin, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import UploadFiles from "../../../libs/api/apiFile";
 import useFormErrors from "../../../libs/hooks/useFormErrors";
@@ -21,6 +21,7 @@ const FormProfie: React.FC<TFormProfileProps> = ({ setIsModalOpen }) => {
   const [formCreateWorkspace] = Form.useForm();
   const [isDisabled, setIsDisabled] = useState(true);
   const [imageUrl, setImageUrl] = useState<string>("");
+  const [isUploading, setIsUploading] = useState<boolean>(false);
   const { infoUser } = useAppSelector((state) => state.self);
   const { clearErrors, errors, setFieldError } = useFormErrors();
   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
@@ -64,13 +65,15 @@ const FormProfie: React.FC<TFormProfileProps> = ({ setIsModalOpen }) => {
   const handleImageUpload = async (file: any) => {
     clearErrors();
     try {
+      setIsUploading(true)
       const response = await UploadFiles.uploadFiles(file);
       setImageUrl(response.data);
     } catch (error: any) {
       const errorMessage =
-        error?.response?.data?.message || "An unexpected error occurred";
+      error?.response?.data?.message || "An unexpected error occurred";
       setFieldError("error", errorMessage);
     }
+    setIsUploading(false)
   };
 
   return (
@@ -157,11 +160,14 @@ const FormProfie: React.FC<TFormProfileProps> = ({ setIsModalOpen }) => {
           </Form>
         </div>
         <div className="profile-content-avatar">
-          <img src={infoUser?.data.avatarURL} alt="Avatar" />
+          <Spin 
+            spinning={isUploading}
+          >
+            <img src={imageUrl || infoUser?.data.avatarURL} alt="Avatar" />
+          </Spin>
           <Upload
             maxCount={1}
             accept="image/*"
-            listType="picture"
             onChange={handleImageUpload}
             beforeUpload={() => false}
           >
