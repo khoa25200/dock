@@ -1,14 +1,16 @@
 import { IUser } from '../../types/auth';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SelfResponse } from '../../types/self';
+import { SelfResponse, SelfResponseList } from '../../types/self';
 
 export interface PayloadSelfUser {
   infoUser?: SelfResponse;
+  listUser?: SelfResponseList;
   error: boolean;
   success: boolean;
 }
 const initialState: PayloadSelfUser = {
   infoUser: undefined,
+  listUser: undefined,
   error: false,
   success: false,
 };
@@ -28,6 +30,21 @@ const selfUserSlice = createSlice({
       state.error = false;
     },
     getSelfUserFailed: (state) => {
+      state.error = true;
+      state.success = false;
+    },
+
+    getAllUser: (state) => {},
+    getAllUserStart: (state) => {
+      state.error = false;
+      state.success = false;
+    },
+    getAllUserSuccess: (state, action: PayloadAction<SelfResponseList>) => {
+      state.success = true;
+      state.listUser = action.payload;
+      state.error = false;
+    },
+    getAllUserFailed: (state) => {
       state.error = true;
       state.success = false;
     },

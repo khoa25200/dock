@@ -1,31 +1,38 @@
 import { ICONS } from '../../../../../../assets/icons';
 import { IMAGES } from '../../../../../../assets/images';
 import { ChannelData } from '../../../../../../libs/types/channels';
+import { SelfUser } from '../../../../../../libs/types/self';
+import ButtonBadge from '../../../../../../components/buttons/ButtonOnlineStatus/ButtonOnlineStatus';
 import Action from './Action';
 import './HeaderMessage.less';
 interface InfoChannelProps {
-  InfoChannel: ChannelData | null;
+  InfoChannel?: ChannelData | null;
+  InfoUser?: SelfUser | null;
 }
-const HeaderMessage = ({ InfoChannel }: InfoChannelProps) => {
-  console.log(InfoChannel);
-
+const HeaderMessage = ({ InfoChannel, InfoUser }: InfoChannelProps) => {
+  console.log(InfoUser);
   return (
     <>
-      {InfoChannel?.workspaceId ? (
+      {InfoUser ? (
         <div className="header--message private-message">
           <div className="user-detail">
-            <img src={IMAGES.AVT_TEXT} alt="avatar" width={50} height={50} />
+            <img
+              src={InfoUser.avatarURL ? InfoUser.avatarURL : IMAGES.LOGO}
+              alt="avatar"
+              width={50}
+              height={50}
+            />
             <div className="user-info">
-              <h3>{InfoChannel?.name}</h3>
+              <h3>{InfoUser.username}</h3>
               <p>
-                {status === 'online' ? (
+                {InfoUser.online ? (
                   <>
-                    <img src={ICONS.ONLINE} alt="online" />
-                    <span>Online</span>
+                    <ButtonBadge active={'online'} />
+                    <span>Offline</span>
                   </>
                 ) : (
                   <>
-                    <img src={ICONS.OFFLINE} alt="offline" />
+                    <ButtonBadge active={'offline'} />
                     <span>Offline</span>
                   </>
                 )}

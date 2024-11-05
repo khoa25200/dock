@@ -18,9 +18,11 @@ const SidebarLayout: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { currentUser, isLoggedIn } = useAppSelector((state) => state.auth);
+  const { infoUser } = useAppSelector((state) => state.self);
   const userId = currentUser?.data.userId;
   const [openSub, setOpenSub] = useState(false);
   const [openSetting, setOpenSetting] = useState(false);
+  const statusUser = infoUser?.data.online;
 
   const handleOpenSub = (newOpen: boolean) => {
     setOpenSub(newOpen);
@@ -77,7 +79,7 @@ const SidebarLayout: React.FC = () => {
           >
             <img src={IMAGES.LOGO} className="logo-dockchat" />
             <div className="online-indicator">
-              <ButtonBadge active="offline" />
+              <ButtonBadge active={statusUser ? 'online' : 'offline'} />
             </div>
           </Popover>
         </div>
