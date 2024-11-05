@@ -16,9 +16,10 @@ import { useAppSelector } from '../../../libs/hooks/useSelectorApp';
 
 type TModelProps = {
   setIsModalOpen: (isOpen: boolean) => void;
+  onWorkspaceCreate: () => void;
 };
 
-const FormWorkspace: React.FC<TModelProps> = ({ setIsModalOpen }) => {
+const FormWorkspace: React.FC<TModelProps> = ({ setIsModalOpen, onWorkspaceCreate }) => {
   const [formCreateWorkspace] = Form.useForm();
   const { clearErrors, errors, setFieldError } = useFormErrors();
   const [alertMessage, setAlertMessage] = useState<ToastMessage>();
@@ -37,6 +38,7 @@ const FormWorkspace: React.FC<TModelProps> = ({ setIsModalOpen }) => {
       if (response) {
         setAlertMessage({ status: response.status, message: response.message });
         setIsModalOpen(false);
+        onWorkspaceCreate();
       }
     } catch (error: any) {
       const errorMessage =
@@ -52,8 +54,8 @@ const FormWorkspace: React.FC<TModelProps> = ({ setIsModalOpen }) => {
       setImageUrl(response.data);
     } catch (error: any) {
       const errorMessage =
-        error?.response?.data?.message || 'An unexpected error occurred';
-      setFieldError('error', errorMessage);
+      error?.response?.data?.message || "An unexpected error occurred";
+      setFieldError("error", errorMessage);
     }
   };
 

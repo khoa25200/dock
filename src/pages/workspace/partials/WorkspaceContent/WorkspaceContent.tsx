@@ -42,6 +42,10 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({
     fetchWorkspaces();
   }, []);
 
+  const handleWorkspaceCreate = () => {
+    fetchWorkspaces();
+  };
+
   const handleShowItems = () => {
     setIsHidden(false);
   };
@@ -97,6 +101,7 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({
         <ModalWorkspace
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
+          onWorkspaceCreate={handleWorkspaceCreate}
         />
       </div>
     </div>
