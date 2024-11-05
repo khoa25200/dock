@@ -13,7 +13,16 @@ function* GetSelfUser(action: PayloadAction<IUser>) {
     yield put(selfUserActions.getSelfUserFailed(error.response.data.message));
   }
 }
-
+function* GetAllUser(action: PayloadAction<IUser>) {
+  try {
+    yield put(selfUserActions.getAllUserStart());
+    const user: SelfResponse = yield call(SelfUser.getAllUser, action.payload);
+    yield put(selfUserActions.getAllUserSuccess(user));
+  } catch (error: any) {
+    yield put(selfUserActions.getAllUserFailed(error.response.data.message));
+  }
+}
 export default function* SelfSaga() {
   yield takeLatest(selfUserActions.getSelfUser.type, GetSelfUser);
+  yield takeLatest(selfUserActions.getAllUser.type, GetAllUser);
 }
