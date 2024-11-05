@@ -60,8 +60,8 @@ const WorkspaceContent: React.FC<TWorkspaceContentProps> = ({
       <div className="content-render">
         <h3>Workspace for your workspace</h3>
         <div className="content-render-list">
-          {workspaces && workspaces.length > 0 ? (
-            workspaces.map((workspace, index) => (
+          {workspaces && workspaces?.length > 0 ? (
+            workspaces?.map((workspace, index) => (
               <WorkspaceItem
                 key={workspace.id}
                 id={workspace.id}

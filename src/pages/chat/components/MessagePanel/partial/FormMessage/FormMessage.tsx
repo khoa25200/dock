@@ -9,7 +9,7 @@ const FormMessage = () => {
   const [reply, setReply] = useState<string>('');
   const [name, setName] = useState('');
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const SENDER = {
     FRIEND: 'friend',
@@ -33,7 +33,18 @@ const FormMessage = () => {
 
   return (
     <div className="chat">
-      <div className="center"></div>
+      <div className="center">
+        {message?.map((msg, index) => {
+          const randomSender = Math.random() < 0.5 ? SENDER.OWNER : SENDER.FRIEND;
+          const randomMessageType = Math.random() < 0.5 ? MESSAGE_TYPE.MEDIA : MESSAGE_TYPE.FILE;
+          const props = {
+            sender: randomSender,
+            messageType: randomMessageType,
+            text: msg,
+          };
+          return <MessageBox key={index} {...props} setReply={setReply} />;
+        })}
+      </div>
       <InputMessage
         message={message}
         setMessage={setMessage}

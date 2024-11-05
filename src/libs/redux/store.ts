@@ -6,6 +6,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import rootSaga from './rootSaga';
 import selfUserReducer from './self/selfSlice';
 import channelReducer from './channel/channelSlice';
+import messagesReducer from './socket/messagesSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   self: selfUserReducer,
   channel: channelReducer,
+  messages: messagesReducer
 });
 // Tạo persisted reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer);

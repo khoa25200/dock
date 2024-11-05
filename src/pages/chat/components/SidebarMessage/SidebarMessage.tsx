@@ -55,7 +55,7 @@ function SidebarMessage({ channels }: ChannelsProps) {
           </div>
           <div className="sidebar--channel-list">
             <ul>
-              {channels?.channels.map((channelChildren) => (
+              {channels?.channels?.map((channelChildren) => (
                 <li
                   onClick={() => handleNavigateChannels(channelChildren.id)}
                   key={channelChildren.id}
@@ -78,12 +78,12 @@ function SidebarMessage({ channels }: ChannelsProps) {
           </div>
           <div className="sidebar--direct-list">
             <ul>
-              {listUser?.data.map((user) => (
+              {listUser?.data?.map((user) => (
                 <li key={user.id} onClick={() => handleNavigateUser(user.id)}>
                   <div className="user--message">
                     <img
                       src={
-                        user.avatarURL !== null
+                        (user.avatarURL !== null && user.avatarURL !== 'string')
                           ? user.avatarURL
                           : IMAGES.AVT_TEXT
                       }

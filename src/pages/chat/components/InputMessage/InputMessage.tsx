@@ -1,8 +1,11 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './InputMessage.less';
 import { ICONS } from '../../../../assets/icons';
 import Picker, { EmojiClickData } from 'emoji-picker-react';
 import { TextArea } from '@ant-design/pro-chat/es/components/Input';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../../libs/redux/store';
+import { sendMessage, updateRecipient, updateText } from '../../../../libs/redux/socket/messagesSlice';
 
 function InputMessage({
   message,
@@ -23,6 +26,7 @@ function InputMessage({
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [replyText, setReplyText] = useState<string>('');
+  const { recipientId } = useSelector((state: RootState) => state.self);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
@@ -30,7 +34,7 @@ function InputMessage({
         return;
       } else {
         e.preventDefault();
-        handleSendMessage();
+        handleSendMessage(e);
       }
     }
   };
@@ -62,8 +66,9 @@ function InputMessage({
       setFileName(e.target.files[0].name);
     }
   };
+  
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (e: FormEvent) => {
     if (file) {
       setFile(null);
       setFileName(null);
@@ -95,10 +100,18 @@ function InputMessage({
       setMessage([...message, text]);
       setText('');
     }
+
+    e.preventDefault();
+    dispatch(sendMessage({ recipient, text }));
+    dispatch(updateText(''));
   };
 
+  useEffect(() => {
+    dispatch(updateRecipient(recipientId||''));
+  }, [recipientId])
+
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
-    if (e.clipboardData.files.length) {
+    if (e.clipboardData.files?.length) {
       const fileObject = e.clipboardData.files[0];
       setImage(URL.createObjectURL(fileObject));
     }
@@ -109,6 +122,15 @@ function InputMessage({
       setReplyText(reply);
     }
   }, [reply]);
+
+
+  // handle message
+  const dispatch = useDispatch<AppDispatch>();
+  const { messages, text: textStore, recipient } = useSelector((state: RootState) => state.messages);
+
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateText(e.target.value));
+  };
 
   return (
     <div className="bottom">
