@@ -7,7 +7,6 @@ interface InfoChannelProps {
   InfoChannel: ChannelData | null;
 }
 const HeaderMessage = ({ InfoChannel }: InfoChannelProps) => {
-  console.log(InfoChannel);
 
   return (
     <>
