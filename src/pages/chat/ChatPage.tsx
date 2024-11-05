@@ -5,7 +5,6 @@ import MessagePanel from './components/MessagePanel/MessagePanel';
 import SidebarMessage from './components/SidebarMessage/SidebarMessage';
 import { Routes, Route } from 'react-router-dom';
 import useQuery from '../../libs/hooks/useQuery';
-import { ChannelData } from '../../libs/types/channels';
 import {
   useAppDispatch,
   useAppSelector,
@@ -23,6 +22,7 @@ const ChatPage: React.FC = () => {
     <LayoutDefault sidebarMessage={<SidebarMessage channels={channelData} />}>
       <Routes>
         <Route path="/channels" element={<MessagePanel />} />
+        <Route path="/users" element={<MessagePanel />} />
       </Routes>
     </LayoutDefault>
   );

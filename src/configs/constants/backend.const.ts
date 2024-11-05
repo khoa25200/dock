@@ -28,7 +28,8 @@ export const BE_ENDPOINT = {
 
   // USER
   getUser: '/self',
-
+  // Get all user
+  getAlUser: '/self',
   //Update User
   putUser: '/self/update-user',
   // Channels get all of workspace

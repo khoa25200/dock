@@ -38,7 +38,6 @@ function InputMessage({
   const handleReactionClick = (emojiObject: any) => {
     setChosenEmoji(emojiObject);
     setText((prevText) => prevText + emojiObject.emoji);
-    console.log(text);
     setOpen(false);
   };
 
@@ -66,7 +65,6 @@ function InputMessage({
 
   const handleSendMessage = () => {
     if (file) {
-      console.log(true);
       setFile(null);
       setFileName(null);
       if (text.trim() !== '') {
@@ -100,10 +98,8 @@ function InputMessage({
   };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
-    console.log(e);
     if (e.clipboardData.files.length) {
       const fileObject = e.clipboardData.files[0];
-      console.log(fileObject);
       setImage(URL.createObjectURL(fileObject));
     }
   };
