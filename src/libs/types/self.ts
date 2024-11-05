@@ -3,6 +3,11 @@ export interface SelfResponse {
   message: string;
   status: string;
 }
+export interface SelfResponseList {
+  data: SelfUser[];
+  message: string;
+  status: string;
+}
 export interface SelfUser {
   id: string;
   phoneNumber: string;
@@ -12,5 +17,4 @@ export interface SelfUser {
   online: boolean;
   email: string;
   username: string;
-  id: string;
 }
