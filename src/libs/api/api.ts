@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url_api = 'http://47.129.183.26:8080/api';
+const url_api = `${import.meta.env.VITE_BACKEND_BASE_URL}/api` || 'http://47.129.183.26:8080/api';
 
 const api = axios.create({
   baseURL: url_api,
