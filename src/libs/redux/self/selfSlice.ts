@@ -7,10 +7,12 @@ export interface PayloadSelfUser {
   listUser?: SelfResponseList;
   error: boolean;
   success: boolean;
+  recipientId: string | null;
 }
 const initialState: PayloadSelfUser = {
   infoUser: undefined,
   listUser: undefined,
+  recipientId: null,
   error: false,
   success: false,
 };
@@ -47,6 +49,10 @@ const selfUserSlice = createSlice({
     getAllUserFailed: (state) => {
       state.error = true;
       state.success = false;
+    },
+
+    setRecipientId: (state, action: PayloadAction<string | null>) => {
+      state.recipientId = action.payload;
     },
   },
 });

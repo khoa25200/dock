@@ -4,6 +4,7 @@ import { authActions } from './authSlice';
 import { IUser } from '../../types/auth';
 import { AccountUser } from '../../api/auth';
 import { IListResponse } from '../../types/common';
+import { selfUserActions } from '../self/selfSlice';
 
 function* handleSignIn(action: PayloadAction<IUser>) {
   try {
@@ -28,6 +29,7 @@ function* handleSignIn(action: PayloadAction<IUser>) {
 function* handleSignOut() {
   localStorage.removeItem('tk');
   localStorage.removeItem('isLoggedIn');
+  yield put(selfUserActions.setRecipientId(null));
 }
 function* watchLoginFlow() {
   while (true) {

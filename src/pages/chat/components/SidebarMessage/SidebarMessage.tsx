@@ -38,6 +38,7 @@ function SidebarMessage({ channels }: ChannelsProps) {
   const handleNavigateUser = (id: string) => {
     // Add id_workspace to user navigation to maintain workspace context
     navigate(`/chat/users?id_user=${id}&id_workspace=${channels?.workspaceId}`);
+    dispatch(selfUserActions.setRecipientId(id));
   };
 
   return (
