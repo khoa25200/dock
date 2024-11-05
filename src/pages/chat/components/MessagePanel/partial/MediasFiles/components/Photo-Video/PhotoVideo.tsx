@@ -11,7 +11,7 @@ interface PhotoVideoProps {
 const PhotoVideo: React.FC<PhotoVideoProps> = ({ photovideo }) => {
   return (
     <div className="photo--video-list">
-      {photovideo.map((img) => (
+      {photovideo?.map((img) => (
         <div className="photo--video-item">
           <img src={img.link_file} />
         </div>

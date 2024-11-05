@@ -22,117 +22,7 @@ const photovideoData = [
   },
   {
     link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
-    date_receive: '20/10/2024;',
-  },
-  {
-    link_file:
-      'https://img.freepik.com/premium-photo/boy-with-green-eyes-green-eyes_922700-8.jpg?w=740',
+      'https://img.freepik.com/free-photo/front-view-old-man-portrait_23-2151056625.jpg?t=st=1730771264~exp=1730774864~hmac=f9a955cab35cfc2917b4d2896afb567ed1eb20dc500b6f75e2b6921b016fc99c&w=1060',
     date_receive: '20/10/2024;',
   },
 ];
@@ -149,9 +39,7 @@ const items: TabsProps['items'] = [
   },
 ];
 
-const onChange = (key: string) => {
-  console.log(key);
-};
+const onChange = (key: string) => {};
 
 const MediaFiles = () => {
   return (

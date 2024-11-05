@@ -1,0 +1,2 @@
+export const SOCKET_BASE_URL = import.meta.env.VITE_SOCKET_BASE_URL || 'http://47.129.183.26:3001';
+export const SOCKET_BASE_URL_RESTFUL = import.meta.env.VITE_SOCKET_BASE_URL_RESTFUL || 'http://47.129.183.26:3002';

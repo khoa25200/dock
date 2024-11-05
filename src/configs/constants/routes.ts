@@ -9,6 +9,7 @@ interface IRoute {
   VERIFY: string;
   SIGNIN_OTP: string;
   CHAT: string;
+  WORKSPACE: string;
 }
 
 export const ROUTES: IRoute = {
@@ -18,7 +19,8 @@ export const ROUTES: IRoute = {
   ABOUT: 'about',
   SIGNUP: 'signup',
   SIGNIN: 'signin',
-  VERIFY: 'verify/:email',
+  VERIFY: 'verify',
   SIGNIN_OTP: 'sign-in-otp',
-  CHAT: 'chat',
+  CHAT: 'chat/*',
+  WORKSPACE: 'workspace',
 };

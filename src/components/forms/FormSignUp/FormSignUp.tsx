@@ -1,29 +1,40 @@
-import "./FormSignUp.less";
-import "./FormSignUp.media.less";
-import React, { useState, useEffect } from "react";
-import { Checkbox, Form, Input, Layout } from "antd";
-import SignUpButton from "../../buttons/ButtonAccount/ButtonAccount";
-import SignUpGoogle from "../../buttons/ButtonAccountGoogle/ButtonAccountGoogle";
-
-type FieldType = {
-  fullname?: string;
-  email?: string;
-  password?: string;
-};
+import './FormSignUp.less';
+import './FormSignUp.media.less';
+import React, { useState } from 'react';
+import { Checkbox, Form, Input, Layout } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import SignUpButton from '../../buttons/ButtonAccount/ButtonAccount';
+import { IUser, ToastMessage } from '../../../libs/types/auth';
+import { AccountUser } from '../../../libs/api/auth';
+import FormInput from '../FormInput/FormInput';
+import useFormErrors from '../../../libs/hooks/useFormErrors';
+import CustomAlert from '../../notifis/Alert';
 
 const FormSignUpPage: React.FC = () => {
   const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState<ToastMessage>();
   const [formAccountUser] = Form.useForm<IUser>();
-
+  const { clearErrors, errors, setFieldError } = useFormErrors();
   const handleSubmitAccount = async () => {
+    clearErrors();
     try {
       const formData = await formAccountUser.validateFields();
       const response = await AccountUser.registerUser(formData);
-      if (response) {
-        navigate(`/auth/${formData.email}`);
+      if (response.status === 'success') {
+        setAlertMessage({
+          status: response.status,
+          message: response.message,
+        });
+        setTimeout(() => {
+          navigate(`/verify?email=${formData.email}`);
+        }, 2500);
       }
       formAccountUser.resetFields();
-    } catch (error) {}
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.message || 'An unexpected error occurred';
+      setFieldError('error', errorMessage);
+    }
   };
 
   return (
@@ -31,37 +42,40 @@ const FormSignUpPage: React.FC = () => {
       <div className="signUp-title">
         <h1 className="signUp-title-name">Sign Up</h1>
       </div>
+      {alertMessage && (
+        <CustomAlert
+          status={alertMessage.status === 'success' ? 'success' : 'error'}
+          message={alertMessage.message}
+        />
+      )}
       <Form className="signUp-from" form={formAccountUser}>
-        <Form.Item<IUser>
-          className="signUp-from-name"
+        <FormInput
           name="username"
+          className="signUp-from-name"
+          error={errors.error}
           rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Input placeholder="Enter Username" />
-        </Form.Item>
-        <Form.Item<IUser>
-          className="signUp-from-email"
+          <Input placeholder="Enter your username" />
+        </FormInput>
+        <FormInput
           name="email"
+          className="signUp-from-email"
+          error={errors.error}
           rules={[
-            {
-              required: true,
-              message: 'Please input your email!',
-            },
-            {
-              type: 'email',
-              message: 'The input is not valid email!',
-            },
+            { required: true, message: 'Please input your email!' },
+            { type: 'email', message: 'The input is not valid Email!' },
           ]}
         >
-          <Input placeholder="Enter Email" />
-        </Form.Item>
-        <Form.Item<IUser>
-          className="signUp-from-password"
+          <Input placeholder="Enter your email" />
+        </FormInput>
+        <FormInput
           name="password"
+          className="signUp-from-password"
+          error={errors.error}
           rules={[{ required: true, message: 'Please input your password!' }]}
         >
           <Input.Password placeholder="Enter Password" />
-        </Form.Item>
+        </FormInput>
       </Form>
       <Checkbox className="signUp-checkbox">
         I accept the Terms and Conditions.
@@ -71,11 +85,6 @@ const FormSignUpPage: React.FC = () => {
           className="signUp-button-account"
           title="Sign Up Account"
           onclick={handleSubmitAccount}
-        />
-        <div className="signUp-button-or">OR</div>
-        <SignUpGoogle
-          className="signUp-button-google"
-          title="Continue with Google"
         />
       </div>
       <div className="signUp-content">

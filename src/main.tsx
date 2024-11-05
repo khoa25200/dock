@@ -9,53 +9,93 @@ import {
 
 // import ContextProvider from './libs/context/index.tsx';
 import { ROUTES } from './configs/constants/routes.ts';
-import { Provider } from 'react-redux';
-import store from './libs/redux/index.ts';
 import Loading from './components/loadings/Loading.tsx';
-import AboutPage from './pages/about/about.tsx';
+import { Provider } from 'react-redux';
+import store, { persistor } from './libs/redux/store.ts';
+import { PersistGate } from 'redux-persist/integration/react';
+import PrivateRoute from './configs/constants/privateRoute.tsx';
 
 // Lazy load the pages
 const HomePage = lazy(() => import('./pages/home/HomePage.tsx'));
 const ProfilePage = lazy(() => import('./pages/profile/ProfilePage.tsx'));
-const SignUpPage = lazy(() => import('./pages/account/SignUpPage/SignUpPage.tsx'));
-const SignInPage = lazy(() => import('./pages/account/SignInPage/SignInPage.tsx'));
-const AuthPage = lazy(() => import('./pages/account/AuthPage/AuthPage.tsx'));
+const SignUpPage = lazy(
+  () => import('./pages/account/SignUpPage/SignUpPage.tsx')
+);
+const SignInPage = lazy(
+  () => import('./pages/account/SignInPage/SignInPage.tsx')
+);
+const VerifyPage = lazy(
+  () => import('./pages/account/VerifyPage/VerifyPage.tsx')
+);
 const ChatPage = lazy(() => import('./pages/chat/ChatPage.tsx'));
-const SignInOtpPage = lazy(() => import('./pages/account/SignInOtpPage/SignInOtpPage.tsx'));
+const SignInOtpPage = lazy(
+  () => import('./pages/account/SignInOtpPage/SignInOtpPage.tsx')
+);
+const AboutPage = lazy(() => import('./pages/about/about.tsx'));
+const Workspace = lazy(() => import('./pages/workspace/Workspace.tsx'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route
-        path="/"
-        element={
-          <Suspense fallback={<Loading isLoading={true} />}>
-            <HomePage />
-          </Suspense>
-        }
-      />
+      <Route element={<PrivateRoute />}>
+        <Route
+          path={ROUTES.PROFILE}
+          element={
+            <Suspense
+              fallback={<Loading isLoading={true} isInfinitive={false} />}
+            >
+              <ProfilePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={ROUTES.ABOUT}
+          element={
+            <Suspense
+              fallback={<Loading isLoading={true} isInfinitive={false} />}
+            >
+              <AboutPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={ROUTES.CHAT}
+          element={
+            <Suspense
+              fallback={<Loading isLoading={true} isInfinitive={false} />}
+            >
+              <ChatPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path={ROUTES.WORKSPACE}
+          element={
+            <Suspense
+              fallback={<Loading isLoading={true} isInfinitive={false} />}
+            >
+              <Workspace />
+            </Suspense>
+          }
+        />
+      </Route>
       <Route
         path={ROUTES.HOMEPAGE}
         element={
-          <Suspense fallback={<Loading isLoading={true} />}>
+          <Suspense
+            fallback={<Loading isLoading={true} isInfinitive={false} />}
+          >
             <HomePage />
           </Suspense>
         }
       />
-      <Route
-        path={ROUTES.PROFILE}
-        element={
-          <Suspense fallback={<Loading isLoading={true} />}>
-            <ProfilePage />
-          </Suspense>
-        }
-      />
-      <Route path={ROUTES.ABOUT} element={<AboutPage />}
-      />
+
       <Route
         path={ROUTES.SIGNUP}
         element={
-          <Suspense fallback={<Loading isLoading={true} />}>
+          <Suspense
+            fallback={<Loading isLoading={true} isInfinitive={false} />}
+          >
             <SignUpPage />
           </Suspense>
         }
@@ -63,32 +103,30 @@ const router = createBrowserRouter(
       <Route
         path={ROUTES.SIGNIN}
         element={
-          <Suspense fallback={<Loading isLoading={true} />}>
+          <Suspense
+            fallback={<Loading isLoading={true} isInfinitive={false} />}
+          >
             <SignInPage />
           </Suspense>
         }
       />
       <Route
-        path={ROUTES.AUTH}
+        path={ROUTES.VERIFY}
         element={
-          <Suspense fallback={<Loading isLoading={true} />}>
-            <AuthPage />
+          <Suspense
+            fallback={<Loading isLoading={true} isInfinitive={false} />}
+          >
+            <VerifyPage />
           </Suspense>
         }
       />
       <Route
         path={ROUTES.SIGNIN_OTP}
         element={
-          <Suspense fallback={<Loading isLoading={true} />}>
+          <Suspense
+            fallback={<Loading isLoading={true} isInfinitive={false} />}
+          >
             <SignInOtpPage />
-          </Suspense>
-        }
-      />
-      <Route
-        path={ROUTES.CHAT}
-        element={
-          <Suspense fallback={<Loading isLoading={true} />}>
-            <ChatPage />
           </Suspense>
         }
       />
@@ -98,7 +136,9 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   </StrictMode>
 );

@@ -1,16 +1,28 @@
-import React, { useState } from "react";
-import "./Sidebar.less";
-import "./Sidebar.media.less";
-import { IMAGES } from "../../assets/images";
-import { ICONS } from "../../assets/icons";
-import SideBarItem from "./partials/SideBarItem/SideBarItem";
-import { Popover } from "antd";
-import UserSetting from "./partials/UserSetting/UserSetting";
-import ButtonBadge from "../../components/buttons/ButtonOnlineStatus/ButtonOnlineStatus";
+import React, { useEffect, useState } from 'react';
+import './Sidebar.less';
+import './Sidebar.media.less';
+import { IMAGES } from '../../assets/images';
+import { ICONS } from '../../assets/icons';
+import SideBarItem from './partials/SideBarItem/SideBarItem';
+import { Popover } from 'antd';
+import UserSetting from './partials/UserSetting/UserSetting';
+import ButtonBadge from '../../components/buttons/ButtonOnlineStatus/ButtonOnlineStatus';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../libs/hooks/useSelectorApp';
+import { useNavigate } from 'react-router-dom';
+import { selfUserActions } from '../../libs/redux/self/selfSlice';
 
 const SidebarLayout: React.FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { currentUser, isLoggedIn } = useAppSelector((state) => state.auth);
+  const { infoUser } = useAppSelector((state) => state.self);
+  const userId = currentUser?.data.userId;
   const [openSub, setOpenSub] = useState(false);
   const [openSetting, setOpenSetting] = useState(false);
+  const statusUser = infoUser?.data.online;
 
   const handleOpenSub = (newOpen: boolean) => {
     setOpenSub(newOpen);
@@ -19,11 +31,17 @@ const SidebarLayout: React.FC = () => {
   const handleOpenUser = (newOpen: boolean) => {
     setOpenSetting(newOpen);
   };
-
+  useEffect(() => {
+    if (userId) {
+      dispatch(selfUserActions.getSelfUser({ userId }));
+    }
+  }, [isLoggedIn, userId, navigate, dispatch]);
   return (
     <div className="sidebar-wrapper">
       <div className="sidebar-inner">
-        <img src={IMAGES.LOGO} className="logo-dockchat" />
+        <a href="/workspace">
+          <img src={IMAGES.LOGO} className="logo-dockchat" />
+        </a>
         <Popover
           content={<SideBarItem />}
           trigger="click"
@@ -61,7 +79,7 @@ const SidebarLayout: React.FC = () => {
           >
             <img src={IMAGES.LOGO} className="logo-dockchat" />
             <div className="online-indicator">
-              <ButtonBadge active="offline" />
+              <ButtonBadge active={statusUser ? 'online' : 'offline'} />
             </div>
           </Popover>
         </div>

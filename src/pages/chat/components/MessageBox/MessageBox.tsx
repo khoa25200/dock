@@ -32,7 +32,6 @@ function MessageBox({ ...props }: any) {
     e.preventDefault();
     if (chat.current) {
       setReply('');
-      chat.current.remove();
     }
   };
 
@@ -70,7 +69,11 @@ function MessageBox({ ...props }: any) {
                 {/* Type file */}
                 {messageType === 'file' && (
                   <>
-                    <FileMessage fileName={fileName} extension={extension} size={size} />
+                    <FileMessage
+                      fileName={fileName}
+                      extension={extension}
+                      size={size}
+                    />
                     <div className="reacts">
                       <Reacts reacts={reacts} />
                     </div>

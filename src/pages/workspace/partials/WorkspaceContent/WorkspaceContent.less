@@ -1,0 +1,92 @@
+.content {
+    gap: 40px;
+    height: auto;
+    display: flex;
+    padding: 20px 8%;
+    min-height: 120px;
+    align-items: center;
+    flex-direction: column;
+
+    .content-welcome {
+        width: 80%;
+        text-align: start;
+        color: #color[white-color];
+        font-size: #font[font-size-xxxl];
+    }
+
+    .content-render {
+        width: 80%;
+        height: auto;
+        display: flex;
+        overflow: hidden;
+        border-radius: 20px;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 4px solid rgba(63 56 56 / 60%);
+        
+        h3 {
+            height: 60px;
+            display: flex;
+            font-weight: 400;
+            padding-left: 20px;
+            align-items: center;
+            background-color: #ecdeec;
+            font-size: #font[font-size-18];
+        }
+
+        .content-render-list {
+            .render-list-item.hidden {
+                display: none;
+            }
+
+            .render-list-null {
+                height: 100px;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                font-size: #font[font-size-18];
+                background-color: #color[white-color];
+
+                a {
+                    margin: 0 4px;
+                    font-weight: 400;
+                    color: #color[blue-color];
+                    text-decoration: underline;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .content-render-more {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ecdeec;
+        }
+    }
+
+    .content-create {
+        width: 80%;
+        height: 100px;
+        display: flex;
+        padding: 0 20px;
+        align-items: center;
+        border-radius: 20px;
+        justify-content: space-between;
+        background-color: #color[white-color];
+        border: 4px solid rgba(63 56 56 / 60%);
+
+        span {
+            font-weight: 700;
+            font-size: #font[font-size-18];
+        }
+
+        .content-create-btn {
+            height: 60%;
+        }
+    }
+}

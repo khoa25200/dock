@@ -1,39 +1,69 @@
-import { IUser, verifyAccount } from '../types/auth';
+import { IUser, ToastMessage, verifyAccount } from '../types/auth';
 import api from './api';
-
+import { BE_ENDPOINT } from '../../configs/constants/backend.const';
 export const AccountUser = {
   // ACCOUNT FULL OPTIONS
   registerUser: async (data: IUser) => {
-    const response = await api.post<IUser>('/auth/sign-up', data);
+    const response = await api.post<ToastMessage>(BE_ENDPOINT.SignUp, data);
     return response.data;
   },
   verifyEmail: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>('/auth/verify-email', data);
+    const response = await api.post<ToastMessage>(
+      BE_ENDPOINT.VerifyByEmail,
+      data
+    );
     return response.data;
   },
   loginUser: async (data: IUser) => {
-    const response = await api.post<IUser>('/auth/sign-in', data);
+    const response = await api.post<ToastMessage>(BE_ENDPOINT.Login, data);
     return response.data;
   },
   // ACCOUNT WITH EMAIL
   registerWithEmail: async (data: IUser) => {
-    const response = await api.post<IUser>('/auth/sign-up-email', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    return response;
+    const response = await api.post<ToastMessage>(
+      BE_ENDPOINT.SignUpWithEmail,
+      data,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    return response.data;
   },
   requestOtp: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>('/auth/request-otp', data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    return response;
+    const response = await api.post<ToastMessage>(
+      BE_ENDPOINT.requestOtp,
+      data,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    return response.data;
   },
   loginUserWithOTP: async (data: verifyAccount) => {
-    const response = await api.post<verifyAccount>('/auth/sign-in-email', data);
-    return response;
+    const response = await api.post<ToastMessage>(
+      BE_ENDPOINT.loginUserWithOTP,
+      data
+    );
+    return response.data;
+  },
+
+  //User
+  getUser: async (data: IUser) => {
+    const response = await api.get(`${BE_ENDPOINT.getUser}/${data.userId}`);
+    return response.data;
+  },
+
+  //Update user
+  putUser: async (data: IUser) => {
+    try {
+      const response = await api.put(`${BE_ENDPOINT.putUser}/${data.userId}`, data);
+      return response.data;
+    } catch (err) {
+      throw err;
+    }
   },
 };

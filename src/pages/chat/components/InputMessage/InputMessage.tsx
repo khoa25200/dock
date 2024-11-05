@@ -1,8 +1,11 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import './InputMessage.less';
 import { ICONS } from '../../../../assets/icons';
 import Picker, { EmojiClickData } from 'emoji-picker-react';
 import { TextArea } from '@ant-design/pro-chat/es/components/Input';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../../libs/redux/store';
+import { sendMessage, updateRecipient, updateText } from '../../../../libs/redux/socket/messagesSlice';
 
 function InputMessage({
   message,
@@ -23,6 +26,7 @@ function InputMessage({
   const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [replyText, setReplyText] = useState<string>('');
+  const { recipientId } = useSelector((state: RootState) => state.self);
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter') {
@@ -30,7 +34,7 @@ function InputMessage({
         return;
       } else {
         e.preventDefault();
-        handleSendMessage();
+        handleSendMessage(e);
       }
     }
   };
@@ -38,7 +42,6 @@ function InputMessage({
   const handleReactionClick = (emojiObject: any) => {
     setChosenEmoji(emojiObject);
     setText((prevText) => prevText + emojiObject.emoji);
-    console.log(text);
     setOpen(false);
   };
 
@@ -63,10 +66,10 @@ function InputMessage({
       setFileName(e.target.files[0].name);
     }
   };
+  
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (e: FormEvent) => {
     if (file) {
-      console.log(true);
       setFile(null);
       setFileName(null);
       if (text.trim() !== '') {
@@ -97,13 +100,19 @@ function InputMessage({
       setMessage([...message, text]);
       setText('');
     }
+
+    e.preventDefault();
+    dispatch(sendMessage({ recipient, text }));
+    dispatch(updateText(''));
   };
 
+  useEffect(() => {
+    dispatch(updateRecipient(recipientId||''));
+  }, [recipientId])
+
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
-    console.log(e);
-    if (e.clipboardData.files.length) {
+    if (e.clipboardData.files?.length) {
       const fileObject = e.clipboardData.files[0];
-      console.log(fileObject);
       setImage(URL.createObjectURL(fileObject));
     }
   };
@@ -113,6 +122,15 @@ function InputMessage({
       setReplyText(reply);
     }
   }, [reply]);
+
+
+  // handle message
+  const dispatch = useDispatch<AppDispatch>();
+  const { messages, text: textStore, recipient } = useSelector((state: RootState) => state.messages);
+
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch(updateText(e.target.value));
+  };
 
   return (
     <div className="bottom">
@@ -153,14 +171,22 @@ function InputMessage({
             lazyLoadEmojis={true}
           />
         )}
-        <img src={ICONS.REACTION} alt="reaction" onClick={() => setOpen((prev) => !prev)} />
+        <img
+          src={ICONS.REACTION}
+          alt="reaction"
+          onClick={() => setOpen((prev) => !prev)}
+        />
       </div>
 
       {/* For image and text */}
       <div className="input-and-preview">
         {image && (
           <div className="image-preview">
-            <img src={image} alt={imageName || 'preview'} className="preview-image" />
+            <img
+              src={image}
+              alt={imageName || 'preview'}
+              className="preview-image"
+            />
             <img
               src={ICONS.DELETE}
               alt="delete-image"
@@ -171,7 +197,11 @@ function InputMessage({
         )}
         {file && (
           <div className="file-preview">
-            <img src={ICONS.FILE} alt={fileName || 'preview'} className="preview-file" />
+            <img
+              src={ICONS.FILE}
+              alt={fileName || 'preview'}
+              className="preview-file"
+            />
             <div className="file-name">{fileName}</div>
             <img
               src={ICONS.DELETE}

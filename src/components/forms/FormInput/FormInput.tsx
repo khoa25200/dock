@@ -14,14 +14,20 @@ interface FormInputProps {
 const FormInput: React.FC<FormInputProps> = ({
   name,
   error,
-  rules,
+  rules = [],
   className,
   children,
 }) => {
+  const noWhitespaceValidator = (rule: string, value: string) => {
+    if (value && value.startsWith(' ')) {
+      return Promise.reject('Vui Lòng Không Nhập Khoảng Trắng!');
+    }
+    return Promise.resolve();
+  };
   return (
     <Form.Item
       name={name}
-      rules={rules}
+      rules={[...rules, { validator: noWhitespaceValidator }]}
       help={error}
       className={className}
       validateStatus={error ? 'error' : undefined}
