@@ -10,7 +10,6 @@ interface InfoChannelProps {
   InfoUser?: SelfUser | null;
 }
 const HeaderMessage = ({ InfoChannel, InfoUser }: InfoChannelProps) => {
-  console.log(InfoUser);
   return (
     <>
       {InfoUser ? (
