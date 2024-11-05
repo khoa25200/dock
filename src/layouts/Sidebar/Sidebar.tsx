@@ -20,6 +20,7 @@ const SidebarLayout: React.FC = () => {
   const { currentUser, isLoggedIn } = useAppSelector((state) => state.auth);
   const { infoUser } = useAppSelector((state) => state.self);
   const userId = currentUser?.data.userId;
+  console.log("🚀 ~ userId:", userId)
   const [openSub, setOpenSub] = useState(false);
   const [openSetting, setOpenSetting] = useState(false);
   const statusUser = infoUser?.data.online;
